@@ -33,22 +33,34 @@ export type StoryQualityChecks = {
   childTested: boolean;
   publicationReady: boolean;
   editorialNote: string;
+  editorialNoteEn?: string;
   sourceModifications: string;
+  sourceModificationsEn?: string;
+};
+
+export type StoryPageTranslations = {
+  fr?: string[];
+  en?: string[];
 };
 
 export type Story = {
   id: string;
   titleAm: string;
   titleFr?: string;
+  titleEn?: string;
   level: StoryLevel;
   ageRange: string;
   estimatedMinutes: number;
   durationBucket: DurationBucket;
   mood: string;
+  moodEn?: string;
   bedtimeFit: BedtimeFit;
   bedtimeSummary: string;
+  bedtimeSummaryEn?: string;
   readingTips: string[];
+  readingTipsEn?: string[];
   pages: string[];
+  pageTranslations?: StoryPageTranslations;
   source: StorySource;
   sourceCredits?: StoryCredit[];
   qualityChecks: StoryQualityChecks;

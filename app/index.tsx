@@ -8,11 +8,13 @@ import {
   type CatalogScope,
   type DurationFilterValue,
 } from "@/components/CatalogFilters";
+import { LanguageToggle } from "@/components/LanguageToggle";
 import { LevelFilter, type LevelFilterValue } from "@/components/LevelFilter";
 import { StoryCard } from "@/components/StoryCard";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { TonightStoryCard } from "@/components/TonightStoryCard";
 import { getTonightStory, stories } from "@/data/stories";
+import { uiText } from "@/features/i18n/translations";
 import { useReadingProgress } from "@/features/progress/useReadingProgress";
 import { colors } from "@/theme/colors";
 import { spacing } from "@/theme/spacing";
@@ -24,13 +26,16 @@ export default function HomeScreen() {
   const [duration, setDuration] = useState<DurationFilterValue>("all");
   const progress = useReadingProgress();
   const palette = colors[progress.theme];
+  const language = progress.language;
   const tonightStory = useMemo(() => getTonightStory(), []);
   const bedtimeCount = useMemo(
     () => stories.filter((story) => story.bedtimeFit !== "not_bedtime").length,
     [],
   );
   const bedtimeCountLabel =
-    bedtimeCount > 1 ? `${bedtimeCount} lectures du soir disponibles` : "1 lecture du soir disponible";
+    bedtimeCount > 1
+      ? `${bedtimeCount} ${uiText[language].bedtimeAvailablePlural}`
+      : `1 ${uiText[language].bedtimeAvailable}`;
 
   const filteredStories = useMemo(
     () =>
@@ -53,7 +58,7 @@ export default function HomeScreen() {
         options={{
           headerStyle: { backgroundColor: palette.background },
           headerTintColor: palette.text,
-          title: "Histoire du soir",
+          title: language === "en" ? "Bedtime story" : "Histoire du soir",
         }}
       />
       <StatusBar style={progress.theme === "dark" ? "light" : "dark"} />
@@ -78,41 +83,63 @@ export default function HomeScreen() {
           >
             <View style={{ flex: 1, gap: spacing.xs }}>
               <Text selectable style={[typography.appTitle, { color: palette.text }]}>
-                የሌሊት ታሪክ
+                {uiText[language].appTitle}
               </Text>
               <Text selectable style={[typography.body, { color: palette.mutedText }]}>
-                Choisis vite une lecture douce en amharique pour le rituel du coucher.
+                {uiText[language].bedtimeTagline}
               </Text>
             </View>
-            <ThemeToggle onChange={progress.setTheme} palette={palette} theme={progress.theme} />
+            <View style={{ alignItems: "flex-end", gap: spacing.sm }}>
+              <LanguageToggle
+                language={language}
+                onChange={progress.setLanguage}
+                palette={palette}
+              />
+              <ThemeToggle
+                language={language}
+                onChange={progress.setTheme}
+                palette={palette}
+                theme={progress.theme}
+              />
+            </View>
           </View>
         </View>
 
-        <TonightStoryCard palette={palette} story={tonightStory} />
+        <TonightStoryCard language={language} palette={palette} story={tonightStory} />
 
         <View style={{ gap: spacing.md }}>
           <View style={{ gap: spacing.xs }}>
             <Text selectable style={[typography.title, { color: palette.text }]}>
-              Explorer le catalogue
+              {uiText[language].catalogTitle}
             </Text>
             <Text selectable style={[typography.body, { color: palette.mutedText }]}>
-              {bedtimeCountLabel} sur {stories.length}. Les autres restent utiles hors rituel.
+              {bedtimeCountLabel} {language === "en" ? "out of" : "sur"} {stories.length}.{" "}
+              {language === "en"
+                ? "The others remain useful outside the ritual."
+                : "Les autres restent utiles hors rituel."}
             </Text>
           </View>
           <CatalogFilters
             duration={duration}
+            language={language}
             onDurationChange={setDuration}
             onScopeChange={setScope}
             palette={palette}
             scope={scope}
           />
-          <LevelFilter onChange={setLevel} palette={palette} value={level} />
+          <LevelFilter
+            language={language}
+            onChange={setLevel}
+            palette={palette}
+            value={level}
+          />
           {filteredStories.length > 0 ? (
             filteredStories.map((story) => (
               <StoryCard
                 isFavorite={progress.favoriteIds.has(story.id)}
                 isRead={progress.readIds.has(story.id)}
                 key={story.id}
+                language={language}
                 lastPage={progress.lastPages[story.id]}
                 palette={palette}
                 story={story}
@@ -120,7 +147,7 @@ export default function HomeScreen() {
             ))
           ) : (
             <Text selectable style={[typography.body, { color: palette.mutedText }]}>
-              Aucune autre lecture pour ce filtre.
+              {uiText[language].emptyFilter}
             </Text>
           )}
         </View>

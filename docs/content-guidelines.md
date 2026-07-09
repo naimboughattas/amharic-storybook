@@ -11,6 +11,10 @@ La cible produit prioritaire est la mere qui veut raconter une histoire a son
 enfant avant de dormir. Le contenu doit donc soutenir un rituel calme, tendre et
 facile a lancer le soir.
 
+L'interface est bilingue francais / anglais pour les textes hors amharique. Les
+textes amhariques restent la source principale; les traductions FR/EN servent
+d'aide discrete.
+
 ## Regles de contenu
 
 - Ne pas copier de texte protege sans autorisation explicite.
@@ -20,6 +24,7 @@ facile a lancer le soir.
 - Marquer clairement les contenus de demonstration comme non publiables.
 - Verifier l'amharique avec une personne native avant publication.
 - Tester la comprehension avec des enfants du niveau cible avant `published`.
+- Ne pas ajouter de traduction FR/EN publiee sans revue editoriale.
 - Pour la promesse "15 min minimum", viser au moins 1 500 mots amhariques ou
   composer une lecture longue a partir de plusieurs albums credits separement.
 
@@ -67,6 +72,15 @@ Chaque histoire doit renseigner :
 - `qualityChecks.publicationReady`
 - `qualityChecks.editorialNote`
 - `qualityChecks.sourceModifications`
+- `titleEn`, `moodEn`, `bedtimeSummaryEn` et `readingTipsEn`
+- `pageTranslations` quand une traduction FR/EN de lecture existe
+
+## Traductions sous l'amharique
+
+Les traductions FR/EN sous les pages amhariques sont possibles, mais elles
+doivent rester secondaires visuellement. Pour le MVP, privilegier une traduction
+par page dans `pageTranslations`. Le mode phrase par phrase demandera une
+segmentation plus fine et une revue supplementaire.
 
 ## Workflow de validation
 

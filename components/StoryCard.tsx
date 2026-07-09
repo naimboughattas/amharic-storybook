@@ -3,11 +3,17 @@ import { Pressable, Text, View } from "react-native";
 
 import { ProgressBadge } from "@/components/ProgressBadge";
 import { ValidationStatusBadge } from "@/components/ValidationStatusBadge";
+import type { InterfaceLanguage } from "@/features/i18n/translations";
+import {
+  bedtimeFitLabels,
+  durationBucketLabels,
+  storyLevelLabels,
+} from "@/features/i18n/translations";
+import { getStoryMood, getStoryTitle } from "@/features/i18n/storyText";
 import type { AppPalette } from "@/theme/colors";
 import { radius, spacing } from "@/theme/spacing";
 import { typography } from "@/theme/typography";
 import type { Story } from "@/types/story";
-import { bedtimeFitLabels, durationBucketLabels, storyLevelLabels } from "@/types/story";
 
 type Props = {
   story: Story;
@@ -15,10 +21,12 @@ type Props = {
   isFavorite: boolean;
   lastPage?: number;
   palette: AppPalette;
+  language: InterfaceLanguage;
 };
 
-export function StoryCard({ story, isRead, isFavorite, lastPage, palette }: Props) {
+export function StoryCard({ story, isRead, isFavorite, lastPage, palette, language }: Props) {
   const isBedtimeStory = story.bedtimeFit !== "not_bedtime";
+  const localizedTitle = getStoryTitle(story, language);
 
   return (
     <Link href={`/story/${story.id}`} asChild>
@@ -41,33 +49,47 @@ export function StoryCard({ story, isRead, isFavorite, lastPage, palette }: Prop
             </Text>
             {story.titleFr ? (
               <Text selectable style={[typography.body, { color: palette.mutedText }]}>
-                {story.titleFr}
+                {localizedTitle}
               </Text>
             ) : null}
           </View>
           <Text
-            accessibilityLabel={isFavorite ? "Histoire favorite" : "Histoire non favorite"}
+            accessibilityLabel={
+              isFavorite
+                ? language === "en"
+                  ? "Favorite story"
+                  : "Histoire favorite"
+                : language === "en"
+                  ? "Not favorite story"
+                  : "Histoire non favorite"
+            }
             selectable
             style={[typography.title, { color: isFavorite ? palette.accent : palette.border }]}
           >
-            {isFavorite ? "Favori" : ""}
+            {isFavorite ? (language === "en" ? "Favorite" : "Favori") : ""}
           </Text>
         </View>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
           <ProgressBadge
             isRead={isRead}
             lastPage={lastPage}
+            language={language}
             palette={palette}
             totalPages={story.pages.length}
           />
-          <ValidationStatusBadge palette={palette} status={story.validationStatus} />
+          <ValidationStatusBadge
+            language={language}
+            palette={palette}
+            status={story.validationStatus}
+          />
         </View>
         <Text selectable style={[typography.small, { color: palette.mutedText }]}>
-          {storyLevelLabels[story.level]} · {story.ageRange} ans · {story.estimatedMinutes} min
+          {storyLevelLabels[language][story.level]} · {story.ageRange}{" "}
+          {language === "en" ? "years" : "ans"} · {story.estimatedMinutes} min
         </Text>
         <Text selectable style={[typography.small, { color: palette.mutedText }]}>
-          {durationBucketLabels[story.durationBucket]} · {story.mood} ·{" "}
-          {bedtimeFitLabels[story.bedtimeFit]}
+          {durationBucketLabels[language][story.durationBucket]} ·{" "}
+          {getStoryMood(story, language)} · {bedtimeFitLabels[language][story.bedtimeFit]}
         </Text>
       </Pressable>
     </Link>

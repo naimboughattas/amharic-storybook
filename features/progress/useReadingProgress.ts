@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useSyncExternalStore } from "react";
 
+import type { InterfaceLanguage } from "@/features/i18n/translations";
 import type { ThemeMode } from "@/theme/colors";
 import {
   getProgressState,
@@ -59,6 +60,10 @@ export function useReadingProgress() {
     setProgressState((current) => ({ ...current, theme }));
   }, []);
 
+  const setLanguage = useCallback((language: InterfaceLanguage) => {
+    setProgressState((current) => ({ ...current, language }));
+  }, []);
+
   return {
     ...progress,
     favoriteIds,
@@ -66,6 +71,7 @@ export function useReadingProgress() {
     toggleFavorite,
     markRead,
     setLastPage,
+    setLanguage,
     setTheme,
   };
 }

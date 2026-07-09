@@ -1,5 +1,6 @@
 import { Text, View } from "react-native";
 
+import type { InterfaceLanguage } from "@/features/i18n/translations";
 import type { AppPalette } from "@/theme/colors";
 import { radius, spacing } from "@/theme/spacing";
 import { typography } from "@/theme/typography";
@@ -9,14 +10,19 @@ type Props = {
   lastPage?: number;
   totalPages: number;
   palette: AppPalette;
+  language: InterfaceLanguage;
 };
 
-export function ProgressBadge({ isRead, lastPage, totalPages, palette }: Props) {
+export function ProgressBadge({ isRead, lastPage, totalPages, palette, language }: Props) {
   const label = isRead
-    ? "Lu"
+    ? language === "en"
+      ? "Read"
+      : "Lu"
     : lastPage !== undefined
       ? `Page ${lastPage + 1}/${totalPages}`
-      : "Nouveau";
+      : language === "en"
+        ? "New"
+        : "Nouveau";
 
   return (
     <View

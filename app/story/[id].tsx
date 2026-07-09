@@ -1,6 +1,6 @@
-import { Stack, useLocalSearchParams } from "expo-router";
+import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useMemo, useState } from "react";
-import { ScrollView, Text } from "react-native";
+import { SafeAreaView, ScrollView, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
 import { StoryReader } from "@/components/StoryReader";
@@ -12,6 +12,7 @@ import { typography } from "@/theme/typography";
 
 export default function StoryScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const router = useRouter();
   const progress = useReadingProgress();
   const palette = colors[progress.theme];
   const story = useMemo(() => findStoryById(id), [id]);
@@ -55,27 +56,26 @@ export default function StoryScreen() {
     <>
       <Stack.Screen
         options={{
-          headerStyle: { backgroundColor: palette.background },
-          headerTintColor: palette.text,
+          headerShown: false,
           title: story.titleFr ?? story.titleAm,
         }}
       />
       <StatusBar style={progress.theme === "dark" ? "light" : "dark"} />
-      <ScrollView
-        contentContainerStyle={{
-          backgroundColor: palette.background,
-          gap: spacing.xl,
-          padding: spacing.lg,
-          paddingBottom: spacing.xxl,
+      <SafeAreaView
+        style={{
+          backgroundColor:
+            story.bedtimeFit === "not_bedtime" ? palette.background : palette.bedtimeSurface,
+          flex: 1,
         }}
-        contentInsetAdjustmentBehavior="automatic"
-        style={{ backgroundColor: palette.background }}
       >
         <StoryReader
           currentPage={currentPage}
           isFavorite={progress.favoriteIds.has(story.id)}
           isRead={progress.readIds.has(story.id)}
+          language={progress.language}
+          onBackPress={() => router.back()}
           onFavoritePress={() => progress.toggleFavorite(story.id)}
+          onLanguageChange={progress.setLanguage}
           onMarkRead={() => progress.markRead(story.id)}
           onPageChange={handlePageChange}
           onThemeChange={progress.setTheme}
@@ -83,7 +83,7 @@ export default function StoryScreen() {
           story={story}
           theme={progress.theme}
         />
-      </ScrollView>
+      </SafeAreaView>
     </>
   );
 }

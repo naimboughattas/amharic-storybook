@@ -1,5 +1,6 @@
 import "expo-sqlite/localStorage/install";
 
+import type { InterfaceLanguage } from "@/features/i18n/translations";
 import type { ThemeMode } from "@/theme/colors";
 
 const STORAGE_KEY = "storybook-amharique.progress.v1";
@@ -8,6 +9,7 @@ export type ReadingProgressState = {
   readStoryIds: string[];
   favoriteStoryIds: string[];
   lastPages: Record<string, number>;
+  language: InterfaceLanguage;
   theme: ThemeMode;
 };
 
@@ -15,6 +17,7 @@ const defaultProgress: ReadingProgressState = {
   readStoryIds: [],
   favoriteStoryIds: [],
   lastPages: {},
+  language: "fr",
   theme: "light",
 };
 

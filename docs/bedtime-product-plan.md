@@ -19,6 +19,8 @@ Promesse :
 - La duree annoncee doit etre fiable.
 - Les credits, licences et validations restent visibles, mais secondaires dans
   le rituel de lecture.
+- Tous les textes hors amharique doivent etre disponibles en francais et en
+  anglais.
 
 ## Persona prioritaire
 
@@ -39,6 +41,8 @@ Mere fatiguee en fin de journee, qui veut :
   sans perdre ma place.
 - Quand je suis moins a l'aise en amharique, je veux des aides discretes pour
   ralentir, chuchoter et interagir.
+- Quand je ne comprends pas tout, je veux voir une traduction FR/EN discrete
+  sans que l'amharique perde sa place principale.
 
 ## Plan d'attaque
 
@@ -82,7 +86,10 @@ Definition of done :
 
 Statut actuel : en cours. Le lecteur affiche un guide bedtime pour les histoires
 compatibles coucher, avec temps restant, conseil de narration et bouton
-"Pause calin" qui conserve la page en cours.
+"Pause calin" qui conserve la page en cours. Le lecteur bedtime utilise
+maintenant un Mode Rituel plein ecran : top bar interne, texte comme scene
+principale, dock flottant au pouce et fiche infos pour les credits et controles
+qualite.
 
 ### Phase 3 - Catalogue bedtime
 
@@ -125,10 +132,10 @@ Definition of done :
 - Les credits restent complets meme dans une compilation.
 
 Statut actuel : en cours. Le lecteur affiche maintenant un controle qualite
-base sur `qualityChecks` : licence, relecture native, test enfant, publication,
-note editoriale et modifications faites au texte source. Les lectures ASB du MVP
-sont candidates : licence verifiee, mais revue native et test enfant encore a
-faire avant publication.
+base sur `qualityChecks` dans la fiche infos du lecteur : licence, relecture
+native, test enfant, publication, note editoriale et modifications faites au
+texte source. Les lectures ASB du MVP sont candidates : licence verifiee, mais
+revue native et test enfant encore a faire avant publication.
 
 ### Phase 5 - Aide a la voix, sans remplacer la mere
 
@@ -152,6 +159,23 @@ Definition of done :
 5. Creer `BedtimeReader` ou un mode bedtime dans `StoryReader`.
 6. Ajouter des tests simples sur la selection de l'histoire du soir.
 7. Verifier l'interface sur mobile web puis sur Expo Go.
+
+## Direction UI mobile
+
+La direction UI est documentee dans `docs/mobile-ui-direction.md`.
+
+Le principe central : le texte amharique est la scene principale, les controles
+flottent en bas pres du pouce, et les informations de confiance restent dans une
+fiche secondaire pour ne pas casser le rituel.
+
+## Bilingue FR/EN
+
+La strategie bilingue est documentee dans `docs/i18n-translation-plan.md`.
+
+Statut actuel : en cours. L'interface, les controles, les filtres, les statuts
+et les metadonnees produit peuvent basculer francais / anglais. Le lecteur
+prevoit un emplacement discret sous le texte amharique pour les futures
+traductions FR/EN.
 
 ## Risques
 

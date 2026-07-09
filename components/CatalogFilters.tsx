@@ -1,10 +1,11 @@
 import { Pressable, Text, View } from "react-native";
 
+import type { InterfaceLanguage } from "@/features/i18n/translations";
+import { durationBucketLabels, scopeLabels, uiText } from "@/features/i18n/translations";
 import type { AppPalette } from "@/theme/colors";
 import { radius, spacing } from "@/theme/spacing";
 import { typography } from "@/theme/typography";
 import type { DurationBucket } from "@/types/story";
-import { durationBucketLabels } from "@/types/story";
 
 export type CatalogScope = "all" | "bedtime" | "library";
 export type DurationFilterValue = "all" | DurationBucket;
@@ -15,13 +16,10 @@ type Props = {
   onScopeChange: (scope: CatalogScope) => void;
   onDurationChange: (duration: DurationFilterValue) => void;
   palette: AppPalette;
+  language: InterfaceLanguage;
 };
 
-const scopeOptions: Array<{ label: string; value: CatalogScope }> = [
-  { label: "Tous", value: "all" },
-  { label: "Soir", value: "bedtime" },
-  { label: "Bibliotheque", value: "library" },
-];
+const scopeOptions: CatalogScope[] = ["all", "bedtime", "library"];
 
 const durationOptions: DurationFilterValue[] = ["all", "10_min", "15_min", "20_min"];
 
@@ -70,21 +68,22 @@ export function CatalogFilters({
   onScopeChange,
   onDurationChange,
   palette,
+  language,
 }: Props) {
   return (
     <View style={{ gap: spacing.md }}>
       <View style={{ gap: spacing.sm }}>
         <Text selectable style={[typography.subtitle, { color: palette.text }]}>
-          Moment de lecture
+          {uiText[language].readingMoment}
         </Text>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
           {scopeOptions.map((option) => (
             <FilterChip
-              key={option.value}
-              label={option.label}
-              onPress={() => onScopeChange(option.value)}
+              key={option}
+              label={scopeLabels[language][option]}
+              onPress={() => onScopeChange(option)}
               palette={palette}
-              selected={scope === option.value}
+              selected={scope === option}
             />
           ))}
         </View>
@@ -92,13 +91,13 @@ export function CatalogFilters({
 
       <View style={{ gap: spacing.sm }}>
         <Text selectable style={[typography.subtitle, { color: palette.text }]}>
-          Duree cible
+          {uiText[language].durationTarget}
         </Text>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
           {durationOptions.map((option) => (
             <FilterChip
               key={option}
-              label={option === "all" ? "Toutes" : durationBucketLabels[option]}
+              label={option === "all" ? uiText[language].all : durationBucketLabels[language][option]}
               onPress={() => onDurationChange(option)}
               palette={palette}
               selected={duration === option}

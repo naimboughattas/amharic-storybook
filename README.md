@@ -32,22 +32,27 @@ types/
 docs/content-guidelines.md
 docs/bedtime-product-plan.md
 docs/catalog-audit.md
+docs/mobile-ui-direction.md
+docs/i18n-translation-plan.md
 ```
 
 ## Fonctionnalites MVP
 
 - Accueil oriente rituel du soir avec recommandation "Ce soir".
+- Interface bilingue francais / anglais pour les textes hors amharique.
 - Bibliotheque filtrable par niveau.
-- Lecteur page par page utilisable au lit, avec texte large et theme sombre.
+- Lecteur Mode Rituel plein ecran, avec texte amharique comme scene principale.
+- Dock flottant au pouce : precedent, pause/reprendre, suivant et infos.
 - Guide de lecture du soir : temps restant, conseil de narration et pause calin.
-- Progression locale : histoires lues, favoris, derniere page et theme.
+- Progression locale : histoires lues, favoris, derniere page, theme et langue.
 - Mode clair / sombre.
-- Sources, credits, licence et statut de validation visibles par histoire.
+- Fiche infos secondaire pour sources, credits, licence et statut de validation.
 - Controle qualite par histoire : licence, relecture native, test enfant,
   publication, note editoriale et modifications source.
 - Lectures longues de 15 minutes minimum composees d'albums CC BY 4.0 credits.
 - Metadonnees bedtime : ambiance, compatibilite coucher, duree cible et conseils
   de narration.
+- Emplacement pret pour traductions FR/EN sous le texte amharique.
 
 ## Positionnement produit
 
@@ -61,6 +66,7 @@ Les decisions produit doivent donc favoriser :
 - un demarrage rapide le soir ;
 - des histoires calmes, rassurantes et lisibles a voix haute ;
 - une interface sans distraction ;
+- des controles proches du pouce dans le lecteur ;
 - des aides discretes pour lire lentement, faire des pauses et impliquer
   l'enfant ;
 - la voix de la mere comme experience centrale.
@@ -80,6 +86,10 @@ Champs importants :
   la publication, la note editoriale et les modifications source.
 - `bedtimeFit`, `mood`, `durationBucket`, `bedtimeSummary` et `readingTips`
   pilotent la recommandation du soir.
+- `titleEn`, `moodEn`, `bedtimeSummaryEn` et `readingTipsEn` alimentent la
+  version anglaise de l'interface.
+- `pageTranslations` peut contenir les futures traductions FR/EN sous les pages
+  amhariques.
 - `validationStatus` suit le workflow editorial.
 - `tags` facilite les futurs filtres.
 
@@ -101,6 +111,12 @@ Le plan d'attaque du pivot "rituel du soir" est documente dans
 L'audit du catalogue bedtime et les manques de contenu sont suivis dans
 `docs/catalog-audit.md`.
 
+La direction UI mobile du Mode Rituel est documentee dans
+`docs/mobile-ui-direction.md`.
+
+La strategie bilingue et la faisabilite des traductions sous l'amharique sont
+documentees dans `docs/i18n-translation-plan.md`.
+
 ## Workflow linguistique
 
 1. Brouillon.
@@ -108,7 +124,8 @@ L'audit du catalogue bedtime et les manques de contenu sont suivis dans
 3. Relecture native.
 4. Test enfant.
 5. Verification licence.
-6. Publication.
+6. Traductions FR/EN relues si elles sont affichees dans le lecteur.
+7. Publication.
 
 ## Prochaines etapes recommandees
 
