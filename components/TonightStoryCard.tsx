@@ -1,7 +1,8 @@
-import { Link } from "expo-router";
-import { Pressable, Text, View } from "react-native";
+import { useRouter } from "expo-router";
+import { Text, View } from "react-native";
 
 import type { InterfaceLanguage } from "@/features/i18n/translations";
+import { PrimaryButton } from "@/components/PrimaryButton";
 import { bedtimeFitLabels, durationBucketLabels, uiText } from "@/features/i18n/translations";
 import {
   getStoryBedtimeSummary,
@@ -20,6 +21,7 @@ type Props = {
 };
 
 export function TonightStoryCard({ story, palette, language }: Props) {
+  const router = useRouter();
   const readingTips = getStoryReadingTips(story, language);
 
   return (
@@ -77,50 +79,11 @@ export function TonightStoryCard({ story, palette, language }: Props) {
         ))}
       </View>
 
-      <View
-        style={{
-          backgroundColor: palette.primary,
-          borderColor: palette.primary,
-          borderRadius: radius.md,
-          borderWidth: 1,
-          minHeight: 58,
-          overflow: "hidden",
-          shadowColor: "#000000",
-          shadowOffset: { width: 0, height: 6 },
-          shadowOpacity: 0.14,
-          shadowRadius: 14,
-        }}
-      >
-        <Link href={`/story/${story.id}`} asChild>
-          <Pressable
-            accessibilityRole="button"
-            style={({ pressed }) => ({
-              alignItems: "center",
-              backgroundColor: pressed ? palette.accent : palette.primary,
-              flex: 1,
-              justifyContent: "center",
-              minHeight: 58,
-              opacity: pressed ? 0.92 : 1,
-              paddingHorizontal: spacing.lg,
-              paddingVertical: spacing.lg,
-            })}
-          >
-            <Text
-              selectable
-              style={[
-                typography.subtitle,
-                {
-                  color: palette.primaryText,
-                  fontWeight: "900",
-                  textAlign: "center",
-                },
-              ]}
-            >
-              {uiText[language].startRitual}
-            </Text>
-          </Pressable>
-        </Link>
-      </View>
+      <PrimaryButton
+        label={uiText[language].startRitual}
+        onPress={() => router.push(`/story/${story.id}`)}
+        palette={palette}
+      />
     </View>
   );
 }

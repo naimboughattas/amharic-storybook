@@ -82,14 +82,16 @@ Champs importants :
 - `source.license` doit etre explicite.
 - `sourceCredits` doit lister chaque album si la lecture longue est une
   compilation.
-- `qualityChecks` doit declarer les droits, la relecture native, le test enfant,
-  la publication, la note editoriale et les modifications source.
+- `qualityChecks` doit declarer les droits, la relecture native, la relecture
+  FR/EN, le test enfant, la publication, la note editoriale et les modifications
+  source.
 - `bedtimeFit`, `mood`, `durationBucket`, `bedtimeSummary` et `readingTips`
   pilotent la recommandation du soir.
 - `titleEn`, `moodEn`, `bedtimeSummaryEn` et `readingTipsEn` alimentent la
   version anglaise de l'interface.
-- `pageTranslations` peut contenir les futures traductions FR/EN sous les pages
-  amhariques.
+- `pageTranslations.aligned` contient les traductions FR/EN phrase par phrase
+  sous l'amharique. `pageTranslations.fr/en` reste un fallback par page pendant
+  la migration.
 - `validationStatus` suit le workflow editorial.
 - `tags` facilite les futurs filtres.
 

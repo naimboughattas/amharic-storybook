@@ -29,7 +29,7 @@ const qualitySteps: QualityStep[] = [
     id: "license",
     label: { fr: "Licence", en: "License" },
     description: {
-      fr: "Droits, licence et attribution verifies.",
+      fr: "Droits, licence et attribution vérifiés.",
       en: "Rights, license and attribution checked.",
     },
     isDone: (story) => story.qualityChecks.licenseVerified,
@@ -44,10 +44,19 @@ const qualitySteps: QualityStep[] = [
     isDone: (story) => story.qualityChecks.nativeReviewed,
   },
   {
+    id: "translation-proofread",
+    label: { fr: "Relecture FR/EN", en: "FR/EN proofreading" },
+    description: {
+      fr: "Accents, orthographe, grammaire, syntaxe et conjugaison vérifiés.",
+      en: "Accents, spelling, grammar, syntax and conjugation checked.",
+    },
+    isDone: (story) => story.qualityChecks.translationProofread,
+  },
+  {
     id: "child-test",
     label: { fr: "Test enfant", en: "Child test" },
     description: {
-      fr: "Lecture essayee avec l'age cible.",
+      fr: "Lecture essayée avec l'âge cible.",
       en: "Reading tested with the target age group.",
     },
     isDone: (story) => story.qualityChecks.childTested,
@@ -56,7 +65,7 @@ const qualitySteps: QualityStep[] = [
     id: "publication",
     label: { fr: "Publication", en: "Publication" },
     description: {
-      fr: "Pret pour une version publique de l'app.",
+      fr: "Prêt pour une version publique de l'app.",
       en: "Ready for a public version of the app.",
     },
     isDone: (story) => story.qualityChecks.publicationReady,
@@ -66,18 +75,18 @@ const qualitySteps: QualityStep[] = [
 function getQualitySummary(story: Story, language: InterfaceLanguage) {
   if (story.qualityChecks.publicationReady) {
     if (language === "en") {
-      return "Ready for publication: license, native review and child test are validated.";
+      return "Ready for publication: license, native review, FR/EN proofreading and child test are validated.";
     }
 
-    return "Lecture prete pour publication: licence, revue native et test enfant sont valides.";
+    return "Lecture prête pour publication : licence, revue native, relecture FR/EN et test enfant sont validés.";
   }
 
   if (story.qualityChecks.licenseVerified) {
     if (language === "en") {
-      return "Candidate reading: rights checked, native review and child test still needed before publication.";
+      return "Candidate reading: rights checked; native review, FR/EN proofreading and child test still needed before publication.";
     }
 
-    return "Lecture candidate: droits verifies, revue native et test enfant restent necessaires avant publication.";
+    return "Lecture candidate : droits vérifiés ; revue native, relecture FR/EN et test enfant restent nécessaires avant publication.";
   }
 
   if (story.qualityChecks.childTested) {
@@ -85,7 +94,7 @@ function getQualitySummary(story: Story, language: InterfaceLanguage) {
       return "Reading tested with a child. Rights and final review still need confirmation.";
     }
 
-    return "Lecture testee avec un enfant. Les droits et la revue finale restent a confirmer.";
+    return "Lecture testée avec un enfant. Les droits et la revue finale restent à confirmer.";
   }
 
   if (story.qualityChecks.nativeReviewed) {
@@ -93,7 +102,7 @@ function getQualitySummary(story: Story, language: InterfaceLanguage) {
       return "Reading reviewed by a native speaker. Child test and rights still need confirmation.";
     }
 
-    return "Lecture relue par une personne native. Le test enfant et les droits restent a confirmer.";
+    return "Lecture relue par une personne native. La relecture FR/EN, le test enfant et les droits restent à confirmer.";
   }
 
   if (story.validationStatus === "translated") {
@@ -101,14 +110,14 @@ function getQualitySummary(story: Story, language: InterfaceLanguage) {
       return "Text translated or written, but not ready for the public ritual yet.";
     }
 
-    return "Texte traduit ou redige, mais pas encore pret pour le rituel public.";
+    return "Texte traduit ou rédigé, mais pas encore prêt pour le rituel public.";
   }
 
   if (language === "en") {
     return "Editorial draft: keep out of publication.";
   }
 
-  return "Brouillon editorial: garder hors publication.";
+  return "Brouillon éditorial : garder hors publication.";
 }
 
 export function QualityChecklist({ story, palette, language }: Props) {
@@ -164,7 +173,7 @@ export function QualityChecklist({ story, palette, language }: Props) {
                   },
                 ]}
               >
-                {isDone ? "OK" : language === "en" ? "To do" : "A faire"}
+                {isDone ? "OK" : language === "en" ? "To do" : "À faire"}
               </Text>
               <View style={{ flex: 1, gap: spacing.xs }}>
                 <Text selectable style={[typography.small, { color: palette.text }]}>
@@ -181,7 +190,7 @@ export function QualityChecklist({ story, palette, language }: Props) {
 
       <View style={{ gap: spacing.xs }}>
         <Text selectable style={[typography.small, { color: palette.text }]}>
-          {language === "en" ? "Editorial note" : "Note editoriale"}
+          {language === "en" ? "Editorial note" : "Note éditoriale"}
         </Text>
         <Text selectable style={[typography.small, { color: palette.mutedText }]}>
           {getQualityEditorialNote(story, language)}
@@ -194,7 +203,7 @@ export function QualityChecklist({ story, palette, language }: Props) {
           <Text selectable style={[typography.small, { color: palette.danger }]}>
             {language === "en"
               ? "Warning: published status requires every quality step to be validated."
-              : "Attention : le statut publie demande toutes les etapes qualite validees."}
+              : "Attention : le statut publié demande toutes les étapes qualité validées."}
           </Text>
         ) : null}
       </View>

@@ -18,10 +18,48 @@ pas en amharique. Le texte amharique reste la source principale de lecture.
 - La lecture `long-sharing-family-rainbow` contient une premiere tranche de
   traductions candidates FR/EN pour le titre de section et les 16 pages de
   l'album `Share Fairly`.
+- Le lecteur supporte aussi un format aligne phrase par phrase via
+  `pageTranslations.aligned[index]`. Le titre de section et la premiere page de
+  `Share Fairly` servent de pilote.
 
 ## Faisabilite des traductions sous l'amharique
 
-### Option 1 - Traduction par page
+### Option 1 - Traduction phrase par phrase
+
+Faisabilite : moyenne, mais recommandee pour le produit bedtime.
+
+Principe : chaque phrase amharique est suivie par sa traduction active en petit.
+
+Contrat actuel :
+
+```ts
+pageTranslations: {
+  aligned: [
+    [
+      {
+        am: "phrase amharique",
+        fr: "traduction francaise",
+        en: "english translation"
+      }
+    ]
+  ]
+}
+```
+
+Avantages :
+
+- comprehension immediate sans quitter la phrase originale ;
+- meilleur accompagnement pour une mere qui lit en amharique et explique en
+  FR/EN ;
+- rendu plus doux qu'un gros bloc de traduction en fin de page.
+
+Limites :
+
+- il faut segmenter les textes amhariques proprement ;
+- chaque alignement doit etre relu ;
+- les pages longues peuvent demander plus de scroll dans le rituel.
+
+### Option 2 - Traduction par page
 
 Faisabilite : facile.
 
@@ -48,43 +86,12 @@ Limites :
 - moins pedagogique qu'une traduction phrase par phrase;
 - si la page est longue, la traduction peut prendre beaucoup de place.
 
-### Option 2 - Traduction phrase par phrase
-
-Faisabilite : moyenne.
-
-Principe : transformer chaque page en segments :
-
-```ts
-[
-  {
-    am: "phrase amharique",
-    fr: "traduction francaise",
-    en: "english translation"
-  }
-]
-```
-
-Cette option demandera un nouveau champ, par exemple `pageSegments`, car le
-champ actuel `pages` est une liste de pages completes. Elle est donc prevue,
-mais pas encore implementee.
-
-Avantages :
-
-- meilleure comprehension;
-- utile pour apprendre et prononcer;
-- permet un mode bilingue discret sous chaque phrase.
-
-Limites :
-
-- il faut segmenter les textes amhariques proprement;
-- les traductions doivent etre relues;
-- l'UI doit gerer des pages plus longues sans casser le rituel du soir.
-
 ## Recommandation MVP
 
-Commencer par une traduction par page pour 1 ou 2 lectures bedtime, puis tester
-avec des meres. Si elles veulent apprendre phrase par phrase, passer ensuite au
-mode segmente.
+Utiliser `pageTranslations.aligned` pour les nouvelles traductions destinees au
+rituel du soir. Garder `pageTranslations.fr/en` comme fallback temporaire pour
+les pages deja traduites en bloc, puis migrer progressivement les lectures
+bedtime vers le mode segmente.
 
 Ne pas publier de traductions FR/EN inventees sans revue editoriale. Les
 traductions doivent etre marquees comme candidates tant qu'elles ne sont pas
@@ -96,10 +103,15 @@ La premiere tranche traduite sert a tester l'ergonomie du lecteur bilingue. Elle
 doit etre relue avant usage public :
 
 - verifier que la traduction FR/EN suit bien le texte amharique ;
+- corriger les accents, l'orthographe, la conjugaison, la grammaire et la
+  syntaxe ;
 - corriger les noms propres si la famille prefere une autre translitteration ;
 - confirmer que le niveau de langue reste naturel pour une lecture du soir ;
 - decider si le texte sous l'amharique doit etre affiche par defaut ou via un
   interrupteur.
+
+Une histoire traduite ne peut pas passer en publication tant que
+`qualityChecks.translationProofread` n'est pas valide.
 
 ## Regle UI
 

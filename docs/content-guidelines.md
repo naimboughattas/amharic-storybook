@@ -68,6 +68,7 @@ Chaque histoire doit renseigner :
 - `author`, `translator` et `reviewer` quand ces roles existent
 - `qualityChecks.licenseVerified`
 - `qualityChecks.nativeReviewed`
+- `qualityChecks.translationProofread`
 - `qualityChecks.childTested`
 - `qualityChecks.publicationReady`
 - `qualityChecks.editorialNote`
@@ -78,9 +79,36 @@ Chaque histoire doit renseigner :
 ## Traductions sous l'amharique
 
 Les traductions FR/EN sous les pages amhariques sont possibles, mais elles
-doivent rester secondaires visuellement. Pour le MVP, privilegier une traduction
-par page dans `pageTranslations`. Le mode phrase par phrase demandera une
-segmentation plus fine et une revue supplementaire.
+doivent rester secondaires visuellement. Pour le rituel du soir, privilegier le
+format phrase par phrase dans `pageTranslations.aligned` :
+
+- `am` contient la phrase amharique originale ;
+- `fr` contient la traduction francaise candidate ;
+- `en` contient la traduction anglaise candidate.
+
+`pageTranslations.fr` et `pageTranslations.en` restent acceptes comme fallback
+temporaire pour les pages deja traduites en bloc. Toute segmentation doit etre
+relue avant publication.
+
+## Relecture FR/EN obligatoire
+
+Toute traduction francaise ou anglaise ajoutee a une histoire doit etre relue
+avant de quitter le statut candidat.
+
+Checklist minimale :
+
+- accents et apostrophes francaises ;
+- orthographe ;
+- grammaire ;
+- conjugaison et concordance des temps ;
+- syntaxe naturelle pour une lecture du soir ;
+- ponctuation et guillemets ;
+- coherence des noms propres et translitterations ;
+- alignement avec le sens de la phrase amharique originale.
+
+Tant que cette verification n'est pas faite, garder
+`qualityChecks.translationProofread` a `false` et afficher la traduction comme
+candidate.
 
 ## Workflow de validation
 
@@ -93,7 +121,8 @@ segmentation plus fine et une revue supplementaire.
 
 Le statut global ne suffit pas pour publier. Une lecture candidate doit aussi
 avoir `qualityChecks.licenseVerified`, `qualityChecks.nativeReviewed`,
-`qualityChecks.childTested` et `qualityChecks.publicationReady` a `true`.
+`qualityChecks.translationProofread`, `qualityChecks.childTested` et
+`qualityChecks.publicationReady` a `true`.
 
 ## Ajout d'une histoire CC BY
 

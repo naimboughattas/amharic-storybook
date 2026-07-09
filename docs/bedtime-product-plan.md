@@ -133,9 +133,10 @@ Definition of done :
 
 Statut actuel : en cours. Le lecteur affiche maintenant un controle qualite
 base sur `qualityChecks` dans la fiche infos du lecteur : licence, relecture
-native, test enfant, publication, note editoriale et modifications faites au
-texte source. Les lectures ASB du MVP sont candidates : licence verifiee, mais
-revue native et test enfant encore a faire avant publication.
+native, relecture FR/EN, test enfant, publication, note editoriale et
+modifications faites au texte source. Les lectures ASB du MVP sont candidates :
+licence verifiee, mais revue native, relecture FR/EN et test enfant encore a
+faire avant publication.
 
 ### Phase 5 - Aide a la voix, sans remplacer la mere
 

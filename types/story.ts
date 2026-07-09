@@ -30,6 +30,7 @@ export type StoryCredit = {
 export type StoryQualityChecks = {
   licenseVerified: boolean;
   nativeReviewed: boolean;
+  translationProofread: boolean;
   childTested: boolean;
   publicationReady: boolean;
   editorialNote: string;
@@ -38,7 +39,14 @@ export type StoryQualityChecks = {
   sourceModificationsEn?: string;
 };
 
+export type StoryPageTranslationSegment = {
+  am: string;
+  fr?: string;
+  en?: string;
+};
+
 export type StoryPageTranslations = {
+  aligned?: Array<StoryPageTranslationSegment[] | undefined>;
   fr?: string[];
   en?: string[];
 };

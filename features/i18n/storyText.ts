@@ -41,6 +41,17 @@ export function getStoryPageTranslation(
   return story.pageTranslations?.[language]?.[pageIndex];
 }
 
+export function getStoryPageTranslationSegments(
+  story: Story,
+  language: InterfaceLanguage,
+  pageIndex: number,
+) {
+  return story.pageTranslations?.aligned?.[pageIndex]?.map((segment) => ({
+    am: segment.am,
+    translation: segment[language],
+  }));
+}
+
 export function getQualityEditorialNote(story: Story, language: InterfaceLanguage) {
   if (language === "en") {
     return story.qualityChecks.editorialNoteEn ?? story.qualityChecks.editorialNote;

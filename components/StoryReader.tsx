@@ -15,6 +15,7 @@ import {
 import {
   getStoryMood,
   getStoryPageTranslation,
+  getStoryPageTranslationSegments,
   getStoryReadingTips,
   getStoryTitle,
 } from "@/features/i18n/storyText";
@@ -126,6 +127,8 @@ export function StoryReader({
   const readingTips = getStoryReadingTips(story, language);
   const narrationTip = getNarrationTip({ ...story, readingTips }, currentPage);
   const pageTranslation = getStoryPageTranslation(story, language, currentPage);
+  const pageTranslationSegments = getStoryPageTranslationSegments(story, language, currentPage);
+  const hasSegmentTranslation = pageTranslationSegments?.some((segment) => segment.translation);
   const [isPaused, setIsPaused] = useState(false);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
@@ -288,21 +291,70 @@ export function StoryReader({
                 </Text>
               </View>
             ) : (
-              <Text
-                selectable
-                style={[
-                  typography.amharicReader,
-                  {
-                    color: isBedtimeMode ? palette.bedtimeText : palette.text,
-                    textAlign: "left",
-                    writingDirection: "ltr",
-                  },
-                ]}
-              >
-                {story.pages[currentPage]}
-              </Text>
+              <View style={{ gap: pageTranslationSegments ? spacing.lg : 0 }}>
+                {pageTranslationSegments ? (
+                  <>
+                    {hasSegmentTranslation ? (
+                      <Text
+                        selectable
+                        style={[typography.small, { color: palette.mutedText, fontWeight: "800" }]}
+                      >
+                        {uiText[language].translationCandidate}
+                      </Text>
+                    ) : null}
+                    {pageTranslationSegments.map((segment, index) => (
+                      <View
+                        key={`${currentPage}-${index}-${segment.am.slice(0, 12)}`}
+                        style={{ gap: spacing.xs }}
+                      >
+                        <Text
+                          selectable
+                          style={[
+                            typography.amharicReader,
+                            {
+                              color: isBedtimeMode ? palette.bedtimeText : palette.text,
+                              textAlign: "left",
+                              writingDirection: "ltr",
+                            },
+                          ]}
+                        >
+                          {segment.am}
+                        </Text>
+                        {segment.translation ? (
+                          <Text
+                            selectable
+                            style={[
+                              typography.small,
+                              {
+                                color: palette.mutedText,
+                                lineHeight: 20,
+                              },
+                            ]}
+                          >
+                            {segment.translation}
+                          </Text>
+                        ) : null}
+                      </View>
+                    ))}
+                  </>
+                ) : (
+                  <Text
+                    selectable
+                    style={[
+                      typography.amharicReader,
+                      {
+                        color: isBedtimeMode ? palette.bedtimeText : palette.text,
+                        textAlign: "left",
+                        writingDirection: "ltr",
+                      },
+                    ]}
+                  >
+                    {story.pages[currentPage]}
+                  </Text>
+                )}
+              </View>
             )}
-            {!isPaused ? (
+            {!isPaused && !pageTranslationSegments ? (
               <View
                 style={{
                   borderColor: palette.border,
