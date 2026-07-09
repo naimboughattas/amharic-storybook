@@ -15,12 +15,12 @@ pas en amharique. Le texte amharique reste la source principale de lecture.
 - Le lecteur affiche un emplacement de traduction sous le texte amharique.
 - Le modele de donnees supporte deja une traduction par page avec
   `pageTranslations.fr[index]` et `pageTranslations.en[index]`.
-- La lecture `long-sharing-family-rainbow` contient une premiere tranche de
-  traductions candidates FR/EN pour le titre de section et les 16 pages de
-  l'album `Share Fairly`.
+- La lecture `long-sharing-family-rainbow` contient deux tranches de
+  traductions candidates FR/EN pour les titres de section et les pages des
+  albums `Share Fairly` et `Simbegwire`.
 - Le lecteur supporte aussi un format aligne phrase par phrase via
-  `pageTranslations.aligned[index]`. Le titre de section et les 16 pages de
-  `Share Fairly` sont alignes phrase par phrase.
+  `pageTranslations.aligned[index]`. Les titres de section et les pages de
+  `Share Fairly` et `Simbegwire` sont alignes phrase par phrase.
 
 ## Faisabilite des traductions sous l'amharique
 
@@ -99,8 +99,8 @@ relues.
 
 ## Revue necessaire
 
-La premiere tranche traduite sert a tester l'ergonomie du lecteur bilingue. Elle
-doit etre relue avant usage public :
+Les premieres tranches traduites servent a tester l'ergonomie du lecteur
+bilingue. Elles doivent etre relues avant usage public :
 
 - verifier que la traduction FR/EN suit bien le texte amharique ;
 - corriger les accents, l'orthographe, la conjugaison, la grammaire et la

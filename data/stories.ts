@@ -514,6 +514,445 @@ export const stories: Story[] = [
             en: "As soon as he got into the car, Dubi told his father about his day at Mama K's: the problem they had faced, and how he used the badge on their truck to solve it. They went home laughing, and Dubi felt happy to tell his father about his victory and what he had learned about sharing.",
           },
         ],
+        [
+          {
+            am: `ክፍል፦ ${simbegwire.title}`,
+            fr: "Section : Simbegwire",
+            en: "Section: Simbegwire",
+          },
+        ],
+        [
+          {
+            am: "ሲምበግዊሬ እናቷ ስትሞት ብስጭት ተሰማት።",
+            fr: "Simbegwire se sentit très triste quand sa mère mourut.",
+            en: "Simbegwire felt very sad when her mother died.",
+          },
+          {
+            am: "የሲምበግዊሬ አባት ለልጁ እንክብካቤ ለማድረግ የተቻለውን አደረገ።",
+            fr: "Le père de Simbegwire fit de son mieux pour prendre soin de sa fille.",
+            en: "Simbegwire's father did his best to care for his daughter.",
+          },
+          {
+            am: "ቀስ በቀስ የሲምበግዊሬ እናት በሌለችበት ደስተኝነትን መልሰው እንዴት እንደሚያገኙ አወቁበት።",
+            fr: "Peu à peu, ils apprirent à retrouver le bonheur sans la mère de Simbegwire.",
+            en: "Little by little, they learned how to find happiness again without Simbegwire's mother.",
+          },
+          {
+            am: "በየዕለቱ ጠዋት ቁጭ ብለው ስለመጪው ቀን ይነጋራሉ።",
+            fr: "Chaque matin, ils s'asseyaient ensemble pour parler de la journée à venir.",
+            en: "Every morning, they sat together and talked about the day ahead.",
+          },
+          {
+            am: "በየምሽቱም ራት አብረው ይሰራሉ።",
+            fr: "Chaque soir, ils préparaient le dîner ensemble.",
+            en: "Every evening, they cooked supper together.",
+          },
+          {
+            am: "ሳህኖቹን ካጠቡ በኋላ የሲምበግዊሬ አባት የቤት ስራዋን በመስራት ያግዛታል።",
+            fr: "Après avoir lavé les assiettes, le père de Simbegwire l'aidait à faire ses devoirs.",
+            en: "After washing the dishes, Simbegwire's father helped her with her homework.",
+          },
+        ],
+        [
+          {
+            am: "አንድ ቀን የሲምበግዊሬ አባት ከወትሮው ዘግይቶ ወደ ቤት ተመለሰ።",
+            fr: "Un jour, le père de Simbegwire rentra plus tard que d'habitude.",
+            en: "One day, Simbegwire's father came home later than usual.",
+          },
+          {
+            am: "\"የት ነሽ ልጄ?\" ብሎ ጠራ።",
+            fr: "\"Où es-tu, mon enfant ?\" appela-t-il.",
+            en: "\"Where are you, my child?\" he called.",
+          },
+          {
+            am: "ሲምበግዊሬ ወደ አባቷ ሮጠች።",
+            fr: "Simbegwire courut vers son père.",
+            en: "Simbegwire ran to her father.",
+          },
+          {
+            am: "ከሴት ጋር እንደመጣ ስታይ በድንገት ቆመች።",
+            fr: "Quand elle vit qu'il était arrivé avec une femme, elle s'arrêta net.",
+            en: "When she saw that he had come with a woman, she stopped still.",
+          },
+          {
+            am: "\"ልጄ አንዲት ልዩ ሴት እንድታገኚ እፈልጋለሁ። ይህች አኒታ ናት\" አለ ፈገግታ እያሳየ።",
+            fr: "\"Mon enfant, je veux que tu rencontres une femme spéciale. Voici Anita\", dit-il avec un sourire.",
+            en: "\"My child, I want you to meet a special woman. This is Anita,\" he said with a smile.",
+          },
+        ],
+        [
+          {
+            am: "አኒታ \"እንዴት ነሽ ሲምበግዊሬ? አባትሽ ስለ አንቺ ብዙ ነግሮኛል\" አለች።",
+            fr: "Anita dit : \"Comment vas-tu, Simbegwire ? Ton père m'a beaucoup parlé de toi.\"",
+            en: "Anita said, \"How are you, Simbegwire? Your father has told me a lot about you.\"",
+          },
+          {
+            am: "ነገር ግን አኒታ ፈገግ አላለችም፣ የሲምበግዊሬንም እጅ አልጨበጠችም።",
+            fr: "Pourtant, Anita ne sourit pas et ne serra pas la main de Simbegwire.",
+            en: "But Anita did not smile or shake Simbegwire's hand.",
+          },
+          {
+            am: "የሲምበግዊሬ አባት ደስተኛ ነበር።",
+            fr: "Le père de Simbegwire était heureux.",
+            en: "Simbegwire's father felt happy.",
+          },
+          {
+            am: "ሶስቱ እንዴት አብረው እንደሚኖሩ፣ እንዴትም ጥሩ ህይወት እንደሚኖራቸው ተናገረ።",
+            fr: "Il parla de la façon dont ils vivraient tous les trois ensemble, et de la belle vie qu'ils pourraient avoir.",
+            en: "He talked about how the three of them would live together, and how good their life could be.",
+          },
+          {
+            am: "\"ልጄ፣ አኒታን እንደ እናት እንድታያት ተስፋ አደርጋለሁ\" አላት።",
+            fr: "\"Mon enfant, j'espère que tu verras Anita comme une mère\", lui dit-il.",
+            en: "\"My child, I hope you will see Anita as a mother,\" he told her.",
+          },
+        ],
+        [
+          {
+            am: "የሲምበግዊሬ ህይወት ተለወጠ።",
+            fr: "La vie de Simbegwire changea.",
+            en: "Simbegwire's life changed.",
+          },
+          {
+            am: "በጠዋት ከአባቷ ጋር ቁጭ ለማለት ጊዜ እያነሰ ሄደ።",
+            fr: "Le matin, elle avait de moins en moins de temps pour s'asseoir avec son père.",
+            en: "In the mornings, she had less and less time to sit with her father.",
+          },
+          {
+            am: "አኒታ ብዙ የቤት ስራዎችን ትሰጣታለች፤ በምሽትም የቤት ስራዋን ለመስራት በጣም ደክሟት ይሆናል።",
+            fr: "Anita lui donnait tellement de tâches à faire à la maison que, le soir, elle était trop fatiguée pour faire ses devoirs.",
+            en: "Anita gave her so many household tasks that, at night, she was too tired to do her homework.",
+          },
+          {
+            am: "ከራት በኋላ በቀጥታ ወደ አልጋዋ መሄድ ልማድ ሆነባት።",
+            fr: "Après le dîner, elle prit l'habitude d'aller directement se coucher.",
+            en: "After supper, she got used to going straight to bed.",
+          },
+          {
+            am: "የሚያጽናናት ብቸኛው ነገር እናቷ የሰጠቻት ቀለማት ያሉት ብርድ ልብስ ነበር።",
+            fr: "La seule chose qui la réconfortait était la couverture colorée que sa mère lui avait donnée.",
+            en: "The only thing that comforted her was the colorful blanket her mother had given her.",
+          },
+          {
+            am: "የሲምበግዊሬ አባት የልጁን ሀዘን የሚያይ አልመሰለም።",
+            fr: "Le père de Simbegwire ne semblait pas remarquer la tristesse de sa fille.",
+            en: "Simbegwire's father did not seem to notice his daughter's sadness.",
+          },
+        ],
+        [
+          {
+            am: "ከጥቂት ወራት በኋላ የሲምበግዊሬ አባት ለተወሰነ ጊዜ መሄድ እንዳለበት ነገራቸው።",
+            fr: "Quelques mois plus tard, le père de Simbegwire leur annonça qu'il devait partir pour quelque temps.",
+            en: "A few months later, Simbegwire's father told them that he had to go away for a while.",
+          },
+          {
+            am: "\"ለስራ መሄድ አለብኝ\" አላቸው።",
+            fr: "\"Je dois partir pour le travail\", leur dit-il.",
+            en: "\"I have to go away for work,\" he told them.",
+          },
+          {
+            am: "\"ነገር ግን እርስ በርሳችሁ እንደምትደጋገፉ እተማመናለሁ።\"",
+            fr: "\"Mais je suis sûr que vous vous soutiendrez l'une l'autre.\"",
+            en: "\"But I trust that you will support one another.\"",
+          },
+          {
+            am: "የሲምበግዊሬ ፊት ተለወጠ፣ አባቷ ግን አላስተዋለም።",
+            fr: "Le visage de Simbegwire se crispa, mais son père ne le remarqua pas.",
+            en: "Simbegwire's face fell, but her father did not notice.",
+          },
+          {
+            am: "አኒታ ምንም አላለችም።",
+            fr: "Anita ne dit pas un mot.",
+            en: "Anita did not say a word.",
+          },
+          {
+            am: "እሷም ደስተኛ አልነበረችም።",
+            fr: "Elle non plus n'était pas heureuse.",
+            en: "She was not happy either.",
+          },
+        ],
+        [
+          {
+            am: "ለሲምበግዊሬ ሁሉም ነገር እየከፋ ሄደ።",
+            fr: "Pour Simbegwire, tout devint de plus en plus difficile.",
+            en: "For Simbegwire, everything became worse and worse.",
+          },
+          {
+            am: "ስራዋን ካልጨረሰች ወይም ካጉረመረመች አኒታ ትመታታለች።",
+            fr: "Si elle ne terminait pas ses tâches ou si elle se plaignait, Anita la frappait.",
+            en: "If she did not finish her chores or if she complained, Anita beat her.",
+          },
+          {
+            am: "በራት ጊዜ ሴቲቱ ብዙውን ምግብ ስለምትበላ ለሲምበግዊሬ ጥቂት ብቻ ይቀራታል።",
+            fr: "Au dîner, comme la femme mangeait la plus grande part du repas, il ne restait presque rien pour Simbegwire.",
+            en: "At supper time, because the woman ate most of the food, almost nothing was left for Simbegwire.",
+          },
+          {
+            am: "በየምሽቱ ሲምበግዊሬ የእናቷን ብርድ ልብስ አጥብቃ ይዛ እያለቀሰች ትተኛለች።",
+            fr: "Chaque soir, Simbegwire allait se coucher en pleurant, serrant contre elle la couverture de sa mère.",
+            en: "Every night, Simbegwire went to sleep crying, holding her mother's blanket close.",
+          },
+        ],
+        [
+          {
+            am: "አንድ ጠዋት ሲምበግዊሬ ከመጠን በላይ ተኛች።",
+            fr: "Un matin, Simbegwire dormit trop longtemps.",
+            en: "One morning, Simbegwire slept too late.",
+          },
+          {
+            am: "\"ሰነፍ!\" ብላ አኒታ ጮኸችባት።",
+            fr: "\"Paresseuse !\" lui cria Anita.",
+            en: "\"Lazy girl!\" Anita shouted at her.",
+          },
+          {
+            am: "አኒታ ሲምበግዊሬን ጎተተች።",
+            fr: "Anita tira Simbegwire.",
+            en: "Anita pulled Simbegwire.",
+          },
+          {
+            am: "ውዱ ብርድ ልብስ በምስማር ተያዘና ሁለት ተቀደደ።",
+            fr: "La précieuse couverture se prit dans un clou et se déchira en deux.",
+            en: "The precious blanket caught on a nail and tore in two.",
+          },
+        ],
+        [
+          {
+            am: "ሲምበግዊሬ በጣም ተናደደች።",
+            fr: "Simbegwire fut très bouleversée.",
+            en: "Simbegwire was very upset.",
+          },
+          {
+            am: "ከቤት ለመሸሽ ወሰነች።",
+            fr: "Elle décida de s'enfuir de la maison.",
+            en: "She decided to run away from home.",
+          },
+          {
+            am: "የእናቷን ብርድ ልብስ ቁርጥራጮች ወሰደች፣ ትንሽም ምግብ አዘጋጀች እና ቤቱን ለቀቀች።",
+            fr: "Elle prit les morceaux de la couverture de sa mère, prépara un peu de nourriture et quitta la maison.",
+            en: "She took the pieces of her mother's blanket, packed a little food and left the house.",
+          },
+          {
+            am: "አባቷ የወሰደውን መንገድ ተከትላ ጉዞዋን ጀመረች።",
+            fr: "Elle suivit la route que son père avait prise et commença son voyage.",
+            en: "She followed the road her father had taken and began her journey.",
+          },
+        ],
+        [
+          {
+            am: "ሌሊት ሲሆን ከምንጭ አጠገብ ባለ ትልቅ ዛፍ ላይ ወጥታ በቅርንጫፎቹ ላይ መኝታዋን አዘጋጀች።",
+            fr: "Quand la nuit tomba, elle grimpa dans un grand arbre près d'une source et prépara son lit sur les branches.",
+            en: "When night fell, she climbed into a big tree near a spring and made her bed among the branches.",
+          },
+          {
+            am: "እየተኛችም ዘፈነች፦ \"እናቴ፣ እናቴ፣ እናቴ፣ ትተሽኝ ሄድሽ። ትተሽኝ ሄድሽና አልተመለስሽም። አባቴ አሁን አያስበኝም። እናቴ፣ መቼ ትመለሻለሽ? ትተሽኝ ሄድሽ።\"",
+            fr: "En s'endormant, elle chanta : \"Maman, maman, maman, tu m'as quittée. Tu m'as quittée et tu n'es pas revenue. Papa ne pense plus à moi maintenant. Maman, quand reviendras-tu ? Tu m'as quittée.\"",
+            en: "As she was falling asleep, she sang: \"Mother, mother, mother, you left me. You left me and you did not come back. Father does not think about me now. Mother, when will you come back? You left me.\"",
+          },
+        ],
+        [
+          {
+            am: "በማግስቱ ጠዋት ሲምበግዊሬ ዘፈኑን እንደገና ዘፈነች።",
+            fr: "Le lendemain matin, Simbegwire chanta encore la chanson.",
+            en: "The next morning, Simbegwire sang the song again.",
+          },
+          {
+            am: "ሴቶች ልብሳቸውን ለማጠብ ወደ ምንጩ መጡ፣ ከትልቁ ዛፍ የሚመጣውንም የሀዘን ዘፈን ሰሙ።",
+            fr: "Des femmes vinrent à la source pour laver leurs vêtements et entendirent la chanson triste qui venait du grand arbre.",
+            en: "Women came to the spring to wash their clothes and heard the sad song coming from the big tree.",
+          },
+          {
+            am: "የቅጠሎች ውስጥ የሚነፍሰው ነፋስ ድምፅ መሰላቸው፣ ስራቸውንም ቀጠሉ።",
+            fr: "Elles crurent que c'était le bruit du vent dans les feuilles et continuèrent leur travail.",
+            en: "They thought it was the sound of the wind in the leaves and continued their work.",
+          },
+          {
+            am: "ነገር ግን አንዷ ሴት ዘፈኑን በጥሞና አዳመጠች።",
+            fr: "Mais l'une des femmes écouta la chanson avec beaucoup d'attention.",
+            en: "But one of the women listened to the song very carefully.",
+          },
+        ],
+        [
+          {
+            am: "ያቺ ሴት ወደ ዛፉ ቀና ብላ ተመለከተች።",
+            fr: "Cette femme leva les yeux vers l'arbre.",
+            en: "The woman looked up at the tree.",
+          },
+          {
+            am: "ትንሿን ልጅ እና የብርድ ልብሱን ቁራጭ ስታይ \"ሲምበግዊሬ፣ የወንድሜ ልጅ!\" ብላ ጮኸች።",
+            fr: "Quand elle vit la petite fille et le morceau de couverture, elle s'écria : \"Simbegwire, l'enfant de mon frère !\"",
+            en: "When she saw the little girl and the piece of blanket, she cried, \"Simbegwire, my brother's child!\"",
+          },
+          {
+            am: "ሌሎቹ ሴቶች ልብስ ማጠብ አቁመው ሲምበግዊሬን ከዛፉ እንድትወርድ ረዷት።",
+            fr: "Les autres femmes arrêtèrent de laver le linge et aidèrent Simbegwire à descendre de l'arbre.",
+            en: "The other women stopped washing and helped Simbegwire climb down from the tree.",
+          },
+          {
+            am: "አክስቷ ትንሿን ልጅ በእቅፏ ይዛ ማጽናናት ጀመረች።",
+            fr: "Sa tante prit la petite fille dans ses bras et commença à la consoler.",
+            en: "Her aunt held the little girl in her arms and began to comfort her.",
+          },
+        ],
+        [
+          {
+            am: "የሲምበግዊሬ አክስት ልጅቷን ወደ ቤቷ ወሰደቻት።",
+            fr: "La tante de Simbegwire emmena l'enfant chez elle.",
+            en: "Simbegwire's aunt took the child to her home.",
+          },
+          {
+            am: "ሲምበግዊሬን ትኩስ ምግብ ሰጠቻት እና በእናቷ ብርድ ልብስ አጠቀለለቻት።",
+            fr: "Elle donna à Simbegwire un repas chaud et l'enveloppa dans la couverture de sa mère.",
+            en: "She gave Simbegwire a hot meal and wrapped her in her mother's blanket.",
+          },
+          {
+            am: "በዚያ ምሽት ሲምበግዊሬ ወደ አልጋ ስትሄድ አለቀሰች።",
+            fr: "Ce soir-là, en allant se coucher, Simbegwire pleura.",
+            en: "That night, when she went to bed, Simbegwire cried.",
+          },
+          {
+            am: "ነገር ግን እንባዋ የእፎይታ እንባ ነበር።",
+            fr: "Mais ses larmes étaient des larmes de soulagement.",
+            en: "But her tears were tears of relief.",
+          },
+          {
+            am: "አክስቷ እንደምትንከባከባት አወቀች።",
+            fr: "Elle savait que sa tante prendrait soin d'elle.",
+            en: "She knew that her aunt would care for her.",
+          },
+        ],
+        [
+          {
+            am: "የሲምበግዊሬ አባት ወደ ቤት ሲመለስ ቤቱን ባዶ አገኘው።",
+            fr: "Quand le père de Simbegwire rentra chez lui, il trouva la maison vide.",
+            en: "When Simbegwire's father returned home, he found the house empty.",
+          },
+          {
+            am: "\"ምን ሆነ፣ አኒታ?\" ብሎ በከባድ ድምፅ ጠየቀ።",
+            fr: "\"Que s'est-il passé, Anita ?\" demanda-t-il d'une voix lourde.",
+            en: "\"What happened, Anita?\" he asked, his voice heavy.",
+          },
+          {
+            am: "አኒታ ሲምበግዊሬ እንደጠፋች ነገረችው።",
+            fr: "Anita lui dit que Simbegwire avait disparu.",
+            en: "Anita told him that Simbegwire had disappeared.",
+          },
+          {
+            am: "\"እንድታከብረኝ ፈልጌ ነበር\" አለች።",
+            fr: "\"Je voulais qu'elle me respecte\", dit-elle.",
+            en: "\"I wanted her to respect me,\" she said.",
+          },
+          {
+            am: "\"ምናልባት በጣም ጨካኝ ሆኜባት ይሆናል።\"",
+            fr: "\"Peut-être ai-je été trop dure avec elle.\"",
+            en: "\"Perhaps I was too hard on her.\"",
+          },
+          {
+            am: "የሲምበግዊሬ አባት ቤቱን ለቆ ወደ ምንጩ ሄደ።",
+            fr: "Le père de Simbegwire quitta la maison et partit vers la source.",
+            en: "Simbegwire's father left the house and went toward the spring.",
+          },
+          {
+            am: "ማንም ሲምበግዊሬን አይቶ እንደሆነ ለመጠየቅ እስከ እህቱ መንደር ድረስ ቀጠለ።",
+            fr: "Pour demander si quelqu'un avait vu Simbegwire, il continua jusqu'au village de sa sœur.",
+            en: "To ask whether anyone had seen Simbegwire, he continued to his sister's village.",
+          },
+        ],
+        [
+          {
+            am: "ሲምበግዊሬ ከአክስቷ ልጆች ጋር እየተጫወተች ነበር፤ አባቷንም በርቀት አየችው።",
+            fr: "Simbegwire jouait avec les enfants de sa tante quand elle vit son père au loin.",
+            en: "Simbegwire was playing with her aunt's children when she saw her father in the distance.",
+          },
+          {
+            am: "በእሷ ላይ እንደሚቆጣ ፈራች።",
+            fr: "Elle eut peur qu'il soit fâché contre elle.",
+            en: "She was afraid he would be angry with her.",
+          },
+          {
+            am: "ስለዚህ ለመደበቅ ወደ ቤት ሮጠች።",
+            fr: "Alors elle courut vers la maison pour se cacher.",
+            en: "So she ran toward the house to hide.",
+          },
+          {
+            am: "አባቷ ግን ወደ እሷ ሮጦ \"ሲምበግዊሬ፣ ጥሩ እናት አግኝተሻል፤ የሚረዳሽና የሚወድሽ ሰው። በአንቺ እኮራለሁ፤ እወድሻለሁ\" አላት።",
+            fr: "Mais son père courut vers elle et lui dit : \"Simbegwire, tu as trouvé une bonne mère, quelqu'un qui t'aide et qui t'aime. Je suis fier de toi ; je t'aime.\"",
+            en: "But her father ran to her and said, \"Simbegwire, you have found a good mother, someone who helps you and loves you. I am proud of you; I love you.\"",
+          },
+          {
+            am: "ሲምበግዊሬ እስከፈለገች ድረስ ከአክስቷ ጋር እንድትቆይ ተስማሙ።",
+            fr: "Ils décidèrent que Simbegwire resterait avec sa tante aussi longtemps qu'elle le voudrait.",
+            en: "They agreed that Simbegwire would stay with her aunt for as long as she wanted.",
+          },
+        ],
+        [
+          {
+            am: "አባቷ በየቀኑ ሊጎበኛት ጀመረ።",
+            fr: "Son père commença à lui rendre visite tous les jours.",
+            en: "Her father began to visit her every day.",
+          },
+          {
+            am: "አንድ ቀን ከአኒታ ጋር መጣ።",
+            fr: "Un jour, il vint avec Anita.",
+            en: "One day, he came with Anita.",
+          },
+          {
+            am: "አኒታ ሲምበግዊሬን ለመሰላምታ እጇን ዘረጋች።",
+            fr: "Anita tendit la main pour saluer Simbegwire.",
+            en: "Anita held out her hand to greet Simbegwire.",
+          },
+          {
+            am: "\"ልጄ፣ ይቅርታ፤ ተሳስቻለሁ\" ብላ እያለቀሰች አለች።",
+            fr: "\"Mon enfant, je suis désolée ; j'ai eu tort\", dit-elle en pleurant.",
+            en: "\"My child, I am sorry; I was wrong,\" she said, crying.",
+          },
+          {
+            am: "\"ሌላ እድል ትሰጪኛለሽ?\"",
+            fr: "\"Me donneras-tu une autre chance ?\"",
+            en: "\"Will you give me another chance?\"",
+          },
+          {
+            am: "ሲምበግዊሬ አባቷን እና የተጨነቀውን ፊቱን ተመለከተች።",
+            fr: "Simbegwire regarda son père et son visage inquiet.",
+            en: "Simbegwire looked at her father and his worried face.",
+          },
+          {
+            am: "ከዚያም ቀስ ብላ ቀረበች እና አኒታን አቀፈች።",
+            fr: "Puis elle avança doucement et serra Anita dans ses bras.",
+            en: "Then she slowly stepped forward and hugged Anita.",
+          },
+        ],
+        [
+          {
+            am: "በቀጣዩ ሳምንት አኒታ ሲምበግዊሬን፣ አክስቷን እና ልጆቿን በቤቷ ለምሳ ጋበዘች።",
+            fr: "La semaine suivante, Anita invita Simbegwire, sa tante et ses enfants à déjeuner chez elle.",
+            en: "The following week, Anita invited Simbegwire, her aunt and her children to lunch at her home.",
+          },
+          {
+            am: "እንዴት ያለ ድንቅ ምግብ!",
+            fr: "Quel magnifique repas !",
+            en: "What a wonderful feast!",
+          },
+          {
+            am: "አኒታ የሲምበግዊሬን ተወዳጅ ምግቦች ሁሉ አዘጋጅታ ነበር፣ ሁሉም እስኪጠግብ ድረስ በሉ።",
+            fr: "Anita avait préparé tous les plats préférés de Simbegwire, et tout le monde mangea jusqu'à être rassasié.",
+            en: "Anita had prepared all of Simbegwire's favorite foods, and everyone ate until they were full.",
+          },
+          {
+            am: "ከዚያም አዋቂዎቹ ሲነጋገሩ ልጆቹ ተጫወቱ።",
+            fr: "Ensuite, les adultes parlèrent pendant que les enfants jouaient.",
+            en: "Then the adults talked while the children played.",
+          },
+          {
+            am: "ሲምበግዊሬ ደስተኛና ደፋር ተሰማት።",
+            fr: "Simbegwire se sentit heureuse et courageuse.",
+            en: "Simbegwire felt happy and brave.",
+          },
+          {
+            am: "በቅርቡ፣ በጣም በቅርቡ፣ ወደ ቤቷ ተመልሳ ከአባቷና ከእንጀራ እናቷ ጋር ለመኖር ወሰነች።",
+            fr: "Bientôt, très bientôt, elle décida qu'elle retournerait chez elle pour vivre avec son père et sa belle-mère.",
+            en: "Soon, very soon, she decided that she would return home to live with her father and her stepmother.",
+          },
+        ],
       ],
       fr: [
         "Section : Partagez équitablement !",
