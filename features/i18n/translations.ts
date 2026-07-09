@@ -49,6 +49,7 @@ export const uiText = {
     translationUnavailable:
       "Traduction FR/EN a ajouter apres validation editoriale.",
     translations: "Traductions",
+    translationCandidate: "Traduction candidate",
     validatedSteps: "etapes validees",
   },
   en: {
@@ -75,7 +76,7 @@ export const uiText = {
     pause: "Pause",
     pauseBody: "Breathe with your child. This page is saved.",
     pauseTitle: "Reading paused",
-    previous: "Back",
+    previous: "Prev",
     qualityTitle: "Quality check",
     read: "Already read",
     readingMoment: "Reading moment",
@@ -91,6 +92,7 @@ export const uiText = {
     translationUnavailable:
       "FR/EN translation to add after editorial validation.",
     translations: "Translations",
+    translationCandidate: "Candidate translation",
     validatedSteps: "steps validated",
   },
 } satisfies Record<InterfaceLanguage, Record<string, string>>;

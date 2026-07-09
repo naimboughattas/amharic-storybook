@@ -316,7 +316,7 @@ export function StoryReader({
                   selectable
                   style={[typography.small, { color: palette.mutedText, fontWeight: "800" }]}
                 >
-                  {uiText[language].translations}
+                  {pageTranslation ? uiText[language].translationCandidate : uiText[language].translations}
                 </Text>
                 <Text selectable style={[typography.small, { color: palette.mutedText }]}>
                   {pageTranslation ?? uiText[language].translationUnavailable}

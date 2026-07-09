@@ -27,6 +27,8 @@ Etat actuel :
 - 1 lecture courte de 10-13 minutes adaptee au coucher ;
 - 0 lecture de 20 minutes vraiment adaptee au coucher ;
 - 1 lecture longue hors bedtime.
+- 1 tranche de traduction FR/EN candidate seulement : les 16 pages de
+  `Share Fairly` dans `long-sharing-family-rainbow`.
 
 ## Regle d'audit
 
