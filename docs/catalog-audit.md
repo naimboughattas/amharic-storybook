@@ -27,8 +27,9 @@ Etat actuel :
 - 1 lecture courte de 10-13 minutes adaptee au coucher ;
 - 0 lecture de 20 minutes vraiment adaptee au coucher ;
 - 1 lecture longue hors bedtime.
-- 2 tranches de traduction FR/EN candidates : les pages de `Share Fairly` et
-  `Simbegwire` dans `long-sharing-family-rainbow`.
+- 3 tranches de traduction FR/EN candidates : toutes les pages de
+  `Share Fairly`, `Simbegwire` et `Rainbow Tale` dans
+  `long-sharing-family-rainbow`.
 
 ## Regle d'audit
 

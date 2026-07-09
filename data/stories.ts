@@ -137,11 +137,11 @@ export const stories: Story[] = [
     moodEn: "Curious and active",
     bedtimeFit: "not_bedtime",
     bedtimeSummary:
-      "Lecture longue utile pour la bibliotheque, mais moins adaptee au coucher car elle contient voyage, choix moral et passages de calcul.",
+      "Lecture longue utile pour la bibliothèque, mais moins adaptée au coucher car elle contient voyage, choix moral et passages de calcul.",
     bedtimeSummaryEn:
       "A useful long library reading, but less suited to bedtime because it includes travel, moral choices and counting passages.",
     readingTips: [
-      "Garder pour un apres-midi ou un moment d'apprentissage.",
+      "Garder pour un après-midi ou un moment d'apprentissage.",
       "Faire des pauses sur les questions de calcul.",
     ],
     readingTipsEn: [
@@ -157,7 +157,7 @@ export const stories: Story[] = [
     sourceCredits: [melokuhleDay, blueBus, pickItUp],
     qualityChecks: licensedCompilationQuality(3),
     author: "Auteurs multiples African Storybook",
-    translator: "Traducteurs multiples, voir credits",
+    translator: "Traducteurs multiples, voir crédits",
     validationStatus: "licensed",
     culturalOrigin: "Compilation de trois albums African Storybook en amharique",
     tags: ["longue lecture", "famille", "voyage", "choix", "cc-by"],
@@ -180,8 +180,8 @@ export const stories: Story[] = [
       "A bedtime reading about sharing, family and a calm tale about colors.",
     readingTips: [
       "Lire lentement et laisser l'enfant regarder les images dans sa tête.",
-      "Faire une pause apres chaque section pour respirer.",
-      "Chuchoter la derniere page pour terminer le rituel.",
+      "Faire une pause après chaque section pour respirer.",
+      "Chuchoter la dernière page pour terminer le rituel.",
     ],
     readingTipsEn: [
       "Read slowly and let the child picture the scenes in their mind.",
@@ -953,6 +953,386 @@ export const stories: Story[] = [
             en: "Soon, very soon, she decided that she would return home to live with her father and her stepmother.",
           },
         ],
+        [
+          {
+            am: `ክፍል፦ ${rainbowTale.title}`,
+            fr: "Section : Le conte de l'arc-en-ciel",
+            en: "Section: The Rainbow Tale",
+          },
+        ],
+        [
+          {
+            am: "ኡዶ፣ እርዶ እና እሪም በእናታቸው ዙሪያ ተሰባስበዋል፡፡",
+            fr: "Udo, Erdo et Erim s'étaient rassemblés autour de leur mère.",
+            en: "Udo, Erdo and Erim had gathered around their mother.",
+          },
+          {
+            am: "እናት ልቧ በፍቅር ተሞልቶ፣ ጡርንባውን በእጇ እንደያዘች፣ ጉርሮዋን አጽዳች እና ታሪኩን ጀመረች፡፡",
+            fr: "Le cœur rempli d'amour, leur mère prit la trompette dans sa main, s'éclaircit la voix et commença l'histoire.",
+            en: "With her heart full of love, their mother held the trumpet in her hand, cleared her throat and began the story.",
+          },
+          {
+            am: "ያና የተባለች ልጅ ነበረች፡፡",
+            fr: "Il était une fois une fille appelée Yana.",
+            en: "There was once a girl called Yana.",
+          },
+          {
+            am: "የያና አክስት በቀስተ ዳመናው መጨረሻ ላይ በማሰሮ ሙሉ ስላለው ወርቅ ነግራታለች፡፡",
+            fr: "La tante de Yana lui avait parlé d'un pot rempli d'or au bout de l'arc-en-ciel.",
+            en: "Yana's aunt had told her about a pot full of gold at the end of the rainbow.",
+          },
+          {
+            am: "ያና ስለዚያ ማሰሮ የማወቅ ጉጉት አድሮባታል፡፡",
+            fr: "Yana était très curieuse à propos de ce pot.",
+            en: "Yana was very curious about that pot.",
+          },
+          {
+            am: "ማሰሮው የያዘው የወርቅ ሳንቲሞችን ነው ወይስ በጥቁር ድንጋይ ላይ የተለጠፉ የወርቅ ቅንጣቶችን?",
+            fr: "Contenait-il des pièces d'or ou des pépites d'or collées à des pierres noires ?",
+            en: "Did it hold gold coins or pieces of gold stuck to black stones?",
+          },
+        ],
+        [
+          {
+            am: "ያና ሰማዩን ትክ ብሎ ለረጅም ጌዜ በማየት አንዳች ምላሽ ይገኛል ብላ ታልማለች፡፡",
+            fr: "Yana regardait longuement le ciel, en rêvant d'y trouver une réponse.",
+            en: "Yana stared at the sky for a long time, dreaming that she might find an answer there.",
+          },
+          {
+            am: "በሚበሩት ወፎች ፈገግ ትላለች፡፡",
+            fr: "Elle souriait aux oiseaux qui volaient.",
+            en: "She smiled at the birds flying by.",
+          },
+          {
+            am: "ወርቁ እንዴት በማሰሮው ውስጥ እንደተቀመጠም ገርሟታል፡፡",
+            fr: "Elle se demandait comment l'or avait été placé dans le pot.",
+            en: "She wondered how the gold had been placed inside the pot.",
+          },
+          {
+            am: "እናም ማሰሮው በቀስተ ዳመናው የትኛው ጫፍ ላይ ይሆን?",
+            fr: "Et à quel bout de l'arc-en-ciel se trouvait ce pot ?",
+            en: "And at which end of the rainbow was the pot?",
+          },
+          {
+            am: "ያና ትክክለኛ ቦታውን ባወቅኩት ብላ ተመኘች፡፡",
+            fr: "Yana souhaitait connaître l'endroit exact.",
+            en: "Yana wished she knew the exact place.",
+          },
+        ],
+        [
+          {
+            am: "ስለ ቀስተደመናው ጉዳይ ስታሰላስል፣ አንድ አረንጓዴ እንቁራሪት ወደ ቁጥቋጦው ዘሎ ሲገባ አየች፡፡",
+            fr: "Pendant qu'elle pensait à l'arc-en-ciel, elle vit une grenouille verte sauter dans les buissons.",
+            en: "As she thought about the rainbow, she saw a green frog jump into the bushes.",
+          },
+          {
+            am: "እሷም አብራው ዘለለች፤ አልከለከለችውም፡፡",
+            fr: "Elle sauta avec elle et ne l'empêcha pas d'avancer.",
+            en: "She jumped along with it and did not stop it.",
+          },
+          {
+            am: "ከዚያም ሰማዩን እያየች፣ እንቁራሪቱን ተሰናበተች፡፡",
+            fr: "Puis, les yeux tournés vers le ciel, elle dit au revoir à la grenouille.",
+            en: "Then, looking up at the sky, she said goodbye to the frog.",
+          },
+          {
+            am: "ወርቁን ለማግኘትም ወደ ቀስተደመናው መጨረሻ ጉዞዋን ቀጠለች፡፡",
+            fr: "Elle continua son voyage vers le bout de l'arc-en-ciel pour trouver l'or.",
+            en: "She continued her journey toward the end of the rainbow to find the gold.",
+          },
+        ],
+        [
+          {
+            am: "ስለ ቀስተደመናው ቀለማት ማሰላሰል ጀመረች፡፡",
+            fr: "Elle commença à penser aux couleurs de l'arc-en-ciel.",
+            en: "She began thinking about the colors of the rainbow.",
+          },
+          {
+            am: "በቅጽበት፣ ቀይ ቀለም ወደ አእምሮዋ ቀድሞ መጣ፡፡",
+            fr: "Aussitôt, la couleur rouge lui vint d'abord à l'esprit.",
+            en: "At once, the color red came first to her mind.",
+          },
+          {
+            am: "ሹፌሩ ቀይ መብራት ሲያይ ባለመቆሙ ሳቢያ በቤተሰቦቿ ላይ አደጋ የደረሰበትን ቀን አስታወሰች፡፡",
+            fr: "Elle se souvint du jour où sa famille avait eu un accident parce qu'un conducteur ne s'était pas arrêté au feu rouge.",
+            en: "She remembered the day her family had an accident because a driver did not stop at a red light.",
+          },
+          {
+            am: "ያና እድለኛ ነበረች፡፡",
+            fr: "Yana avait eu de la chance.",
+            en: "Yana had been lucky.",
+          },
+          {
+            am: "የቆሰሉ ቢሆንም ሁሉም ከባድ ጉዳት አልደረሰባቸውም፡፡",
+            fr: "Même s'ils avaient été blessés, personne n'avait été gravement atteint.",
+            en: "Even though they were hurt, no one had been seriously injured.",
+          },
+          {
+            am: "ሁሉላቸውም በጣም ደንግጠዋል፡፡",
+            fr: "Ils avaient tous eu très peur.",
+            en: "They had all been very frightened.",
+          },
+        ],
+        [
+          {
+            am: "ያና ከቀይ ቀጥሎ፣ ብርቱካናማ ቀለም አሰበች፡፡",
+            fr: "Après le rouge, Yana pensa à la couleur orange.",
+            en: "After red, Yana thought about the color orange.",
+          },
+          {
+            am: "ጣፋጭ ብርቱካን ትወዳለች፡፡",
+            fr: "Elle aimait les oranges sucrées.",
+            en: "She liked sweet oranges.",
+          },
+          {
+            am: "ብርቱካን ስትበላም ጣፋጭ፣ ኮምጣጣ እና መራራ ጣዕም አጋጥሟት ያውቃል፡፡",
+            fr: "En mangeant des oranges, elle avait déjà goûté au sucré, à l'acide et à l'amer.",
+            en: "When eating oranges, she had tasted sweetness, sourness and bitterness before.",
+          },
+          {
+            am: "አፏን በመርጋጋ ጣዕም የሞላውን ኮምጣጣ ብርቱካን አስታወሰችው፡፡",
+            fr: "Elle se souvint d'une orange acide qui lui avait rempli la bouche d'un goût étrange.",
+            en: "She remembered a sour orange that had filled her mouth with a strange taste.",
+          },
+          {
+            am: "ዩክ! ጣዕም ታውቃላችሁ?",
+            fr: "Beurk ! Vous connaissez ce goût ?",
+            en: "Yuck! Do you know that taste?",
+          },
+        ],
+        [
+          {
+            am: "የያና ሐሳብ ከብርቱካን ጥቁር ባቄላ ወደ ያዘው ጎድጓዳ ሳህን ተሸጋገረ፤ ሆዷ ጮኸ፡፡",
+            fr: "Les pensées de Yana passèrent de l'orange à un bol de haricots noirs, et son ventre se mit à gronder.",
+            en: "Yana's thoughts moved from oranges to a bowl of black beans, and her stomach growled.",
+          },
+          {
+            am: "የራባት መሆኑንም ተገነዘበች፡፡",
+            fr: "Elle comprit qu'elle avait faim.",
+            en: "She realized that she was hungry.",
+          },
+          {
+            am: "የቀስተደመና ጥያቄዎ ለጊዜው ተቋርጧል፡፡",
+            fr: "Sa quête de l'arc-en-ciel fut interrompue pour un moment.",
+            en: "Her rainbow quest was interrupted for a while.",
+          },
+          {
+            am: "ጊዜው የመመገቢያ ነበር፡፡",
+            fr: "C'était l'heure de manger.",
+            en: "It was time to eat.",
+          },
+        ],
+        [
+          {
+            am: "ወደ አክስቷ ማዕድ ቤት ሮጠች፡፡",
+            fr: "Elle courut vers la cuisine de sa tante.",
+            en: "She ran to her aunt's kitchen.",
+          },
+          {
+            am: "አየሩ በዶሮ ጥብስ እና በትኩስ ዳቦ ሽታ ተሞልቷል፡፡",
+            fr: "L'air était rempli de l'odeur du poulet rôti et du pain chaud.",
+            en: "The air was filled with the smell of roast chicken and warm bread.",
+          },
+          {
+            am: "ያና እጇን ታጥባና እና ተጉመጥምጣ ወደ ምግቡ አመራች፡፡",
+            fr: "Yana se lava les mains et se dirigea vers le repas en se léchant les lèvres.",
+            en: "Yana washed her hands and went toward the food, licking her lips.",
+          },
+          {
+            am: "በትልቅ የዳቦ ቁራሽ ትንሽ የዶሮ ሥጋ ተመግባ፣ ከዚያም ውሃ ጠጣች፡፡",
+            fr: "Elle mangea un peu de poulet avec un grand morceau de pain, puis but de l'eau.",
+            en: "She ate a little chicken with a big piece of bread, then drank some water.",
+          },
+          {
+            am: "ቀሚሷን ተመለከተችው፡፡",
+            fr: "Elle regarda sa robe.",
+            en: "She looked at her dress.",
+          },
+          {
+            am: "ተመሰቃቅሏል፡፡",
+            fr: "Elle était toute salie.",
+            en: "It was all messy.",
+          },
+          {
+            am: "ውሃ ፈሶበታል፤ ወጥ ነክቶታል፡፡",
+            fr: "De l'eau avait coulé dessus et de la sauce l'avait tachée.",
+            en: "Water had spilled on it and stew had stained it.",
+          },
+          {
+            am: "ሰለዚህ ሐመራዊ ቀለም ያለው ቀሚስ ቀየረች፡፡",
+            fr: "Alors elle mit une robe violette.",
+            en: "So she changed into a purple dress.",
+          },
+        ],
+        [
+          {
+            am: "በኋላ፣ ያና እና አክስቷ ወደ ፓርኩ በአንድ ላይ ሄዱ፡፡",
+            fr: "Plus tard, Yana et sa tante allèrent ensemble au parc.",
+            en: "Later, Yana and her aunt went to the park together.",
+          },
+          {
+            am: "መጽሐፍ ይዘው በሣሩ ላይ ተጋደሙ፡፡",
+            fr: "Elles prirent un livre et s'allongèrent dans l'herbe.",
+            en: "They took a book and lay down on the grass.",
+          },
+          {
+            am: "ያና በማወቅ ጉጉት የመጽሐፉን ገጾች ገለጠች፤ በመጨረሻም ስለተደበቀው የወርቅ ማሰሮ ብዙ አወቀች፡፡",
+            fr: "Yana tourna les pages avec curiosité et finit par en apprendre beaucoup sur le pot d'or caché.",
+            en: "Yana turned the pages with curiosity and finally learned a lot about the hidden pot of gold.",
+          },
+          {
+            am: "የአና አክስት በደስታ አቀፈቻት እና ሁለቱም በሣቅ ፈነዱ፡፡",
+            fr: "La tante de Yana la serra joyeusement dans ses bras, et toutes les deux éclatèrent de rire.",
+            en: "Yana's aunt hugged her happily, and they both burst out laughing.",
+          },
+          {
+            am: "በአንድ ላይ መጽሐፉን ማንበብ ጀመሩ፡፡",
+            fr: "Elles commencèrent à lire le livre ensemble.",
+            en: "They began reading the book together.",
+          },
+        ],
+        [
+          {
+            am: "የቀስተዳመና ቀለማት እና ምፎ የሚባል አንድ ትንሽ ልጅ ወደ ቶኖታ ምድር እንዴት እንደመጡ የሚናገር ተረት ነበር፡፡",
+            fr: "C'était un conte qui expliquait comment les couleurs de l'arc-en-ciel et un petit garçon appelé Mpho arrivèrent au pays de Tonota.",
+            en: "It was a tale about how the colors of the rainbow and a little boy called Mpho came to the land of Tonota.",
+          },
+          {
+            am: "የቶኖታ ሕዝብ ለረጅም ጊዜያት የእፅዋትን አረንጓዴነት እና የአፈርን ቡናማነት ብቻ ነበር የሚያውቀው፡፡",
+            fr: "Pendant longtemps, le peuple de Tonota ne connaissait que le vert des plantes et le brun de la terre.",
+            en: "For a long time, the people of Tonota knew only the green of plants and the brown of the soil.",
+          },
+          {
+            am: "ምፎ ግን ደመና የሚያማምሩ ቀለማት እንዳሉት ያልም ነበር፡፡",
+            fr: "Mais Mpho rêvait que les nuages avaient de belles couleurs.",
+            en: "But Mpho dreamed that clouds had beautiful colors.",
+          },
+          {
+            am: "ስለህልሙ ለሽማግሌዎች ነገራቸው፡፡",
+            fr: "Il raconta son rêve aux anciens.",
+            en: "He told the elders about his dream.",
+          },
+          {
+            am: "እነሱም \"ቀለማቱን በስም ከጠራሃቸው፣ እኛ ህልው አድርገን ልናመጣቸው እንችላለን\" አሉት፡፡",
+            fr: "Ils lui dirent : \"Si tu appelles les couleurs par leur nom, nous pourrons les faire venir dans le monde.\"",
+            en: "They told him, \"If you call the colors by name, we can bring them into the world.\"",
+          },
+        ],
+        [
+          {
+            am: "ሽማግሌዎቹ የዝናብ አምጭውን እርዳታ ለመለመን ከእየ አካባቢው ተሰባሰቡ፡፡",
+            fr: "Les anciens se rassemblèrent de chaque région pour demander l'aide des faiseurs de pluie.",
+            en: "The elders gathered from every area to ask for help from the rainmakers.",
+          },
+          {
+            am: "ምፎ በህልሙ ስለ ደመና ቀላማት ማሰላሰል ጀመረ፡፡",
+            fr: "Mpho commença à réfléchir aux couleurs des nuages dans son rêve.",
+            en: "Mpho began to think about the cloud colors in his dream.",
+          },
+          {
+            am: "ከዚያም \"ቀይ፣ ሰማያዊ፣ ብርቱካናማ፣ ቢጫ፣ ሐመራዊ፣ አረንጓዴ እና ወይነጠጅ\" የሚሉት ቃላት ወደ አእምሮው መጡ፡፡",
+            fr: "Alors les mots \"rouge, bleu, orange, jaune, violet, vert et indigo\" lui vinrent à l'esprit.",
+            en: "Then the words \"red, blue, orange, yellow, purple, green and violet\" came into his mind.",
+          },
+          {
+            am: "በቀላማት ያሸበረቀ ደመናም ሰማዩን ሞላው፡፡",
+            fr: "Un nuage rempli de couleurs couvrit alors le ciel.",
+            en: "A cloud filled with colors then covered the sky.",
+          },
+        ],
+        [
+          {
+            am: "ደመናው በሰማዩ ላይ ተንጠለጠለ እና ዝናብ አምጭዎቹ እጅ ለእጅ በመያያዝ ክብ ሠሩ፡፡",
+            fr: "Le nuage resta suspendu dans le ciel, et les faiseurs de pluie se donnèrent la main pour former un cercle.",
+            en: "The cloud hung in the sky, and the rainmakers held hands to form a circle.",
+          },
+          {
+            am: "ቀና ብለው ወደ ደመናው ተመለከቱ፤ ቀለሞቹም የሚያምር ደጋን ቅስት ሠሩ፡፡",
+            fr: "Ils levèrent les yeux vers le nuage, et les couleurs formèrent un bel arc courbé.",
+            en: "They looked up at the cloud, and the colors formed a beautiful curved arc.",
+          },
+          {
+            am: "ይህ የቶኖታ ምድር የመጀመሪያው ቀስተደመና ነበር!",
+            fr: "C'était le premier arc-en-ciel du pays de Tonota !",
+            en: "It was the first rainbow in the land of Tonota!",
+          },
+          {
+            am: "ሰዎች እልል አሉ፤ ተደሰቱ፡፡",
+            fr: "Les gens poussèrent des cris de joie et se réjouirent.",
+            en: "The people shouted with joy and celebrated.",
+          },
+          {
+            am: "እናም በዚያን ጊዜ፣ ምፎ በቀስተደመናው መጨረሻ ላይ አንድ ማሰሮ አስተዋለ፡፡",
+            fr: "À ce moment-là, Mpho aperçut un pot au bout de l'arc-en-ciel.",
+            en: "At that moment, Mpho noticed a pot at the end of the rainbow.",
+          },
+          {
+            am: "በወርቅ የተሞላ ማሰሮ!",
+            fr: "Un pot rempli d'or !",
+            en: "A pot full of gold!",
+          },
+        ],
+        [
+          {
+            am: "ያና \"አስደናቂ የቀስተደመና ታሪክ! የወርቁን ማሰሮ የት እንደማገኘው አሁን አውቄያለሁ!\" በማለት ለአክስቷ በአድናቆት ተናገረች፡፡",
+            fr: "Yana dit à sa tante avec admiration : \"Quelle merveilleuse histoire d'arc-en-ciel ! Maintenant je sais où trouver le pot d'or !\"",
+            en: "Yana said to her aunt in wonder, \"What a wonderful rainbow story! Now I know where to find the pot of gold!\"",
+          },
+          {
+            am: "አክስቷም ፈገግ አለች፤ ተረቱን ከእህቷ ልጅ ጋር በጋራቷ ተደስታለች፡፡",
+            fr: "Sa tante sourit, heureuse d'avoir partagé le conte avec sa nièce.",
+            en: "Her aunt smiled, happy to have shared the tale with her niece.",
+          },
+          {
+            am: "\"ሆኖም ከእንግዲህ የቀስተደመና ጥያቄ አይኖርሽም! የወርቁ ማሰሮም ቢሆን ባጋጣሚ ሊገኝ ይችላል!\"",
+            fr: "\"Mais désormais, tu n'auras plus de question sur l'arc-en-ciel ! Et peut-être trouveras-tu le pot d'or par hasard !\"",
+            en: "\"But now you will have no more rainbow questions! And perhaps you may find the pot of gold by chance!\"",
+          },
+        ],
+        [
+          {
+            am: "በእነዚያ ቃላት እናትዮዋ የቀስተደመና ተረቱን አጠናቀቀች፡፡",
+            fr: "Sur ces mots, la mère termina le conte de l'arc-en-ciel.",
+            en: "With those words, the mother finished the rainbow tale.",
+          },
+          {
+            am: "ኡዶ፣ እርዶ እና እሪም ወደ ላይ ዘለሉ እና እሷም ቆመች፡፡",
+            fr: "Udo, Erdo et Erim bondirent, et elle se leva aussi.",
+            en: "Udo, Erdo and Erim jumped up, and she stood up too.",
+          },
+          {
+            am: "ከዚያም የራሳቸውን ቀስተደመና የሚሠሩ በማስመሰል እንደ ዝናብ አምጭዎቹ እጆቻቸውን አያያዙ ፡፡",
+            fr: "Puis ils se donnèrent la main comme les faiseurs de pluie, en faisant semblant de créer leur propre arc-en-ciel.",
+            en: "Then they held hands like the rainmakers, pretending to create their own rainbow.",
+          },
+        ],
+        [
+          {
+            am: "እርዶ \"እማዬ፣ እያንዳንዱ ሀገር የራሱ የሆነ የቀስተደመና ታሪክ አለው?\" አላት፡፡",
+            fr: "Erdo demanda : \"Maman, chaque pays a-t-il sa propre histoire d'arc-en-ciel ?\"",
+            en: "Erdo asked, \"Mother, does every country have its own rainbow story?\"",
+          },
+          {
+            am: "\"አዎ የእኔ ፍቅር\" አለች፡፡",
+            fr: "\"Oui, mon amour\", répondit-elle.",
+            en: "\"Yes, my love,\" she replied.",
+          },
+          {
+            am: "የቶኖታ ቀስተደመና የጀመረው በምፎ በቀለማት ባጌጠ ህልም ነው፡፡",
+            fr: "L'arc-en-ciel de Tonota a commencé avec le rêve coloré de Mpho.",
+            en: "Tonota's rainbow began with Mpho's colorful dream.",
+          },
+          {
+            am: "እናም ቀስተደመና ወንዝ እና ቀስተደመና አይስክሪም የሚለውን አስማተኛ ተረት ታስታውሳላችሁ?",
+            fr: "Et vous souvenez-vous du conte magique de la rivière arc-en-ciel et de la glace arc-en-ciel ?",
+            en: "And do you remember the magical tale of the rainbow river and the rainbow ice cream?",
+          },
+          {
+            am: "\"እምም፣ ቀስተደመና አይስክሪም የምወደው ተረት ነው\" አለች እሪም ወደ እናቷ እየተመለከተች ልጆች ተመልሰው በዙሪያዋ እንደሚሆኑ ተስፋ በማድረግ፡፡",
+            fr: "\"Mmm, la glace arc-en-ciel est mon conte préféré\", dit Erim en regardant sa mère, espérant que les enfants se rassembleraient de nouveau autour d'elle.",
+            en: "\"Mmm, rainbow ice cream is my favorite tale,\" said Erim, looking at her mother and hoping the children would gather around her again.",
+          },
+        ],
       ],
       fr: [
         "Section : Partagez équitablement !",
@@ -997,7 +1377,7 @@ export const stories: Story[] = [
     sourceCredits: [shareFairly, simbegwire, rainbowTale],
     qualityChecks: licensedCompilationQuality(3),
     author: "Auteurs multiples African Storybook",
-    translator: "Traducteurs multiples, voir credits",
+    translator: "Traducteurs multiples, voir crédits",
     validationStatus: "licensed",
     culturalOrigin: "Compilation de trois albums African Storybook en amharique",
     tags: ["longue lecture", "partage", "famille", "conte", "cc-by"],
@@ -1019,9 +1399,9 @@ export const stories: Story[] = [
     bedtimeSummaryEn:
       "Three short tales for a shorter bedtime reading, with a gentle ending and a storybook mood.",
     readingTips: [
-      "Lire chaque section comme un petit conte separe.",
+      "Lire chaque section comme un petit conte séparé.",
       "Ralentir avant la fin de chaque histoire.",
-      "Laisser l'enfant choisir son animal prefere avant de dormir.",
+      "Laisser l'enfant choisir son animal préféré avant de dormir.",
     ],
     readingTipsEn: [
       "Read each section like a separate little tale.",
@@ -1037,7 +1417,7 @@ export const stories: Story[] = [
     sourceCredits: [crowdedHouse, birdKing, mousePrince],
     qualityChecks: licensedCompilationQuality(3),
     author: "Auteurs multiples African Storybook",
-    translator: "Traducteurs multiples, voir credits",
+    translator: "Traducteurs multiples, voir crédits",
     validationStatus: "licensed",
     culturalOrigin: "Compilation de trois contes African Storybook en amharique",
     tags: ["lecture du soir", "animaux", "maison", "conte", "cc-by"],

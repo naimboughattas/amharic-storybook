@@ -12,7 +12,12 @@ const issues = [];
 
 const frenchAccentHints = [
   ["C'etait", "C'était"],
+  ["apres", "après"],
+  ["adaptee", "adaptée"],
+  ["bibliotheque", "bibliothèque"],
   ["tres", "très"],
+  ["deja", "déjà"],
+  ["derniere", "dernière"],
   ["matinee", "matinée"],
   ["melange", "mélange/mélangé"],
   ["recolte", "récolte/récolté"],
@@ -34,7 +39,21 @@ const frenchAccentHints = [
   ["journee", "journée"],
   ["probleme", "problème"],
   ["equitablement", "équitablement"],
+  ["prefere", "préféré"],
+  ["separe", "séparé"],
+  ["credits", "crédits"],
 ];
+
+const frenchStoryFields = [
+  "titleFr",
+  "mood",
+  "bedtimeSummary",
+  "culturalOrigin",
+  "author",
+  "translator",
+];
+
+const frenchStoryArrayFields = ["readingTips"];
 
 function lineOf(node) {
   return source.getLineAndCharacterOfPosition(node.getStart(source)).line + 1;
@@ -99,6 +118,34 @@ function checkStringArray(arrayNode, language) {
       checkFrenchText(element, value);
     }
   });
+}
+
+function checkFrenchStoryMetadata(storyObject, storyId) {
+  for (const fieldName of frenchStoryFields) {
+    const field = prop(storyObject, fieldName);
+    const value = field ? stringValue(field.initializer) : undefined;
+
+    if (value != null) {
+      checkFrenchText(field.initializer, value);
+    }
+  }
+
+  for (const fieldName of frenchStoryArrayFields) {
+    const field = prop(storyObject, fieldName);
+
+    if (field && ts.isArrayLiteralExpression(field.initializer)) {
+      field.initializer.elements.forEach((element, index) => {
+        const value = stringValue(element);
+
+        if (!value?.trim()) {
+          addIssue(element, `${storyId}: ${fieldName}[${index}] is empty.`);
+          return;
+        }
+
+        checkFrenchText(element, value);
+      });
+    }
+  }
 }
 
 function hasBooleanProperty(objectLiteral, propertyName) {
@@ -183,6 +230,8 @@ function checkAlignedTranslations(alignedNode, storyObject, storyId) {
 function checkStory(storyObject) {
   const idProperty = prop(storyObject, "id");
   const storyId = idProperty ? stringValue(idProperty.initializer) ?? "unknown-story" : "unknown-story";
+  checkFrenchStoryMetadata(storyObject, storyId);
+
   const pageTranslations = prop(storyObject, "pageTranslations");
 
   if (!pageTranslations || !ts.isObjectLiteralExpression(pageTranslations.initializer)) {
