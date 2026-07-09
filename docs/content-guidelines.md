@@ -124,6 +124,15 @@ avoir `qualityChecks.licenseVerified`, `qualityChecks.nativeReviewed`,
 `qualityChecks.translationProofread`, `qualityChecks.childTested` et
 `qualityChecks.publicationReady` a `true`.
 
+Avant commit, lancer :
+
+```bash
+npm run content:check
+```
+
+Ce controle verifie les segments `pageTranslations.aligned`, les traductions
+FR/EN vides, et les formes francaises manifestement non relues.
+
 ## Ajout d'une histoire CC BY
 
 Avant ajout, conserver l'URL source, le nom de l'auteur, la licence exacte, les

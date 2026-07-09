@@ -92,6 +92,8 @@ Champs importants :
 - `pageTranslations.aligned` contient les traductions FR/EN phrase par phrase
   sous l'amharique. `pageTranslations.fr/en` reste un fallback par page pendant
   la migration.
+- `npm run content:check` controle les traductions alignees et les erreurs
+  francaises evidentes avant commit.
 - `validationStatus` suit le workflow editorial.
 - `tags` facilite les futurs filtres.
 
