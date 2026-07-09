@@ -19,8 +19,8 @@ pas en amharique. Le texte amharique reste la source principale de lecture.
   traductions candidates FR/EN pour le titre de section et les 16 pages de
   l'album `Share Fairly`.
 - Le lecteur supporte aussi un format aligne phrase par phrase via
-  `pageTranslations.aligned[index]`. Le titre de section et la premiere page de
-  `Share Fairly` servent de pilote.
+  `pageTranslations.aligned[index]`. Le titre de section et les 16 pages de
+  `Share Fairly` sont alignes phrase par phrase.
 
 ## Faisabilite des traductions sous l'amharique
 
