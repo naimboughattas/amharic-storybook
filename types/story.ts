@@ -1,0 +1,88 @@
+export type StoryLevel = "beginner" | "intermediate" | "advanced";
+
+export type DurationBucket = "10_min" | "15_min" | "20_min";
+
+export type BedtimeFit = "ideal" | "good" | "not_bedtime";
+
+export type ValidationStatus =
+  | "draft"
+  | "translated"
+  | "native_reviewed"
+  | "child_tested"
+  | "licensed"
+  | "published";
+
+export type StorySource = {
+  name: string;
+  url?: string;
+  license: string;
+  attributionRequired: boolean;
+};
+
+export type StoryCredit = {
+  title: string;
+  author: string;
+  translator?: string;
+  illustrator?: string;
+  source: StorySource;
+};
+
+export type StoryQualityChecks = {
+  licenseVerified: boolean;
+  nativeReviewed: boolean;
+  childTested: boolean;
+  publicationReady: boolean;
+  editorialNote: string;
+  sourceModifications: string;
+};
+
+export type Story = {
+  id: string;
+  titleAm: string;
+  titleFr?: string;
+  level: StoryLevel;
+  ageRange: string;
+  estimatedMinutes: number;
+  durationBucket: DurationBucket;
+  mood: string;
+  bedtimeFit: BedtimeFit;
+  bedtimeSummary: string;
+  readingTips: string[];
+  pages: string[];
+  source: StorySource;
+  sourceCredits?: StoryCredit[];
+  qualityChecks: StoryQualityChecks;
+  author?: string;
+  translator?: string;
+  reviewer?: string;
+  validationStatus: ValidationStatus;
+  culturalOrigin?: string;
+  tags: string[];
+};
+
+export const storyLevelLabels: Record<StoryLevel, string> = {
+  beginner: "Debutant",
+  intermediate: "Intermediaire",
+  advanced: "Avance",
+};
+
+export const durationBucketLabels: Record<DurationBucket, string> = {
+  "10_min": "10 min",
+  "15_min": "15 min+",
+  "20_min": "20 min+",
+};
+
+export const bedtimeFitLabels: Record<BedtimeFit, string> = {
+  ideal: "Ideal coucher",
+  good: "Doux",
+  not_bedtime: "Bibliotheque",
+};
+
+export const validationStatusLabels: Record<ValidationStatus, string> = {
+  draft: "Brouillon",
+  translated: "Traduit",
+  native_reviewed: "Revu natif",
+  child_tested: "Teste enfant",
+  licensed: "Licence OK",
+  published: "Publie",
+};
