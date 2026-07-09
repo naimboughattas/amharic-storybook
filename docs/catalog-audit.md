@@ -1,67 +1,64 @@
-# Catalogue audit
+# Catalogue Audit
 
-## Etat actuel
+## Current State
 
-Le catalogue contient 3 lectures composees d'albums African Storybook. Deux sont
-adaptees au rituel du coucher, avec revue native encore a faire.
+The catalogue contains 3 readings composed from African Storybook albums. Two
+are suitable for the bedtime ritual, with native review still required.
 
-| Lecture | Duree | Statut bedtime | Decision |
+| Reading | Duration | Bedtime status | Decision |
 | --- | ---: | --- | --- |
-| Lecture longue : partage, famille et arc-en-ciel | 18 min | `good` | Garder dans le flux "Soir" pour MVP, avec revue native a faire. |
-| Lecture du soir : maison, oiseaux et petite souris | 13 min | `good` | Garder dans le flux "Soir" comme lecture plus courte, avec revue native a faire. |
-| Lecture longue : famille, voyage et bon choix | 24 min | `not_bedtime` | Garder en bibliotheque, mais exclure du flux coucher a cause des passages de calcul et du rythme plus actif. |
+| Long reading: sharing, family and rainbow | 18 min | `good` | Keep in the "Tonight" flow for the MVP, with native review still required. |
+| Bedtime reading: home, birds and little mouse | 13 min | `good` | Keep in the "Tonight" flow as a shorter reading, with native review still required. |
+| Long reading: family, journey and good choice | 24 min | `not_bedtime` | Keep in the library, but exclude from the bedtime flow because of the counting sections and more active rhythm. |
 
-## Gaps avant catalogue bedtime credible
+## Gaps Before a Credible Bedtime Catalogue
 
-Objectif minimal Phase 3 :
+Minimum Phase 3 target:
 
-- 3 lectures de 15 minutes ;
-- 2 lectures de 10 minutes ;
-- 1 lecture de 20 minutes ;
-- 100 % avec attribution et licence ;
-- 100 % avec revue native avant `published`.
+- 3 readings of 15 minutes;
+- 2 readings of 10 minutes;
+- 1 reading of 20 minutes;
+- 100% with attribution and license;
+- 100% with native review before `published`.
 
-Etat actuel :
+Current state:
 
-- 1 lecture de 15 minutes adaptee au coucher ;
-- 1 lecture courte de 10-13 minutes adaptee au coucher ;
-- 0 lecture de 20 minutes vraiment adaptee au coucher ;
-- 1 lecture longue hors bedtime.
-- 3 tranches de traduction FR/EN candidates : toutes les pages de
-  `Share Fairly`, `Simbegwire` et `Rainbow Tale` dans
-  `long-sharing-family-rainbow`.
+- 1 bedtime-compatible 15-minute reading;
+- 1 bedtime-compatible 10-13 minute reading;
+- 0 truly bedtime-compatible 20-minute reading;
+- 1 long reading outside bedtime;
+- 3 candidate FR/EN translation batches: all pages of `Share Fairly`,
+  `Simbegwire`, and `Rainbow Tale` in `long-sharing-family-rainbow`.
 
-## Regle d'audit
+## Audit Rule
 
-Une lecture ne doit pas entrer dans le flux "Soir" seulement parce qu'elle est
-longue. Elle doit aussi etre calme, rassurante, lisible a voix haute, et finir
-sur une note apaisante.
+A reading must not enter the "Tonight" flow only because it is long. It must also
+be calm, reassuring, readable aloud, and end on a soothing note.
 
-## Sources a chercher ensuite
+## Sources to Seek Next
 
-Priorite :
+Priority:
 
-- histoires amhariques CC BY ou domaine public avec ton doux ;
-- textes originaux commandes ou ecrits pour le rituel du soir ;
-- contes courts groupables en sessions 10/15/20 minutes ;
-- albums avec repetitions, nature calme, famille, lune, pluie douce ou
-  gratitude.
+- Amharic stories under CC BY or public domain with a gentle tone;
+- original texts commissioned or written for the bedtime ritual;
+- short tales that can be grouped into 10/15/20 minute sessions;
+- albums with repetition, calm nature, family, moon, soft rain, or gratitude.
 
-Eviter :
+Avoid:
 
-- calculs, quiz, exercices ou materiel pedagogique ;
-- conflit familial intense non resolu ;
-- peur, punition, menace ou suspense fort ;
-- histoires trop actives pour la fin de journee.
+- calculations, quizzes, exercises, or educational drills;
+- intense family conflict that is not resolved;
+- fear, punishment, threat, or strong suspense;
+- stories that are too active for the end of the day.
 
-## Prochaine action contenu
+## Next Content Action
 
-Trouver ou produire 4 lectures candidates :
+Find or produce 4 candidate readings:
 
-1. 10 min - histoire tres douce pour enfant fatigue.
-2. 15 min - histoire lune/famille.
-3. 15 min - histoire nature/pluie douce.
-4. 20 min - compilation calme en trois sections.
+1. 10 min - very gentle story for a tired child.
+2. 15 min - moon/family story.
+3. 15 min - nature/soft rain story.
+4. 20 min - calm compilation in three sections.
 
-Chaque candidate doit etre ajoutee d'abord en `licensed` ou `draft`, puis passer
-par la revue native et le test enfant avant `published`.
+Each candidate must first be added as `licensed` or `draft`, then go through
+native review and child testing before `published`.

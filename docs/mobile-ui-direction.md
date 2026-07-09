@@ -1,61 +1,57 @@
-# Mobile UI direction
+# Mobile UI Direction
 
-## Intention
+## Intent
 
-L'app doit ressembler a un rituel de lecture du soir, pas a une bibliotheque
-technique. L'interface doit donc mettre le texte et la voix de la mere au centre,
-avec les controles disponibles au pouce et les preuves de confiance accessibles
-sans interrompre la lecture.
+The app should feel like a bedtime reading ritual, not a technical library. The
+interface must put the text and the mother's voice at the center, with
+thumb-accessible controls and trust proof available without interrupting the
+reading.
 
-## Inspirations 2025/2026
+## 2025/2026 Inspirations
 
-- Apple / Liquid Glass : controles et navigation comme couche flottante au-dessus
-  du contenu, en gardant la lisibilite et la hierarchie.
-- Material 3 / Material 3 Expressive : surfaces plus expressives, couleurs
-  adaptees au contexte, feedback tactile clair, actions faciles a toucher.
-- Airbnb mobile : recommandation contextuelle, parcours guide, reduction du
-  bruit quand l'utilisateur veut accomplir une action simple.
+- Apple / Liquid Glass: controls and navigation as a floating layer above the
+  content, while preserving readability and hierarchy.
+- Material 3 / Material 3 Expressive: more expressive surfaces, context-aware
+  colors, clear tactile feedback, easy-to-touch actions.
+- Airbnb mobile: contextual recommendation, guided path, reduced noise when the
+  user wants to complete a simple action.
 
-## Principes applicables au MVP
+## Principles for the MVP
 
-- Le texte amharique est la scene principale.
-- Les controles de lecture vivent dans un dock bas, proche du pouce.
-- La confiance, les licences et les credits restent visibles, mais dans une
-  fiche secondaire.
-- Le mode bedtime utilise un fond chaud, un contraste doux et peu de bordures.
-- Les boutons critiques doivent rester grands, lisibles et espacés.
-- Les contenus techniques ne doivent pas apparaitre avant le texte dans le
-  rituel de lecture.
-- Le mode pause doit calmer l'ecran, pas donner l'impression d'une erreur.
-- Les traductions FR/EN doivent etre plus petites et secondaires sous
-  l'amharique.
+- Amharic text is the main scene.
+- Reading controls live in a bottom dock near the thumb.
+- Trust, licenses, and credits remain visible, but inside a secondary sheet.
+- Bedtime mode uses a warm background, soft contrast, and few borders.
+- Critical buttons must stay large, readable, and well spaced.
+- Technical content must not appear before the text in the reading ritual.
+- Pause mode should calm the screen, not feel like an error state.
+- FR/EN translations must be smaller and secondary under Amharic.
 
-## Mode Rituel
+## Ritual Mode
 
-Le lecteur bedtime suit cette structure :
+The bedtime reader follows this structure:
 
-1. Top bar interne : retour, nom du mode, page courante, temps restant, theme.
-2. Zone principale : titre court, conseil de narration, texte amharique.
-3. Traduction FR/EN optionnelle : petite, secondaire, sous l'amharique.
-4. Dock flottant : precedent, pause/reprendre, suivant, infos.
-5. Fiche infos : metadonnees, controle qualite, favori, lu, sources et credits.
+1. Internal top bar: back, mode name, current page, remaining time, theme.
+2. Main area: short title, narration tip, Amharic text.
+3. Optional FR/EN translation: small, secondary, under Amharic.
+4. Floating dock: previous, pause/resume, next, info.
+5. Info sheet: metadata, quality control, favorite, read, sources, and credits.
 
-Cette structure remplace l'ancien lecteur vertical qui affichait trop de
-metadonnees avant l'histoire.
+This structure replaces the older vertical reader that showed too much metadata
+before the story.
 
-## Regles de design
+## Design Rules
 
-- Eviter les cartes imbriquees dans le flux principal.
-- Utiliser les surfaces fortes pour la confiance ou les modales, pas pour chaque
-  bloc de texte.
-- Garder les libelles courts dans le dock : `Avant`, `Pause`, `Suite`, `Infos`.
-- Ne pas multiplier les couleurs d'action : une action primaire par groupe.
-- Sur mobile, verifier que le dock ne masque pas la derniere ligne du texte.
-- Les credits longs doivent rester scrollables dans la fiche infos.
+- Avoid nested cards in the main flow.
+- Use strong surfaces for trust or modals, not for every text block.
+- Keep dock labels short: `Avant`, `Pause`, `Suite`, `Infos`.
+- Do not multiply action colors: one primary action per group.
+- On mobile, verify that the dock does not hide the last text line.
+- Long credits must remain scrollable inside the info sheet.
 
-## Prochaines ameliorations UI
+## Next UI Improvements
 
-- Ajouter une animation douce a l'ouverture de la fiche infos.
-- Ajouter un mode "lumiere tres basse" pour lecture dans le noir.
-- Ajouter un reglage de taille du texte dans le dock ou la fiche infos.
-- Tester une police amharique dediee sur iOS et Android.
+- Add a gentle animation when opening the info sheet.
+- Add a "very low light" mode for reading in the dark.
+- Add a text-size setting in the dock or info sheet.
+- Test a dedicated Amharic font on iOS and Android.

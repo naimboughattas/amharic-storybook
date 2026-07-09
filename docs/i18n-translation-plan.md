@@ -1,121 +1,116 @@
-# Bilingual and translation plan
+# Bilingual and Translation Plan
 
-## Objectif
+## Goal
 
-L'app doit fonctionner en francais et en anglais pour tous les textes qui ne sont
-pas en amharique. Le texte amharique reste la source principale de lecture.
+The app must work in French and English for every text that is not Amharic.
+Amharic remains the primary reading source.
 
-## Etat actuel
+## Current State
 
-- Le choix de langue `fr` / `en` est persiste localement.
-- L'accueil, les filtres, le lecteur, les boutons, les statuts, les controles
-  qualite et les metadonnees principales peuvent basculer FR/EN.
-- Les histoires conservent leur titre amharique, avec titres, resumes, ambiances
-  et conseils FR/EN.
-- Le lecteur affiche un emplacement de traduction sous le texte amharique.
-- Le modele de donnees supporte deja une traduction par page avec
-  `pageTranslations.fr[index]` et `pageTranslations.en[index]`.
-- La lecture `long-sharing-family-rainbow` contient trois tranches de
-  traductions candidates FR/EN pour les titres de section et les pages des
-  albums `Share Fairly`, `Simbegwire` et `Rainbow Tale`.
-- Le lecteur supporte aussi un format aligne phrase par phrase via
-  `pageTranslations.aligned[index]`. Les titres de section et les pages de
-  `Share Fairly`, `Simbegwire` et `Rainbow Tale` sont alignes phrase par
-  phrase.
+- The `fr` / `en` language choice is persisted locally.
+- The home screen, filters, reader, buttons, statuses, quality controls, and main
+  metadata can switch between FR/EN.
+- Stories keep their Amharic title, with FR/EN titles, summaries, moods, and
+  reading tips.
+- The reader displays a translation slot under the Amharic text.
+- The data model already supports page-level translations with
+  `pageTranslations.fr[index]` and `pageTranslations.en[index]`.
+- `long-sharing-family-rainbow` contains three candidate FR/EN translation
+  batches for section titles and pages from `Share Fairly`, `Simbegwire`, and
+  `Rainbow Tale`.
+- The reader also supports sentence-level alignment through
+  `pageTranslations.aligned[index]`. Section titles and pages from
+  `Share Fairly`, `Simbegwire`, and `Rainbow Tale` are aligned phrase by phrase.
 
-## Faisabilite des traductions sous l'amharique
+## Feasibility of Translations Under Amharic
 
-### Option 1 - Traduction phrase par phrase
+### Option 1 - Sentence-Level Translation
 
-Faisabilite : moyenne, mais recommandee pour le produit bedtime.
+Feasibility: medium, but recommended for the bedtime product.
 
-Principe : chaque phrase amharique est suivie par sa traduction active en petit.
+Principle: each Amharic phrase is followed by its active-language translation in
+small text.
 
-Contrat actuel :
+Current contract:
 
 ```ts
 pageTranslations: {
   aligned: [
     [
       {
-        am: "phrase amharique",
-        fr: "traduction francaise",
-        en: "english translation"
+        am: "Amharic phrase",
+        fr: "French translation",
+        en: "English translation"
       }
     ]
   ]
 }
 ```
 
-Avantages :
+Advantages:
 
-- comprehension immediate sans quitter la phrase originale ;
-- meilleur accompagnement pour une mere qui lit en amharique et explique en
-  FR/EN ;
-- rendu plus doux qu'un gros bloc de traduction en fin de page.
+- immediate comprehension without leaving the original phrase;
+- better support for a mother reading in Amharic and explaining in FR/EN;
+- softer rendering than a large translation block at the end of a page.
 
-Limites :
+Limits:
 
-- il faut segmenter les textes amhariques proprement ;
-- chaque alignement doit etre relu ;
-- les pages longues peuvent demander plus de scroll dans le rituel.
+- Amharic text must be segmented cleanly;
+- every alignment must be reviewed;
+- long pages may require more scrolling in the ritual.
 
-### Option 2 - Traduction par page
+### Option 2 - Page-Level Translation
 
-Faisabilite : facile.
+Feasibility: easy.
 
-Principe : chaque page amharique a une traduction FR et/ou EN affichee en petit
-en dessous.
+Principle: each Amharic page has a small FR and/or EN translation underneath.
 
-Contrat actuel :
+Current contract:
 
 ```ts
 pageTranslations: {
-  fr: ["traduction francaise de la page 1"],
+  fr: ["French translation for page 1"],
   en: ["English translation for page 1"]
 }
 ```
 
-Avantages :
+Advantages:
 
-- rapide a ajouter dans `pageTranslations`;
-- peu de refactor UI;
-- suffisant pour aider une mere qui comprend partiellement l'amharique.
+- quick to add in `pageTranslations`;
+- minimal UI refactor;
+- enough to help a mother who partially understands Amharic.
 
-Limites :
+Limits:
 
-- moins pedagogique qu'une traduction phrase par phrase;
-- si la page est longue, la traduction peut prendre beaucoup de place.
+- less educational than sentence-level translation;
+- if the page is long, the translation can take a lot of space.
 
-## Recommandation MVP
+## MVP Recommendation
 
-Utiliser `pageTranslations.aligned` pour les nouvelles traductions destinees au
-rituel du soir. Garder `pageTranslations.fr/en` comme fallback temporaire pour
-les pages deja traduites en bloc, puis migrer progressivement les lectures
-bedtime vers le mode segmente.
+Use `pageTranslations.aligned` for new translations intended for the bedtime
+ritual. Keep `pageTranslations.fr/en` as a temporary fallback for pages already
+translated as blocks, then progressively migrate bedtime readings to the
+segmented mode.
 
-Ne pas publier de traductions FR/EN inventees sans revue editoriale. Les
-traductions doivent etre marquees comme candidates tant qu'elles ne sont pas
-relues.
+Do not publish invented FR/EN translations without editorial review.
+Translations must stay marked as candidate until they are proofread.
 
-## Revue necessaire
+## Required Review
 
-Les premieres tranches traduites servent a tester l'ergonomie du lecteur
-bilingue. Elles doivent etre relues avant usage public :
+The first translated batches are used to test the bilingual reader ergonomics.
+They must be reviewed before public use:
 
-- verifier que la traduction FR/EN suit bien le texte amharique ;
-- corriger les accents, l'orthographe, la conjugaison, la grammaire et la
-  syntaxe ;
-- corriger les noms propres si la famille prefere une autre translitteration ;
-- confirmer que le niveau de langue reste naturel pour une lecture du soir ;
-- decider si le texte sous l'amharique doit etre affiche par defaut ou via un
-  interrupteur.
+- verify that the FR/EN translation follows the Amharic text;
+- correct accents, spelling, conjugation, grammar, and syntax;
+- correct proper names if the family prefers another transliteration;
+- confirm that the language level remains natural for bedtime reading;
+- decide whether text under Amharic should be shown by default or behind a
+  toggle.
 
-Une histoire traduite ne peut pas passer en publication tant que
-`qualityChecks.translationProofread` n'est pas valide.
+A translated story cannot move to publication until
+`qualityChecks.translationProofread` is valid.
 
-## Regle UI
+## UI Rule
 
-Les traductions doivent rester en petit sous l'amharique, dans une couleur
-secondaire, pour ne pas remplacer la lecture principale. L'amharique doit rester
-visuellement dominant.
+Translations must stay small under Amharic, in a secondary color, so they do not
+replace the main reading. Amharic must remain visually dominant.

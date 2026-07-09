@@ -1,71 +1,73 @@
-# Content guidelines
+# Content Guidelines
 
-## Objectif editorial
+## Editorial Goal
 
-Le MVP sert a valider l'experience de lecture en amharique, pas a publier un
-catalogue final. Toute lecture ajoutee doit etre lisible par un enfant,
-atteindre la duree cible annoncee dans l'app, et etre accompagnee de ses
-metadonnees de source.
+The MVP validates the Amharic reading experience; it is not a final public
+catalogue. Every added reading must be readable by a child, reach the target
+duration announced in the app, and include source metadata.
 
-La cible produit prioritaire est la mere qui veut raconter une histoire a son
-enfant avant de dormir. Le contenu doit donc soutenir un rituel calme, tendre et
-facile a lancer le soir.
+The priority product audience is a mother who wants to read a story to her child
+before bedtime. Content must support a calm, tender ritual that is easy to start
+in the evening.
 
-L'interface est bilingue francais / anglais pour les textes hors amharique. Les
-textes amhariques restent la source principale; les traductions FR/EN servent
-d'aide discrete.
+The interface is bilingual in French and English for non-Amharic text. Amharic
+remains the main source text; FR/EN translations are a subtle reading aid.
 
-## Regles de contenu
+## Repository Language
 
-- Ne pas copier de texte protege sans autorisation explicite.
-- Ne pas scraper automatiquement des histoires completes.
-- Utiliser des textes originaux, des placeholders, ou des contenus sous licence
-  compatible avec attribution complete.
-- Marquer clairement les contenus de demonstration comme non publiables.
-- Verifier l'amharique avec une personne native avant publication.
-- Tester la comprehension avec des enfants du niveau cible avant `published`.
-- Ne pas ajouter de traduction FR/EN publiee sans revue editoriale.
-- Pour la promesse "15 min minimum", viser au moins 1 500 mots amhariques ou
-  composer une lecture longue a partir de plusieurs albums credits separement.
+Documentation, code comments, and commit messages must be written in English.
+Localized product copy may stay in French and English when it is part of the app
+experience.
 
-## Criteres bedtime
+## Content Rules
 
-Une lecture marquee comme adaptee au coucher doit respecter ces criteres :
+- Do not copy protected text without explicit authorization.
+- Do not automatically scrape complete stories.
+- Use original texts, placeholders, or licensed content with complete
+  attribution.
+- Clearly mark demo content as not publishable.
+- Verify Amharic with a native speaker before publication.
+- Test comprehension with children in the target age range before `published`.
+- Do not add a published FR/EN translation without editorial review.
+- For the "15 min minimum" promise, target at least 1,500 Amharic words or build
+  a long reading from several separately credited albums.
 
-- Ton doux, rassurant, non bruyant.
-- Rythme lent, avec des repetitions naturelles et des phrases lisibles a voix
-  haute.
-- Themes compatibles avec le sommeil : famille, protection, nature calme, lune,
-  pluie douce, gratitude, transmission de la langue.
-- Fin apaisante, sans suspense fort ni relance d'action.
-- Duree cible claire : 10, 15 ou 20 minutes.
-- Possibilite d'ajouter des notes de narration : pause, chuchoter, respirer,
-  poser une petite question a l'enfant.
+## Bedtime Criteria
 
-Eviter dans le flux bedtime :
+A reading marked as bedtime-compatible must meet these criteria:
 
-- exercices scolaires, calculs ou quiz ;
-- conflit intense, peur, punition, abandon non resolu ;
-- scenes trop stimulantes avant le sommeil ;
-- morales longues qui cassent le rythme de lecture.
+- Gentle, reassuring, non-noisy tone.
+- Slow rhythm, with natural repetition and sentences that read well aloud.
+- Sleep-compatible themes: family, protection, calm nature, moon, soft rain,
+  gratitude, language transmission.
+- Calming ending, with no strong suspense or renewed action.
+- Clear target duration: 10, 15, or 20 minutes.
+- Room for narration notes: pause, whisper, breathe, ask the child a small
+  question.
 
-## Source longue actuelle
+Avoid in the bedtime flow:
 
-Le catalogue MVP utilise des albums African Storybook en amharique sous licence
-Creative Commons Attribution 4.0. Les lectures longues peuvent assembler
-plusieurs albums pour atteindre 15 minutes, mais chaque album doit conserver son
-URL, son auteur, son traducteur, son illustrateur et sa licence dans
-`sourceCredits`.
+- school exercises, calculations, or quizzes;
+- intense conflict, fear, punishment, or unresolved abandonment;
+- scenes that are too stimulating before sleep;
+- long morals that break the reading rhythm.
 
-## Attribution minimale
+## Current Long Source
 
-Chaque histoire doit renseigner :
+The MVP catalogue uses African Storybook albums in Amharic under the Creative
+Commons Attribution 4.0 license. Long readings may assemble several albums to
+reach 15 minutes, but each album must keep its URL, author, translator,
+illustrator, and license in `sourceCredits`.
+
+## Minimum Attribution
+
+Each story must provide:
 
 - `source.name`
-- `source.url` si disponible
+- `source.url` when available
 - `source.license`
 - `source.attributionRequired`
-- `author`, `translator` et `reviewer` quand ces roles existent
+- `author`, `translator`, and `reviewer` when those roles exist
 - `qualityChecks.licenseVerified`
 - `qualityChecks.nativeReviewed`
 - `qualityChecks.translationProofread`
@@ -73,68 +75,67 @@ Chaque histoire doit renseigner :
 - `qualityChecks.publicationReady`
 - `qualityChecks.editorialNote`
 - `qualityChecks.sourceModifications`
-- `titleEn`, `moodEn`, `bedtimeSummaryEn` et `readingTipsEn`
-- `pageTranslations` quand une traduction FR/EN de lecture existe
+- `titleEn`, `moodEn`, `bedtimeSummaryEn`, and `readingTipsEn`
+- `pageTranslations` when a reading translation exists
 
-## Traductions sous l'amharique
+## Translations Under Amharic
 
-Les traductions FR/EN sous les pages amhariques sont possibles, mais elles
-doivent rester secondaires visuellement. Pour le rituel du soir, privilegier le
-format phrase par phrase dans `pageTranslations.aligned` :
+FR/EN translations under Amharic pages are allowed, but they must stay visually
+secondary. For the bedtime ritual, prefer sentence-level alignment in
+`pageTranslations.aligned`:
 
-- `am` contient la phrase amharique originale ;
-- `fr` contient la traduction francaise candidate ;
-- `en` contient la traduction anglaise candidate.
+- `am` contains the original Amharic phrase;
+- `fr` contains the candidate French translation;
+- `en` contains the candidate English translation.
 
-`pageTranslations.fr` et `pageTranslations.en` restent acceptes comme fallback
-temporaire pour les pages deja traduites en bloc. Toute segmentation doit etre
-relue avant publication.
+`pageTranslations.fr` and `pageTranslations.en` remain accepted as temporary
+page-level fallbacks for pages already translated as blocks. Every segmentation
+must be reviewed before publication.
 
-## Relecture FR/EN obligatoire
+## Mandatory FR/EN Proofreading
 
-Toute traduction francaise ou anglaise ajoutee a une histoire doit etre relue
-avant de quitter le statut candidat.
+Every French or English translation added to a story must be proofread before it
+leaves candidate status.
 
-Checklist minimale :
+Minimum checklist:
 
-- accents et apostrophes francaises ;
-- orthographe ;
-- grammaire ;
-- conjugaison et concordance des temps ;
-- syntaxe naturelle pour une lecture du soir ;
-- ponctuation et guillemets ;
-- coherence des noms propres et translitterations ;
-- alignement avec le sens de la phrase amharique originale.
+- French accents and apostrophes;
+- spelling;
+- grammar;
+- conjugation and tense agreement;
+- natural bedtime-reading syntax;
+- punctuation and quotation marks;
+- consistent proper names and transliterations;
+- alignment with the meaning of the original Amharic phrase.
 
-Tant que cette verification n'est pas faite, garder
-`qualityChecks.translationProofread` a `false` et afficher la traduction comme
-candidate.
+Until this verification is done, keep `qualityChecks.translationProofread` set to
+`false` and display the translation as candidate.
 
-## Workflow de validation
+## Validation Workflow
 
-1. `draft` : idee ou texte brut.
-2. `translated` : traduction ou redaction amharique terminee.
-3. `native_reviewed` : revue linguistique native terminee.
-4. `child_tested` : lecture testee avec le public cible.
-5. `licensed` : droits, licence et attribution verifies.
-6. `published` : contenu pret pour une version publique.
+1. `draft`: idea or raw text.
+2. `translated`: Amharic translation or writing complete.
+3. `native_reviewed`: native linguistic review complete.
+4. `child_tested`: tested with the target audience.
+5. `licensed`: rights, license, and attribution verified.
+6. `published`: content ready for a public version.
 
-Le statut global ne suffit pas pour publier. Une lecture candidate doit aussi
-avoir `qualityChecks.licenseVerified`, `qualityChecks.nativeReviewed`,
-`qualityChecks.translationProofread`, `qualityChecks.childTested` et
-`qualityChecks.publicationReady` a `true`.
+The global status is not enough for publication. A candidate reading must also
+have `qualityChecks.licenseVerified`, `qualityChecks.nativeReviewed`,
+`qualityChecks.translationProofread`, `qualityChecks.childTested`, and
+`qualityChecks.publicationReady` set to `true`.
 
-Avant commit, lancer :
+Before committing, run:
 
 ```bash
 npm run content:check
 ```
 
-Ce controle verifie les segments `pageTranslations.aligned`, les traductions
-FR/EN vides, et les formes francaises manifestement non relues.
+This check validates `pageTranslations.aligned` segments, empty FR/EN
+translations, and obvious French proofreading misses.
 
-## Ajout d'une histoire CC BY
+## Adding a CC BY Story
 
-Avant ajout, conserver l'URL source, le nom de l'auteur, la licence exacte, les
-modifications effectuees, et la formulation d'attribution attendue. Si une
-information manque, garder l'histoire hors publication.
+Before adding a story, preserve the source URL, author name, exact license,
+source modifications, and expected attribution wording. If any information is
+missing, keep the story out of publication.

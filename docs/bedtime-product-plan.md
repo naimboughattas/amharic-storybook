@@ -1,194 +1,190 @@
-# Bedtime product plan
+# Bedtime Product Plan
 
 ## Vision
 
-Transformer l'app en rituel du soir pour les meres qui veulent raconter une
-histoire en amharique a leurs enfants avant de dormir.
+Turn the app into an evening ritual for mothers who want to read an Amharic
+story to their children before sleep.
 
-Promesse :
+Promise:
 
-> Ce soir, lance une histoire douce de 15 minutes, lis-la tranquillement, et
-> transmets l'amharique avec ta voix.
+> Tonight, start a gentle 15-minute story, read it calmly, and pass on Amharic
+> with your own voice.
 
-## Principes produit
+## Product Principles
 
-- La mere reste au centre : l'app aide a lire, elle ne remplace pas sa voix.
-- Le premier ecran doit repondre a "qu'est-ce que je lis ce soir ?".
-- L'interface du soir doit etre calme, chaude, lisible et sans distraction.
-- Les contenus bedtime doivent apaiser avant d'enseigner.
-- La duree annoncee doit etre fiable.
-- Les credits, licences et validations restent visibles, mais secondaires dans
-  le rituel de lecture.
-- Tous les textes hors amharique doivent etre disponibles en francais et en
-  anglais.
+- The mother stays at the center: the app helps her read, it does not replace
+  her voice.
+- The first screen must answer: "What should I read tonight?"
+- The bedtime interface must be calm, warm, readable, and distraction-free.
+- Bedtime content must soothe before it teaches.
+- Announced duration must be reliable.
+- Credits, licenses, and validation remain visible, but secondary in the reading
+  ritual.
+- All non-Amharic text must be available in French and English.
+- Documentation, code comments, and commit messages must be written in English.
 
-## Persona prioritaire
+## Priority Persona
 
-Mere fatiguee en fin de journee, qui veut :
+A tired mother at the end of the day who wants to:
 
-- transmettre l'amharique sans preparer une lecon ;
-- creer un moment tendre avec son enfant ;
-- choisir une histoire rapidement ;
-- lire sans lumiere agressive ;
-- garder confiance dans la qualite linguistique et les droits d'usage.
+- pass on Amharic without preparing a lesson;
+- create a tender moment with her child;
+- choose a story quickly;
+- read without aggressive light;
+- trust the linguistic quality and usage rights.
 
-## Jobs to be done
+## Jobs To Be Done
 
-- Quand il est l'heure de dormir, je veux lancer une histoire appropriee en
-  moins de 10 secondes.
-- Quand je lis, je veux un texte tres lisible et des controles simples au pouce.
-- Quand mon enfant bouge ou pose une question, je veux pouvoir faire une pause
-  sans perdre ma place.
-- Quand je suis moins a l'aise en amharique, je veux des aides discretes pour
-  ralentir, chuchoter et interagir.
-- Quand je ne comprends pas tout, je veux voir une traduction FR/EN discrete
-  sans que l'amharique perde sa place principale.
+- When it is bedtime, I want to start an appropriate story in under 10 seconds.
+- When I read, I want highly readable text and simple thumb controls.
+- When my child moves or asks a question, I want to pause without losing my
+  place.
+- When I am less comfortable in Amharic, I want subtle help to slow down,
+  whisper, and interact.
+- When I do not understand everything, I want a subtle FR/EN translation without
+  Amharic losing its primary role.
 
-## Plan d'attaque
+## Attack Plan
 
-### Phase 1 - Repositionnement MVP
+### Phase 1 - MVP Repositioning
 
-Objectif : faire sentir que l'app est faite pour l'histoire du soir.
+Goal: make the app feel built for bedtime stories.
 
-- Renommer l'accueil autour de "Histoire du soir".
-- Mettre une recommandation principale "Ce soir" avant la bibliotheque.
-- Ajouter des metadonnees produit aux histoires : `mood`, `bedtimeFit`,
-  `durationBucket`, `readingTips`.
-- Distinguer les "lectures longues" des histoires unitaires.
-- Cacher les contenus trop scolaires du flux bedtime.
+- Rename the home experience around "Bedtime Story".
+- Place a main "Tonight" recommendation before the library.
+- Add product metadata to stories: `mood`, `bedtimeFit`, `durationBucket`,
+  `readingTips`.
+- Separate "long readings" from single stories.
+- Hide content that is too school-like from the bedtime flow.
 
-Definition of done :
+Definition of done:
 
-- En ouvrant l'app, une mere comprend quoi lancer ce soir.
-- Une histoire bedtime 15 min+ est accessible en un tap.
-- Les cartes affichent duree, age et ambiance, pas seulement niveau.
+- When opening the app, a mother understands what to launch tonight.
+- A 15 min+ bedtime story is accessible in one tap.
+- Cards show duration, age, and mood, not only level.
 
-Statut actuel : en cours. L'accueil affiche une recommandation "Ce soir", les
-histoires portent les metadonnees bedtime principales, et les lectures moins
-adaptees au coucher restent dans la bibliotheque complete.
+Current status: in progress. The home screen shows a "Tonight"
+recommendation, stories carry the main bedtime metadata, and readings less
+suited to bedtime remain in the full library.
 
-### Phase 2 - Lecteur du soir
+### Phase 2 - Bedtime Reader
 
-Objectif : rendre la lecture confortable au lit.
+Goal: make reading comfortable in bed.
 
-- Creer un mode lecteur bedtime avec fond chaud, contraste doux et texte large.
-- Ajouter une estimation "encore X min".
-- Ajouter un bouton pause simple.
-- Ajouter des tips de narration entre certaines pages : "lire lentement",
-  "faire une pause", "chuchoter", "demander a l'enfant ce qu'il voit".
-- Ajouter une protection contre les taps accidentels si necessaire.
+- Create a bedtime reader mode with warm background, soft contrast, and large
+  text.
+- Add an "X min left" estimate.
+- Add a simple pause button.
+- Add narration tips between selected pages: "read slowly", "pause", "whisper",
+  "ask the child what they see".
+- Add accidental-tap protection if needed.
 
-Definition of done :
+Definition of done:
 
-- Lecture utilisable a une main.
-- Aucun controle secondaire ne distrait du texte.
-- Les tips aident sans casser le rythme.
+- Reading is usable one-handed.
+- No secondary control distracts from the text.
+- Tips help without breaking the rhythm.
 
-Statut actuel : en cours. Le lecteur affiche un guide bedtime pour les histoires
-compatibles coucher, avec temps restant, conseil de narration et bouton
-"Pause calin" qui conserve la page en cours. Le lecteur bedtime utilise
-maintenant un Mode Rituel plein ecran : top bar interne, texte comme scene
-principale, dock flottant au pouce et fiche infos pour les credits et controles
-qualite.
+Current status: in progress. The reader shows a bedtime guide for compatible
+stories, with remaining time, narration tip, and a pause button that preserves
+the current page. The bedtime reader now uses a full-screen Ritual Mode: internal
+top bar, text as the main scene, thumb-friendly floating dock, and info sheet for
+credits and quality controls.
 
-### Phase 3 - Catalogue bedtime
+### Phase 3 - Bedtime Catalogue
 
-Objectif : construire une offre coherente de lectures du soir.
+Goal: build a coherent bedtime reading offer.
 
-- Auditer les histoires existantes avec les criteres bedtime.
-- Constituer au moins 6 lectures :
-  - 3 de 15 minutes ;
-  - 2 de 10 minutes ;
-  - 1 de 20 minutes.
-- Prioriser les themes : lune, pluie douce, famille, village, gratitude,
-  animaux calmes, transmission de la langue.
-- Rejeter ou declasser les textes trop pedagogiques, anxieux ou agites.
-- Garder chaque source CC BY avec attribution complete.
+- Audit existing stories against bedtime criteria.
+- Build at least 6 readings:
+  - 3 readings of 15 minutes;
+  - 2 readings of 10 minutes;
+  - 1 reading of 20 minutes.
+- Prioritize themes: moon, soft rain, family, village, gratitude, calm animals,
+  language transmission.
+- Reject or downgrade texts that are too educational, anxious, or active.
+- Keep every CC BY source with complete attribution.
 
-Definition of done :
+Definition of done:
 
-- La bibliotheque bedtime ne contient que des lectures compatibles coucher.
-- Chaque lecture a une duree fiable et des credits complets.
-- Les lectures candidates a publication ont une checklist de revue native.
+- The bedtime library contains only bedtime-compatible readings.
+- Every reading has reliable duration and complete credits.
+- Candidate readings for publication have a native-review checklist.
 
-Statut actuel : en cours. L'accueil permet maintenant de filtrer le catalogue
-par moment de lecture et duree cible. L'audit courant est dans
+Current status: in progress. The home screen can now filter the catalogue by
+reading moment and target duration. The current audit is in
 `docs/catalog-audit.md`.
 
-### Phase 4 - Confiance linguistique
+### Phase 4 - Linguistic Trust
 
-Objectif : rassurer les familles sur la qualite de l'amharique.
+Goal: reassure families about Amharic quality.
 
-- Ajouter un statut visible mais discret : licence OK, revue native, teste
-  enfant.
-- Preparer un workflow de relecture native.
-- Documenter les modifications faites sur les textes source.
-- Ajouter une note editoriale pour les compilations.
+- Add a visible but discreet status: license OK, native review, child tested.
+- Prepare a native-review workflow.
+- Document source-text modifications.
+- Add an editorial note for compilations.
 
-Definition of done :
+Definition of done:
 
-- Une histoire ne peut pas etre marquee `published` sans revue native et test
-  enfant.
-- Les credits restent complets meme dans une compilation.
+- A story cannot be marked `published` without native review and child testing.
+- Credits remain complete even in a compilation.
 
-Statut actuel : en cours. Le lecteur affiche maintenant un controle qualite
-base sur `qualityChecks` dans la fiche infos du lecteur : licence, relecture
-native, relecture FR/EN, test enfant, publication, note editoriale et
-modifications faites au texte source. Les lectures ASB du MVP sont candidates :
-licence verifiee, mais revue native, relecture FR/EN et test enfant encore a
-faire avant publication.
+Current status: in progress. The reader now shows a quality control panel based
+on `qualityChecks` inside the info sheet: license, native review, FR/EN
+proofreading, child test, publication, editorial note, and source modifications.
+The MVP ASB readings are candidates: license verified, but native review, FR/EN
+proofreading, and child testing still need to happen before publication.
 
-### Phase 5 - Aide a la voix, sans remplacer la mere
+### Phase 5 - Voice Help Without Replacing the Mother
 
-Objectif : aider la mere a lire mieux, pas automatiser le rituel.
+Goal: help the mother read better, not automate the ritual.
 
-- Ajouter plus tard un mode "prononciation" ou "entrainement".
-- Explorer des enregistrements courts par phrase ou par page.
-- Eviter de faire de l'audio automatique l'experience principale.
+- Later add a "pronunciation" or "practice" mode.
+- Explore short recordings by phrase or page.
+- Avoid making automatic audio the main experience.
 
-Definition of done :
+Definition of done:
 
-- L'audio sert de support a la mere.
-- Le rituel reste centre sur la lecture parent-enfant.
+- Audio supports the mother.
+- The ritual stays centered on parent-child reading.
 
-## Roadmap technique suggeree
+## Suggested Technical Roadmap
 
-1. Etendre `Story` avec les champs bedtime.
-2. Ajouter un helper de selection `getTonightStory()`.
-3. Creer un composant `TonightStoryCard`.
-4. Adapter `app/index.tsx` pour prioriser la recommandation.
-5. Creer `BedtimeReader` ou un mode bedtime dans `StoryReader`.
-6. Ajouter des tests simples sur la selection de l'histoire du soir.
-7. Verifier l'interface sur mobile web puis sur Expo Go.
+1. Extend `Story` with bedtime fields.
+2. Add a `getTonightStory()` selection helper.
+3. Create a `TonightStoryCard` component.
+4. Adapt `app/index.tsx` to prioritize the recommendation.
+5. Create `BedtimeReader` or a bedtime mode inside `StoryReader`.
+6. Add simple tests for bedtime-story selection.
+7. Verify the interface on mobile web, then Expo Go.
 
-## Direction UI mobile
+## Mobile UI Direction
 
-La direction UI est documentee dans `docs/mobile-ui-direction.md`.
+The UI direction is documented in `docs/mobile-ui-direction.md`.
 
-Le principe central : le texte amharique est la scene principale, les controles
-flottent en bas pres du pouce, et les informations de confiance restent dans une
-fiche secondaire pour ne pas casser le rituel.
+The core principle: Amharic text is the main scene, controls float near the
+thumb at the bottom, and trust information stays in a secondary sheet so it does
+not interrupt the ritual.
 
-## Bilingue FR/EN
+## FR/EN Bilingual Support
 
-La strategie bilingue est documentee dans `docs/i18n-translation-plan.md`.
+The bilingual strategy is documented in `docs/i18n-translation-plan.md`.
 
-Statut actuel : en cours. L'interface, les controles, les filtres, les statuts
-et les metadonnees produit peuvent basculer francais / anglais. Le lecteur
-prevoit un emplacement discret sous le texte amharique pour les futures
-traductions FR/EN.
+Current status: in progress. The interface, controls, filters, statuses, and
+product metadata can switch between French and English. The reader provides a
+subtle slot under the Amharic text for FR/EN translations.
 
-## Risques
+## Risks
 
-- Confondre "long" et "adapte au coucher" : une histoire longue peut etre trop
-  scolaire ou trop stimulante.
-- Trop charger l'interface avec des credits et controles.
-- Importer des contenus libres sans qualite bedtime suffisante.
-- Remplacer trop vite la voix de la mere par de l'audio automatique.
+- Confusing "long" with "bedtime-compatible": a long story may be too school-like
+  or too stimulating.
+- Overloading the interface with credits and controls.
+- Importing open content without enough bedtime quality.
+- Replacing the mother's voice with automatic audio too quickly.
 
-## Mesures de succes MVP
+## MVP Success Measures
 
-- Temps pour lancer une histoire du soir : moins de 10 secondes.
-- Lecture terminee ou presque terminee : au moins 70 % des sessions bedtime.
-- Retour parent : "j'ai su quoi lire" et "c'etait calme".
-- Retour enfant : comprehension simple et envie de recommencer.
+- Time to launch a bedtime story: under 10 seconds.
+- Reading completed or almost completed: at least 70% of bedtime sessions.
+- Parent feedback: "I knew what to read" and "it felt calm".
+- Child feedback: simple comprehension and desire to read again.
