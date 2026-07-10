@@ -54,6 +54,7 @@ docs/i18n-translation-plan.md
 ## MVP Features
 
 - Bedtime-oriented home screen with a "Tonight" recommendation.
+- Home menu split between Tonight, Library, and Progress.
 - French / English interface for every non-Amharic user-facing text.
 - Library filterable by level.
 - Full-screen Ritual Mode reader, with Amharic as the main reading scene.

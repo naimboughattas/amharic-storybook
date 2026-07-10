@@ -19,6 +19,8 @@ reading.
 ## Principles for the MVP
 
 - Amharic text is the main scene.
+- The home screen should be split into clear menus: Tonight, Library, and
+  Progress.
 - Reading controls live in a bottom dock near the thumb.
 - Trust, licenses, and credits remain visible, but inside a secondary sheet.
 - Bedtime mode uses a warm background, soft contrast, and few borders.

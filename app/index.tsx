@@ -8,6 +8,7 @@ import {
   type CatalogScope,
   type DurationFilterValue,
 } from "@/components/CatalogFilters";
+import { HomeMenu, type HomeSection } from "@/components/HomeMenu";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { LevelFilter, type LevelFilterValue } from "@/components/LevelFilter";
 import { StoryCard } from "@/components/StoryCard";
@@ -22,6 +23,7 @@ import { typography } from "@/theme/typography";
 
 export default function HomeScreen() {
   const { width } = useWindowDimensions();
+  const [activeSection, setActiveSection] = useState<HomeSection>("tonight");
   const [level, setLevel] = useState<LevelFilterValue>("all");
   const [scope, setScope] = useState<CatalogScope>("all");
   const [duration, setDuration] = useState<DurationFilterValue>("all");
@@ -52,6 +54,14 @@ export default function HomeScreen() {
         return levelMatches && durationMatches && scopeMatches;
       }),
     [duration, level, scope],
+  );
+  const progressStories = useMemo(
+    () =>
+      stories.filter((story) => {
+        const lastPage = progress.lastPages[story.id] ?? 0;
+        return lastPage > 0 || progress.readIds.has(story.id) || progress.favoriteIds.has(story.id);
+      }),
+    [progress.favoriteIds, progress.lastPages, progress.readIds],
   );
 
   return (
@@ -118,57 +128,100 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        <TonightStoryCard
-          compact={isCompact}
+        <HomeMenu
+          activeSection={activeSection}
           language={language}
+          onChange={setActiveSection}
           palette={palette}
-          story={tonightStory}
         />
 
-        <View style={{ gap: spacing.md }}>
-          <View style={{ gap: spacing.xs }}>
-            <Text selectable style={[typography.title, { color: palette.text }]}>
-              {uiText[language].catalogTitle}
-            </Text>
-            <Text selectable style={[typography.body, { color: palette.mutedText }]}>
-              {bedtimeCountLabel} {language === "en" ? "out of" : "sur"} {stories.length}.{" "}
-              {language === "en"
-                ? "The others remain useful outside the ritual."
-                : "Les autres restent utiles hors rituel."}
-            </Text>
+        {activeSection === "tonight" ? (
+          <TonightStoryCard
+            compact={isCompact}
+            language={language}
+            palette={palette}
+            story={tonightStory}
+          />
+        ) : null}
+
+        {activeSection === "library" ? (
+          <View style={{ gap: spacing.md }}>
+            <View style={{ gap: spacing.xs }}>
+              <Text selectable style={[typography.title, { color: palette.text }]}>
+                {uiText[language].catalogTitle}
+              </Text>
+              <Text selectable style={[typography.body, { color: palette.mutedText }]}>
+                {bedtimeCountLabel} {language === "en" ? "out of" : "sur"} {stories.length}.{" "}
+                {language === "en"
+                  ? "The others remain useful outside the ritual."
+                  : "Les autres restent utiles hors rituel."}
+              </Text>
+            </View>
+            <CatalogFilters
+              duration={duration}
+              language={language}
+              onDurationChange={setDuration}
+              onScopeChange={setScope}
+              palette={palette}
+              scope={scope}
+            />
+            <LevelFilter
+              language={language}
+              onChange={setLevel}
+              palette={palette}
+              value={level}
+            />
+            {filteredStories.length > 0 ? (
+              filteredStories.map((story) => (
+                <StoryCard
+                  isFavorite={progress.favoriteIds.has(story.id)}
+                  isRead={progress.readIds.has(story.id)}
+                  key={story.id}
+                  language={language}
+                  lastPage={progress.lastPages[story.id]}
+                  palette={palette}
+                  story={story}
+                />
+              ))
+            ) : (
+              <Text selectable style={[typography.body, { color: palette.mutedText }]}>
+                {uiText[language].emptyFilter}
+              </Text>
+            )}
           </View>
-          <CatalogFilters
-            duration={duration}
-            language={language}
-            onDurationChange={setDuration}
-            onScopeChange={setScope}
-            palette={palette}
-            scope={scope}
-          />
-          <LevelFilter
-            language={language}
-            onChange={setLevel}
-            palette={palette}
-            value={level}
-          />
-          {filteredStories.length > 0 ? (
-            filteredStories.map((story) => (
-              <StoryCard
-                isFavorite={progress.favoriteIds.has(story.id)}
-                isRead={progress.readIds.has(story.id)}
-                key={story.id}
-                language={language}
-                lastPage={progress.lastPages[story.id]}
-                palette={palette}
-                story={story}
-              />
-            ))
-          ) : (
-            <Text selectable style={[typography.body, { color: palette.mutedText }]}>
-              {uiText[language].emptyFilter}
-            </Text>
-          )}
-        </View>
+        ) : null}
+
+        {activeSection === "progress" ? (
+          <View style={{ gap: spacing.md }}>
+            <View style={{ gap: spacing.xs }}>
+              <Text selectable style={[typography.title, { color: palette.text }]}>
+                {uiText[language].progressTitle}
+              </Text>
+              <Text selectable style={[typography.body, { color: palette.mutedText }]}>
+                {language === "en"
+                  ? "Find favorites, completed readings, and stories already started."
+                  : "Retrouve les favoris, les lectures terminées et les histoires déjà commencées."}
+              </Text>
+            </View>
+            {progressStories.length > 0 ? (
+              progressStories.map((story) => (
+                <StoryCard
+                  isFavorite={progress.favoriteIds.has(story.id)}
+                  isRead={progress.readIds.has(story.id)}
+                  key={story.id}
+                  language={language}
+                  lastPage={progress.lastPages[story.id]}
+                  palette={palette}
+                  story={story}
+                />
+              ))
+            ) : (
+              <Text selectable style={[typography.body, { color: palette.mutedText }]}>
+                {uiText[language].progressEmpty}
+              </Text>
+            )}
+          </View>
+        ) : null}
       </ScrollView>
     </>
   );
