@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Pressable, ScrollView, Text, View } from "react-native";
+import { Pressable, ScrollView, Text, View, useWindowDimensions } from "react-native";
 
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { QualityChecklist } from "@/components/QualityChecklist";
@@ -119,10 +119,12 @@ export function StoryReader({
   onMarkRead,
   onPageChange,
 }: Props) {
+  const { width } = useWindowDimensions();
   const totalPages = story.pages.length;
   const isBedtimeMode = story.bedtimeFit !== "not_bedtime";
   const isFirst = currentPage === 0;
   const isLast = currentPage === totalPages - 1;
+  const isCompact = width < 430;
   const remainingMinutes = getRemainingMinutes(story, currentPage, totalPages);
   const readingTips = getStoryReadingTips(story, language);
   const narrationTip = getNarrationTip({ ...story, readingTips }, currentPage);
@@ -161,9 +163,10 @@ export function StoryReader({
         style={{
           alignItems: "center",
           flexDirection: "row",
-          gap: spacing.md,
+          flexWrap: isCompact ? "wrap" : "nowrap",
+          gap: isCompact ? spacing.sm : spacing.md,
           justifyContent: "space-between",
-          paddingHorizontal: spacing.lg,
+          paddingHorizontal: isCompact ? spacing.md : spacing.lg,
           paddingTop: spacing.md,
         }}
       >
@@ -175,6 +178,7 @@ export function StoryReader({
             borderColor: palette.border,
             borderRadius: radius.pill,
             borderWidth: 1,
+            flexShrink: 0,
             opacity: pressed ? 0.7 : 1,
             paddingHorizontal: spacing.md,
             paddingVertical: spacing.sm,
@@ -185,25 +189,25 @@ export function StoryReader({
           </Text>
         </Pressable>
 
-        <View style={{ alignItems: "center", flex: 1, gap: spacing.xs }}>
+        <View style={{ alignItems: "center", flex: 1, flexShrink: 1, gap: spacing.xs, minWidth: 0 }}>
           <Text
-            numberOfLines={1}
+            numberOfLines={isCompact ? 2 : 1}
             selectable
-            style={[typography.small, { color: readerText, fontWeight: "800" }]}
+            style={[typography.small, { color: readerText, fontWeight: "800", textAlign: "center" }]}
           >
             {isBedtimeMode ? uiText[language].bedtimeMode : uiText[language].readingMode}
           </Text>
           <Text
-            numberOfLines={1}
+            numberOfLines={isCompact ? 2 : 1}
             selectable
-            style={[typography.small, { color: readerText, opacity: 0.78 }]}
+            style={[typography.small, { color: readerText, opacity: 0.78, textAlign: "center" }]}
           >
             Page {currentPage + 1} / {totalPages} · {remainingMinutes} min{" "}
             {uiText[language].remaining}
           </Text>
         </View>
 
-        <View style={{ alignItems: "flex-end", gap: spacing.xs }}>
+        <View style={{ alignItems: "flex-end", flexShrink: 0, gap: spacing.xs }}>
           <LanguageToggle language={language} onChange={onLanguageChange} palette={palette} />
           <ThemeToggle
             language={language}
@@ -218,12 +222,12 @@ export function StoryReader({
         contentContainerStyle={{
           flexGrow: 1,
           justifyContent: "center",
-          padding: spacing.lg,
+          padding: isCompact ? spacing.md : spacing.lg,
           paddingBottom: 118,
         }}
         style={{ flex: 1 }}
       >
-        <View style={{ gap: spacing.lg }}>
+        <View style={{ alignSelf: "center", gap: spacing.lg, maxWidth: 720, width: "100%" }}>
           <View style={{ alignItems: "center", gap: spacing.sm }}>
             <ValidationStatusBadge
               language={language}
@@ -233,7 +237,7 @@ export function StoryReader({
             <Text
               numberOfLines={2}
               selectable
-              style={[typography.subtitle, { color: readerText, textAlign: "center" }]}
+              style={[typography.subtitle, { color: readerText, flexShrink: 1, textAlign: "center", width: "100%" }]}
             >
               {story.titleAm}
             </Text>
@@ -241,7 +245,10 @@ export function StoryReader({
               <Text
                 numberOfLines={2}
                 selectable
-                style={[typography.small, { color: readerText, opacity: 0.72, textAlign: "center" }]}
+                style={[
+                  typography.small,
+                  { color: readerText, flexShrink: 1, opacity: 0.72, textAlign: "center", width: "100%" },
+                ]}
               >
                 {getStoryTitle(story, language)}
               </Text>
@@ -257,11 +264,12 @@ export function StoryReader({
                 borderRadius: radius.pill,
                 borderWidth: 1,
                 maxWidth: 560,
+                width: "100%",
                 paddingHorizontal: spacing.lg,
                 paddingVertical: spacing.md,
               }}
             >
-              <Text selectable style={[typography.small, { color: palette.bedtimeText }]}>
+              <Text selectable style={[typography.small, { color: palette.bedtimeText, textAlign: "center" }]}>
                 {narrationTip}
               </Text>
             </View>
@@ -274,7 +282,7 @@ export function StoryReader({
               borderRadius: radius.md,
               borderWidth: 1,
               minHeight: 280,
-              padding: spacing.xl,
+              padding: isCompact ? spacing.md : spacing.xl,
               shadowColor: "#000000",
               shadowOffset: { width: 0, height: 12 },
               shadowOpacity: theme === "dark" ? 0.22 : 0.08,
@@ -313,6 +321,8 @@ export function StoryReader({
                             typography.amharicReader,
                             {
                               color: isBedtimeMode ? palette.bedtimeText : palette.text,
+                              fontSize: isCompact ? 26 : typography.amharicReader.fontSize,
+                              lineHeight: isCompact ? 42 : typography.amharicReader.lineHeight,
                               textAlign: "left",
                               writingDirection: "ltr",
                             },
@@ -344,6 +354,8 @@ export function StoryReader({
                       typography.amharicReader,
                       {
                         color: isBedtimeMode ? palette.bedtimeText : palette.text,
+                        fontSize: isCompact ? 26 : typography.amharicReader.fontSize,
+                        lineHeight: isCompact ? 42 : typography.amharicReader.lineHeight,
                         textAlign: "left",
                         writingDirection: "ltr",
                       },

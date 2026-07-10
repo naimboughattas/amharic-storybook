@@ -81,9 +81,9 @@ export type Story = {
 };
 
 export const storyLevelLabels: Record<StoryLevel, string> = {
-  beginner: "Debutant",
-  intermediate: "Intermediaire",
-  advanced: "Avance",
+  beginner: "Débutant",
+  intermediate: "Intermédiaire",
+  advanced: "Avancé",
 };
 
 export const durationBucketLabels: Record<DurationBucket, string> = {
@@ -93,16 +93,16 @@ export const durationBucketLabels: Record<DurationBucket, string> = {
 };
 
 export const bedtimeFitLabels: Record<BedtimeFit, string> = {
-  ideal: "Ideal coucher",
+  ideal: "Idéal coucher",
   good: "Doux",
-  not_bedtime: "Bibliotheque",
+  not_bedtime: "Bibliothèque",
 };
 
 export const validationStatusLabels: Record<ValidationStatus, string> = {
   draft: "Brouillon",
   translated: "Traduit",
   native_reviewed: "Revu natif",
-  child_tested: "Teste enfant",
+  child_tested: "Testé enfant",
   licensed: "Licence OK",
-  published: "Publie",
+  published: "Publié",
 };

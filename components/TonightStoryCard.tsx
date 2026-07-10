@@ -39,11 +39,11 @@ export function TonightStoryCard({ story, palette, language }: Props) {
         <Text selectable style={[typography.small, { color: palette.warning, fontWeight: "800" }]}>
           {uiText[language].tonight}
         </Text>
-        <Text selectable style={[typography.title, { color: palette.text }]}>
+        <Text selectable style={[typography.title, { color: palette.text, flexShrink: 1, width: "100%" }]}>
           {story.titleAm}
         </Text>
         {story.titleFr ? (
-          <Text selectable style={[typography.body, { color: palette.mutedText }]}>
+          <Text selectable style={[typography.body, { color: palette.mutedText, flexShrink: 1, width: "100%" }]}>
             {getStoryTitle(story, language)}
           </Text>
         ) : null}
@@ -64,7 +64,7 @@ export function TonightStoryCard({ story, palette, language }: Props) {
         </Text>
       </View>
 
-      <Text selectable style={[typography.body, { color: palette.text }]}>
+      <Text selectable style={[typography.body, { color: palette.text, flexShrink: 1, width: "100%" }]}>
         {getStoryBedtimeSummary(story, language)}
       </Text>
 

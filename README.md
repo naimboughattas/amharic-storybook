@@ -9,6 +9,7 @@ children, with no account, backend, ads, analytics, or remote storage.
 npm install
 npm run start
 npm run web
+npm run build
 npm run typecheck
 npm run content:check
 ```
@@ -22,6 +23,13 @@ or `>=25.0.0`).
 Documentation, code comments, and commit messages must be written in English.
 Product copy may still be localized in French and English when it is user-facing
 or part of the bilingual story experience.
+
+## Vercel Web Deployment
+
+Vercel should run `npm run build` and serve the generated `dist` directory. The
+`vercel.json` rewrite sends deep links such as `/story/:id` back to
+`/index.html`, which lets Expo Router restore the screen on refresh or shared
+links.
 
 ## Structure
 

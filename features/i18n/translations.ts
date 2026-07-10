@@ -20,8 +20,8 @@ export const uiText = {
     childTest: "Test enfant",
     close: "Fermer",
     dark: "Sombre",
-    detailsTitle: "Details de la lecture",
-    durationTarget: "Duree cible",
+    detailsTitle: "Détails de la lecture",
+    durationTarget: "Durée cible",
     emptyFilter: "Aucune autre lecture pour ce filtre.",
     favorite: "Favori",
     favoriteRemove: "Retirer favori",
@@ -31,26 +31,26 @@ export const uiText = {
     markRead: "Marquer lu",
     next: "Suite",
     pause: "Pause",
-    pauseBody: "Respire avec ton enfant. La page reste gardee.",
+    pauseBody: "Respire avec ton enfant. La page reste gardée.",
     pauseTitle: "Lecture en pause",
     previous: "Avant",
-    qualityTitle: "Controle qualite",
-    read: "Deja lu",
+    qualityTitle: "Contrôle qualité",
+    read: "Déjà lu",
     readingMoment: "Moment de lecture",
     readingMode: "Mode lecture",
     remaining: "Encore",
     resume: "Reprendre",
     return: "Retour",
     source: "Source",
-    sourcesTitle: "Sources et credits",
+    sourcesTitle: "Sources et crédits",
     startRitual: "Commencer le rituel",
-    themeToggleLabel: "Changer le theme clair ou sombre",
+    themeToggleLabel: "Changer le thème clair ou sombre",
     tonight: "Ce soir",
     translationUnavailable:
-      "Traduction FR/EN a ajouter apres validation editoriale.",
+      "Traduction FR/EN à ajouter après validation éditoriale.",
     translations: "Traductions",
     translationCandidate: "Traduction candidate",
-    validatedSteps: "etapes validees",
+    validatedSteps: "étapes validées",
   },
   en: {
     all: "All",
@@ -99,9 +99,9 @@ export const uiText = {
 
 export const storyLevelLabels: Record<InterfaceLanguage, Record<StoryLevel, string>> = {
   fr: {
-    beginner: "Debutant",
-    intermediate: "Intermediaire",
-    advanced: "Avance",
+    beginner: "Débutant",
+    intermediate: "Intermédiaire",
+    advanced: "Avancé",
   },
   en: {
     beginner: "Beginner",
@@ -125,9 +125,9 @@ export const durationBucketLabels: Record<InterfaceLanguage, Record<DurationBuck
 
 export const bedtimeFitLabels: Record<InterfaceLanguage, Record<BedtimeFit, string>> = {
   fr: {
-    ideal: "Ideal coucher",
+    ideal: "Idéal coucher",
     good: "Doux",
-    not_bedtime: "Bibliotheque",
+    not_bedtime: "Bibliothèque",
   },
   en: {
     ideal: "Ideal bedtime",
@@ -144,9 +144,9 @@ export const validationStatusLabels: Record<
     draft: "Brouillon",
     translated: "Traduit",
     native_reviewed: "Revu natif",
-    child_tested: "Teste enfant",
+    child_tested: "Testé enfant",
     licensed: "Licence OK",
-    published: "Publie",
+    published: "Publié",
   },
   en: {
     draft: "Draft",
@@ -162,7 +162,7 @@ export const scopeLabels = {
   fr: {
     all: "Tous",
     bedtime: "Soir",
-    library: "Bibliotheque",
+    library: "Bibliothèque",
   },
   en: {
     all: "All",
