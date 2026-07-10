@@ -41,6 +41,7 @@ app/
 components/
 data/
 features/progress/
+public/
 theme/
 types/
 docs/content-guidelines.md
@@ -67,6 +68,7 @@ docs/i18n-translation-plan.md
 - Bedtime metadata: mood, bedtime compatibility, target duration, and narration
   tips.
 - Sentence-level FR/EN translation slot under the Amharic text.
+- PWA metadata, install icons, and a small offline fallback for mobile web.
 
 ## Product Positioning
 
@@ -128,6 +130,19 @@ The Ritual Mode mobile UI direction is documented in
 
 The bilingual strategy and feasibility of translations under Amharic are
 documented in `docs/i18n-translation-plan.md`.
+
+## Mobile Web PWA
+
+Expo copies `public/` into `dist` during `npm run build`. The current PWA layer
+contains:
+
+- `public/manifest.json` for install metadata;
+- `public/icon-192.png` and `public/icon-512.png` for mobile install surfaces;
+- `public/register-sw.js` and `public/sw.js` for app-shell caching;
+- `public/offline.html` as a fallback when a fresh navigation is unavailable.
+
+Global web metadata lives in `public/index.html`, the Expo SPA template used by
+`npm run build`.
 
 ## Linguistic Workflow
 

@@ -55,3 +55,17 @@ before the story.
 - Add a "very low light" mode for reading in the dark.
 - Add a text-size setting in the dock or info sheet.
 - Test a dedicated Amharic font on iOS and Android.
+
+## Mobile Web QA Checklist
+
+Before considering the Vercel build production-ready, verify on at least one
+iPhone-sized and one Android-sized viewport:
+
+- home loads with no horizontal clipping;
+- "Start ritual" / "Commencer le rituel" remains readable and thumb reachable;
+- direct links such as `/story/long-sharing-family-rainbow` open without a 404;
+- FR/EN translations stay directly below the matching Amharic sentence;
+- the bottom dock does not hide the last readable line;
+- dark mode remains comfortable in a dim room;
+- the app can be installed from the browser and opens in standalone mode;
+- a previously opened page remains readable after going offline.

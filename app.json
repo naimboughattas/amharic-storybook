@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "storybook-amharique-mvp",
+    "name": "Histoires amhariques",
     "slug": "storybook-amharique-mvp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,7 +21,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png",
-      "bundler": "metro"
+      "bundler": "metro",
+      "name": "Histoires amhariques",
+      "shortName": "Amharic Stories",
+      "themeColor": "#f8efe3",
+      "backgroundColor": "#fff8ef"
     }
   }
 }
