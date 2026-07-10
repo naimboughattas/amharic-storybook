@@ -3,6 +3,7 @@ import { useCallback, useMemo, useSyncExternalStore } from "react";
 import type { InterfaceLanguage } from "@/features/i18n/translations";
 import type { ThemeMode } from "@/theme/colors";
 import {
+  type ReaderScale,
   getProgressState,
   setProgressState,
   subscribeToProgress,
@@ -64,6 +65,10 @@ export function useReadingProgress() {
     setProgressState((current) => ({ ...current, language }));
   }, []);
 
+  const setReaderScale = useCallback((readerScale: ReaderScale) => {
+    setProgressState((current) => ({ ...current, readerScale }));
+  }, []);
+
   return {
     ...progress,
     favoriteIds,
@@ -72,6 +77,7 @@ export function useReadingProgress() {
     markRead,
     setLastPage,
     setLanguage,
+    setReaderScale,
     setTheme,
   };
 }

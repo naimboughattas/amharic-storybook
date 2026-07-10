@@ -18,11 +18,13 @@ type Props = {
   story: Story;
   palette: AppPalette;
   language: InterfaceLanguage;
+  compact?: boolean;
 };
 
-export function TonightStoryCard({ story, palette, language }: Props) {
+export function TonightStoryCard({ story, palette, language, compact }: Props) {
   const router = useRouter();
   const readingTips = getStoryReadingTips(story, language);
+  const visibleTips = compact ? readingTips.slice(0, 1) : readingTips.slice(0, 2);
 
   return (
     <View
@@ -31,8 +33,8 @@ export function TonightStoryCard({ story, palette, language }: Props) {
         borderColor: palette.border,
         borderRadius: radius.md,
         borderWidth: 1,
-        gap: spacing.lg,
-        padding: spacing.lg,
+        gap: compact ? spacing.md : spacing.lg,
+        padding: compact ? spacing.md : spacing.lg,
       }}
     >
       <View style={{ gap: spacing.xs }}>
@@ -72,7 +74,7 @@ export function TonightStoryCard({ story, palette, language }: Props) {
         <Text selectable style={[typography.subtitle, { color: palette.text }]}>
           {language === "en" ? "Small reading guide" : "Petit guide de lecture"}
         </Text>
-        {readingTips.slice(0, 2).map((tip) => (
+        {visibleTips.map((tip) => (
           <Text key={tip} selectable style={[typography.small, { color: palette.mutedText }]}>
             - {tip}
           </Text>

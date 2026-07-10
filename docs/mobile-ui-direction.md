@@ -26,6 +26,7 @@ reading.
 - Technical content must not appear before the text in the reading ritual.
 - Pause mode should calm the screen, not feel like an error state.
 - FR/EN translations must be smaller and secondary under Amharic.
+- Reader text size should be adjustable without leaving the story.
 
 ## Ritual Mode
 
@@ -53,7 +54,6 @@ before the story.
 
 - Add a gentle animation when opening the info sheet.
 - Add a "very low light" mode for reading in the dark.
-- Add a text-size setting in the dock or info sheet.
 - Test a dedicated Amharic font on iOS and Android.
 
 ## Mobile Web QA Checklist

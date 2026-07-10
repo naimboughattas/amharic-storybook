@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";
 import { useMemo, useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View, useWindowDimensions } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
 import {
@@ -21,12 +21,14 @@ import { spacing } from "@/theme/spacing";
 import { typography } from "@/theme/typography";
 
 export default function HomeScreen() {
+  const { width } = useWindowDimensions();
   const [level, setLevel] = useState<LevelFilterValue>("all");
   const [scope, setScope] = useState<CatalogScope>("all");
   const [duration, setDuration] = useState<DurationFilterValue>("all");
   const progress = useReadingProgress();
   const palette = colors[progress.theme];
   const language = progress.language;
+  const isCompact = width < 430;
   const tonightStory = useMemo(() => getTonightStory(), []);
   const bedtimeCount = useMemo(
     () => stories.filter((story) => story.bedtimeFit !== "not_bedtime").length,
@@ -65,8 +67,8 @@ export default function HomeScreen() {
       <ScrollView
         contentContainerStyle={{
           backgroundColor: palette.background,
-          gap: spacing.xl,
-          padding: spacing.lg,
+          gap: isCompact ? spacing.lg : spacing.xl,
+          padding: isCompact ? spacing.md : spacing.lg,
           paddingBottom: spacing.xxl,
         }}
         contentInsetAdjustmentBehavior="automatic"
@@ -77,19 +79,30 @@ export default function HomeScreen() {
             style={{
               alignItems: "flex-start",
               flexDirection: "row",
-              gap: spacing.md,
+              flexWrap: isCompact ? "wrap" : "nowrap",
+              gap: isCompact ? spacing.sm : spacing.md,
               justifyContent: "space-between",
             }}
           >
-            <View style={{ flex: 1, gap: spacing.xs }}>
-              <Text selectable style={[typography.appTitle, { color: palette.text }]}>
+            <View style={{ flex: 1, gap: spacing.xs, minWidth: 0 }}>
+              <Text
+                selectable
+                style={[
+                  typography.appTitle,
+                  {
+                    color: palette.text,
+                    fontSize: isCompact ? 28 : typography.appTitle.fontSize,
+                    lineHeight: isCompact ? 34 : typography.appTitle.lineHeight,
+                  },
+                ]}
+              >
                 {uiText[language].appTitle}
               </Text>
               <Text selectable style={[typography.body, { color: palette.mutedText }]}>
                 {uiText[language].bedtimeTagline}
               </Text>
             </View>
-            <View style={{ alignItems: "flex-end", gap: spacing.sm }}>
+            <View style={{ alignItems: "flex-end", flexShrink: 0, gap: spacing.sm }}>
               <LanguageToggle
                 language={language}
                 onChange={progress.setLanguage}
@@ -105,7 +118,12 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        <TonightStoryCard language={language} palette={palette} story={tonightStory} />
+        <TonightStoryCard
+          compact={isCompact}
+          language={language}
+          palette={palette}
+          story={tonightStory}
+        />
 
         <View style={{ gap: spacing.md }}>
           <View style={{ gap: spacing.xs }}>

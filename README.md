@@ -60,6 +60,7 @@ docs/i18n-translation-plan.md
 - Thumb-friendly floating dock: previous, pause/resume, next, and info.
 - Bedtime reading guide: time left, narration tip, and pause ritual.
 - Local progress: completed stories, favorites, last page, theme, and language.
+- Persistent reader text-size controls for bedtime comfort.
 - Light / dark mode.
 - Secondary info sheet for sources, credits, license, and validation status.
 - Per-story quality checklist: license, native review, child test,

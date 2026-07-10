@@ -6,6 +6,7 @@ import { QualityChecklist } from "@/components/QualityChecklist";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ValidationStatusBadge } from "@/components/ValidationStatusBadge";
 import type { InterfaceLanguage } from "@/features/i18n/translations";
+import type { ReaderScale } from "@/features/progress/progressStorage";
 import {
   bedtimeFitLabels,
   durationBucketLabels,
@@ -32,12 +33,14 @@ type Props = {
   theme: ThemeMode;
   language: InterfaceLanguage;
   palette: AppPalette;
+  readerScale: ReaderScale;
   onBackPress: () => void;
   onLanguageChange: (language: InterfaceLanguage) => void;
   onThemeChange: (theme: ThemeMode) => void;
   onFavoritePress: () => void;
   onMarkRead: () => void;
   onPageChange: (page: number) => void;
+  onReaderScaleChange: (scale: ReaderScale) => void;
 };
 
 type RitualButtonProps = {
@@ -46,6 +49,14 @@ type RitualButtonProps = {
   disabled?: boolean;
   palette: AppPalette;
   onPress: () => void;
+};
+
+const readerScales: ReaderScale[] = ["small", "regular", "large"];
+
+const readerScaleMultipliers: Record<ReaderScale, number> = {
+  small: 0.92,
+  regular: 1,
+  large: 1.14,
 };
 
 function RitualButton({
@@ -92,6 +103,42 @@ function RitualButton({
   );
 }
 
+type ReaderScaleButtonProps = {
+  label: string;
+  disabled: boolean;
+  palette: AppPalette;
+  onPress: () => void;
+};
+
+function ReaderScaleButton({ label, disabled, palette, onPress }: ReaderScaleButtonProps) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      disabled={disabled}
+      onPress={onPress}
+      style={({ pressed }) => ({
+        alignItems: "center",
+        backgroundColor: palette.surface,
+        borderColor: palette.border,
+        borderRadius: radius.pill,
+        borderWidth: 1,
+        minHeight: 38,
+        minWidth: 54,
+        justifyContent: "center",
+        opacity: disabled ? 0.38 : pressed ? 0.72 : 1,
+        paddingHorizontal: spacing.md,
+      })}
+    >
+      <Text
+        selectable
+        style={[typography.small, { color: palette.text, fontWeight: "900", textAlign: "center" }]}
+      >
+        {label}
+      </Text>
+    </Pressable>
+  );
+}
+
 function getRemainingMinutes(story: Story, currentPage: number, totalPages: number) {
   return Math.max(1, Math.ceil(((totalPages - currentPage) / totalPages) * story.estimatedMinutes));
 }
@@ -112,12 +159,14 @@ export function StoryReader({
   theme,
   language,
   palette,
+  readerScale,
   onBackPress,
   onLanguageChange,
   onThemeChange,
   onFavoritePress,
   onMarkRead,
   onPageChange,
+  onReaderScaleChange,
 }: Props) {
   const { width } = useWindowDimensions();
   const totalPages = story.pages.length;
@@ -133,6 +182,15 @@ export function StoryReader({
   const hasSegmentTranslation = pageTranslationSegments?.some((segment) => segment.translation);
   const [isPaused, setIsPaused] = useState(false);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const normalizedReaderScale = readerScaleMultipliers[readerScale] ? readerScale : "regular";
+  const scaleIndex = readerScales.indexOf(normalizedReaderScale);
+  const scaleMultiplier = readerScaleMultipliers[normalizedReaderScale];
+  const baseAmharicSize = isCompact ? 26 : typography.amharicReader.fontSize;
+  const baseAmharicLineHeight = isCompact ? 42 : typography.amharicReader.lineHeight;
+  const amharicFontSize = Math.round(baseAmharicSize * scaleMultiplier);
+  const amharicLineHeight = Math.round(baseAmharicLineHeight * scaleMultiplier);
+  const translationFontSize = Math.round(typography.small.fontSize * Math.max(1, scaleMultiplier * 0.96));
+  const translationLineHeight = Math.round(20 * Math.max(1, scaleMultiplier * 0.96));
 
   useEffect(() => {
     setIsPaused(false);
@@ -145,6 +203,11 @@ export function StoryReader({
 
   function goToNextPage() {
     onPageChange(Math.min(currentPage + 1, totalPages - 1));
+  }
+
+  function changeReaderScale(direction: -1 | 1) {
+    const nextScale = readerScales[Math.min(Math.max(scaleIndex + direction, 0), readerScales.length - 1)];
+    onReaderScaleChange(nextScale);
   }
 
   const readerBackground = isBedtimeMode ? palette.bedtimeSurface : palette.background;
@@ -223,7 +286,7 @@ export function StoryReader({
           flexGrow: 1,
           justifyContent: "center",
           padding: isCompact ? spacing.md : spacing.lg,
-          paddingBottom: 118,
+          paddingBottom: isCompact ? 154 : 146,
         }}
         style={{ flex: 1 }}
       >
@@ -321,8 +384,8 @@ export function StoryReader({
                             typography.amharicReader,
                             {
                               color: isBedtimeMode ? palette.bedtimeText : palette.text,
-                              fontSize: isCompact ? 26 : typography.amharicReader.fontSize,
-                              lineHeight: isCompact ? 42 : typography.amharicReader.lineHeight,
+                              fontSize: amharicFontSize,
+                              lineHeight: amharicLineHeight,
                               textAlign: "left",
                               writingDirection: "ltr",
                             },
@@ -337,7 +400,8 @@ export function StoryReader({
                               typography.small,
                               {
                                 color: palette.mutedText,
-                                lineHeight: 20,
+                                fontSize: translationFontSize,
+                                lineHeight: translationLineHeight,
                               },
                             ]}
                           >
@@ -354,8 +418,8 @@ export function StoryReader({
                       typography.amharicReader,
                       {
                         color: isBedtimeMode ? palette.bedtimeText : palette.text,
-                        fontSize: isCompact ? 26 : typography.amharicReader.fontSize,
-                        lineHeight: isCompact ? 42 : typography.amharicReader.lineHeight,
+                        fontSize: amharicFontSize,
+                        lineHeight: amharicLineHeight,
                         textAlign: "left",
                         writingDirection: "ltr",
                       },
@@ -398,7 +462,7 @@ export function StoryReader({
             borderColor: palette.border,
             borderRadius: radius.md,
             borderWidth: 1,
-            bottom: 106,
+            bottom: isCompact ? 150 : 142,
             left: spacing.lg,
             maxHeight: "58%",
             padding: spacing.md,
@@ -524,6 +588,35 @@ export function StoryReader({
           shadowRadius: 22,
         }}
       >
+        <View
+          style={{
+            alignItems: "center",
+            flexDirection: "row",
+            gap: spacing.sm,
+            justifyContent: "space-between",
+          }}
+        >
+          <Text
+            selectable
+            style={[typography.small, { color: palette.mutedText, fontWeight: "800" }]}
+          >
+            {uiText[language].readerTextSize}
+          </Text>
+          <View style={{ flexDirection: "row", gap: spacing.sm }}>
+            <ReaderScaleButton
+              disabled={scaleIndex === 0}
+              label="A-"
+              onPress={() => changeReaderScale(-1)}
+              palette={palette}
+            />
+            <ReaderScaleButton
+              disabled={scaleIndex === readerScales.length - 1}
+              label="A+"
+              onPress={() => changeReaderScale(1)}
+              palette={palette}
+            />
+          </View>
+        </View>
         <View style={{ flexDirection: "row", gap: spacing.sm }}>
           <RitualButton
             disabled={isFirst}

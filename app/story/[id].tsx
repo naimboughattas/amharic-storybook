@@ -78,8 +78,10 @@ export default function StoryScreen() {
           onLanguageChange={progress.setLanguage}
           onMarkRead={() => progress.markRead(story.id)}
           onPageChange={handlePageChange}
+          onReaderScaleChange={progress.setReaderScale}
           onThemeChange={progress.setTheme}
           palette={palette}
+          readerScale={progress.readerScale}
           story={story}
           theme={progress.theme}
         />

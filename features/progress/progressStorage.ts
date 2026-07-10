@@ -5,12 +5,15 @@ import type { ThemeMode } from "@/theme/colors";
 
 const STORAGE_KEY = "storybook-amharique.progress.v1";
 
+export type ReaderScale = "small" | "regular" | "large";
+
 export type ReadingProgressState = {
   readStoryIds: string[];
   favoriteStoryIds: string[];
   lastPages: Record<string, number>;
   language: InterfaceLanguage;
   theme: ThemeMode;
+  readerScale: ReaderScale;
 };
 
 const defaultProgress: ReadingProgressState = {
@@ -18,6 +21,7 @@ const defaultProgress: ReadingProgressState = {
   favoriteStoryIds: [],
   lastPages: {},
   language: "fr",
+  readerScale: "regular",
   theme: "light",
 };
 
