@@ -83,8 +83,10 @@ export default function StoryScreen() {
           onPageChange={(page) => progress.setLastPage(storyId, page)}
           onReaderScaleChange={progress.setReaderScale}
           onThemeChange={progress.setTheme}
+          onToggleIllustrations={progress.toggleIllustrations}
           palette={palette}
           readerScale={progress.readerScale}
+          showIllustrations={progress.showIllustrations}
           story={story}
           theme={progress.theme}
         />

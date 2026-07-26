@@ -14,6 +14,7 @@ export type ReadingProgressState = {
   language: InterfaceLanguage;
   theme: ThemeMode;
   readerScale: ReaderScale;
+  showIllustrations: boolean;
 };
 
 const defaultProgress: ReadingProgressState = {
@@ -22,6 +23,7 @@ const defaultProgress: ReadingProgressState = {
   lastPages: {},
   language: "fr",
   readerScale: "regular",
+  showIllustrations: true,
   theme: "light",
 };
 
@@ -74,6 +76,10 @@ function normalize(value: unknown): ReadingProgressState {
     language: oneOf(stored.language, languages) ?? defaultProgress.language,
     theme: oneOf(stored.theme, themes) ?? defaultProgress.theme,
     readerScale: oneOf(stored.readerScale, readerScales) ?? defaultProgress.readerScale,
+    showIllustrations:
+      typeof stored.showIllustrations === "boolean"
+        ? stored.showIllustrations
+        : defaultProgress.showIllustrations,
   };
 }
 

@@ -29,6 +29,7 @@ const defaults = {
   lastPages: {},
   language: "fr",
   readerScale: "regular",
+  showIllustrations: true,
   theme: "light",
 };
 
@@ -56,6 +57,7 @@ describe("getProgressState", () => {
       lastPages: { a: 3 },
       language: "en" as const,
       readerScale: "large" as const,
+      showIllustrations: false,
       theme: "dark" as const,
     };
 

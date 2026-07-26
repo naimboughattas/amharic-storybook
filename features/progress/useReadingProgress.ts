@@ -69,6 +69,13 @@ export function useReadingProgress() {
     setProgressState((current) => ({ ...current, readerScale }));
   }, []);
 
+  const toggleIllustrations = useCallback(() => {
+    setProgressState((current) => ({
+      ...current,
+      showIllustrations: !current.showIllustrations,
+    }));
+  }, []);
+
   return {
     ...progress,
     favoriteIds,
@@ -79,5 +86,6 @@ export function useReadingProgress() {
     setLanguage,
     setReaderScale,
     setTheme,
+    toggleIllustrations,
   };
 }

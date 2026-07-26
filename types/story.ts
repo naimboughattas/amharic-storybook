@@ -1,3 +1,5 @@
+import type { StoryIllustration } from "@/data/asbLongReadingImages";
+
 export type StoryLevel = "beginner" | "intermediate" | "advanced";
 
 export type DurationBucket = "10_min" | "15_min" | "20_min";
@@ -68,6 +70,12 @@ export type Story = {
   readingTips: string[];
   readingTipsEn?: string[];
   pages: string[];
+  /**
+   * Aligned with `pages`: index N illustrates page N, `undefined` where the
+   * source album leaves a page unillustrated. Built by `compose()` in
+   * data/stories.ts so it cannot fall out of step with `pages`.
+   */
+  pageIllustrations?: (StoryIllustration | undefined)[];
   pageTranslations?: StoryPageTranslations;
   source: StorySource;
   sourceCredits?: StoryCredit[];

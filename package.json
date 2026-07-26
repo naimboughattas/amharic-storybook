@@ -34,6 +34,8 @@
     "build": "npx expo export -p web",
     "typecheck": "tsc --noEmit",
     "content:check": "node scripts/check-content.mjs",
+    "illustrations:import": "node scripts/import-illustrations.mjs",
+    "illustrations:check": "node scripts/import-illustrations.mjs --check",
     "lint": "expo lint",
     "test": "jest"
   },

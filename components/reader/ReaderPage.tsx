@@ -1,5 +1,6 @@
-import { Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 
+import type { StoryIllustration } from "@/data/asbLongReadingImages";
 import type { InterfaceLanguage } from "@/features/i18n/translations";
 import { uiText } from "@/features/i18n/translations";
 import type { AppPalette, ThemeMode } from "@/theme/colors";
@@ -20,6 +21,8 @@ export type ReaderTextSizes = {
 
 type Props = {
   amharicText: string;
+  illustration?: StoryIllustration;
+  illustrationHeight: number;
   segments?: ReaderPageSegment[];
   pageTranslation?: string;
   currentPage: number;
@@ -35,6 +38,8 @@ type Props = {
 
 export function ReaderPage({
   amharicText,
+  illustration,
+  illustrationHeight,
   segments,
   pageTranslation,
   currentPage,
@@ -82,6 +87,25 @@ export function ReaderPage({
         </View>
       ) : (
         <View style={{ gap: segments ? spacing.lg : 0 }}>
+          {illustration ? (
+            <Image
+              // Decorative: the Amharic text right below carries the meaning,
+              // and the parent reads the story aloud.
+              accessibilityElementsHidden
+              importantForAccessibility="no-hide-descendants"
+              // `contain` guarantees the artwork keeps its proportions even if
+              // the measured box is off; the height below keeps the Amharic
+              // text on screen instead of pushing it under the dock.
+              resizeMode="contain"
+              source={illustration.source}
+              style={{
+                borderRadius: radius.sm,
+                height: illustrationHeight,
+                marginBottom: spacing.lg,
+                width: "100%",
+              }}
+            />
+          ) : null}
           {segments ? (
             <>
               {hasSegmentTranslation ? (

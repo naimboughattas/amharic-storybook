@@ -14,6 +14,8 @@ type Props = {
   isDetailsOpen: boolean;
   canShrinkText: boolean;
   canGrowText: boolean;
+  canToggleIllustrations: boolean;
+  showIllustrations: boolean;
   language: InterfaceLanguage;
   palette: AppPalette;
   theme: ThemeMode;
@@ -23,6 +25,7 @@ type Props = {
   onToggleDetails: () => void;
   onShrinkText: () => void;
   onGrowText: () => void;
+  onToggleIllustrations: () => void;
 };
 
 function ScaleButton({
@@ -74,6 +77,8 @@ export function ReaderDock({
   isDetailsOpen,
   canShrinkText,
   canGrowText,
+  canToggleIllustrations,
+  showIllustrations,
   language,
   palette,
   theme,
@@ -83,6 +88,7 @@ export function ReaderDock({
   onToggleDetails,
   onShrinkText,
   onGrowText,
+  onToggleIllustrations,
 }: Props) {
   return (
     <View
@@ -115,6 +121,23 @@ export function ReaderDock({
           {uiText[language].readerTextSize}
         </Text>
         <View style={{ flexDirection: "row", gap: spacing.sm }}>
+          {canToggleIllustrations ? (
+            <ScaleButton
+              accessibilityLabel={
+                showIllustrations
+                  ? uiText[language].hideIllustrations
+                  : uiText[language].showIllustrations
+              }
+              disabled={false}
+              label={
+                showIllustrations
+                  ? uiText[language].illustrationsOn
+                  : uiText[language].illustrationsOff
+              }
+              onPress={onToggleIllustrations}
+              palette={palette}
+            />
+          ) : null}
           <ScaleButton
             accessibilityLabel={uiText[language].readerTextSmaller}
             disabled={!canShrinkText}

@@ -18,6 +18,7 @@ import { getRemainingMinutes } from "@/features/reading/readingTime";
 import type { AppPalette, ThemeMode } from "@/theme/colors";
 import { radius, spacing } from "@/theme/spacing";
 import { typography } from "@/theme/typography";
+import type { StoryIllustration } from "@/data/asbLongReadingImages";
 import type { Story } from "@/types/story";
 
 type Props = {
@@ -29,6 +30,7 @@ type Props = {
   language: InterfaceLanguage;
   palette: AppPalette;
   readerScale: ReaderScale;
+  showIllustrations: boolean;
   onBackPress: () => void;
   onLanguageChange: (language: InterfaceLanguage) => void;
   onThemeChange: (theme: ThemeMode) => void;
@@ -36,7 +38,10 @@ type Props = {
   onMarkRead: () => void;
   onPageChange: (page: number) => void;
   onReaderScaleChange: (scale: ReaderScale) => void;
+  onToggleIllustrations: () => void;
 };
+
+const readerColumnMaxWidth = 720;
 
 const readerScales: ReaderScale[] = ["small", "regular", "large"];
 
@@ -54,6 +59,29 @@ function getNarrationTip(story: Story, readingTips: string[], currentPage: numbe
   return readingTips[currentPage % readingTips.length];
 }
 
+/**
+ * Height the illustration gets on this screen.
+ *
+ * Derived rather than left to `aspectRatio`, which react-native-web ignores
+ * here and renders the artwork stretched. The cap keeps the opening lines of
+ * Amharic visible without scrolling, which is what the parent is reading from.
+ */
+function getIllustrationHeight(
+  illustration: StoryIllustration,
+  windowWidth: number,
+  windowHeight: number,
+  isCompact: boolean,
+) {
+  const outerPadding = isCompact ? spacing.md : spacing.lg;
+  const cardPadding = isCompact ? spacing.md : spacing.xl;
+  const columnWidth =
+    Math.min(readerColumnMaxWidth, windowWidth - outerPadding * 2) - cardPadding * 2;
+
+  return Math.round(
+    Math.min(columnWidth / illustration.aspectRatio, windowHeight * 0.34),
+  );
+}
+
 export function StoryReader({
   story,
   currentPage,
@@ -63,6 +91,7 @@ export function StoryReader({
   language,
   palette,
   readerScale,
+  showIllustrations,
   onBackPress,
   onLanguageChange,
   onThemeChange,
@@ -70,8 +99,9 @@ export function StoryReader({
   onMarkRead,
   onPageChange,
   onReaderScaleChange,
+  onToggleIllustrations,
 }: Props) {
-  const { width } = useWindowDimensions();
+  const { height, width } = useWindowDimensions();
   const [isPaused, setIsPaused] = useState(false);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const pageScrollRef = useRef<ScrollView>(null);
@@ -87,6 +117,13 @@ export function StoryReader({
   // Falls back to the Amharic title when no localized one exists; showing it
   // twice in a row helps nobody.
   const localizedTitle = getStoryTitle(story, language);
+  const illustration = showIllustrations
+    ? story.pageIllustrations?.[currentPage]
+    : undefined;
+  const hasIllustrations = story.pageIllustrations?.some(Boolean) ?? false;
+  const illustrationHeight = illustration
+    ? getIllustrationHeight(illustration, width, height, isCompact)
+    : 0;
 
   const scaleIndex = readerScales.indexOf(readerScale);
   const scaleMultiplier = readerScaleMultipliers[readerScale];
@@ -149,7 +186,14 @@ export function StoryReader({
         ref={pageScrollRef}
         style={{ flex: 1 }}
       >
-        <View style={{ alignSelf: "center", gap: spacing.lg, maxWidth: 720, width: "100%" }}>
+        <View
+          style={{
+            alignSelf: "center",
+            gap: spacing.lg,
+            maxWidth: readerColumnMaxWidth,
+            width: "100%",
+          }}
+        >
           <View style={{ alignItems: "center", gap: spacing.sm }}>
             <ValidationStatusBadge
               language={language}
@@ -212,6 +256,8 @@ export function StoryReader({
           <ReaderPage
             amharicText={story.pages[currentPage]}
             currentPage={currentPage}
+            illustration={illustration}
+            illustrationHeight={illustrationHeight}
             isBedtimeMode={isBedtimeMode}
             isCompact={isCompact}
             isPaused={isPaused}
@@ -243,6 +289,7 @@ export function StoryReader({
       <ReaderDock
         canGrowText={scaleIndex < readerScales.length - 1}
         canShrinkText={scaleIndex > 0}
+        canToggleIllustrations={hasIllustrations}
         isDetailsOpen={isDetailsOpen}
         isFirstPage={currentPage === 0}
         isLastPage={currentPage === totalPages - 1}
@@ -253,8 +300,10 @@ export function StoryReader({
         onPreviousPage={() => onPageChange(Math.max(currentPage - 1, 0))}
         onShrinkText={() => changeReaderScale(-1)}
         onToggleDetails={() => setIsDetailsOpen((open) => !open)}
+        onToggleIllustrations={onToggleIllustrations}
         onTogglePause={() => setIsPaused((paused) => !paused)}
         palette={palette}
+        showIllustrations={showIllustrations}
         theme={theme}
       />
     </View>
