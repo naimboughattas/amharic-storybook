@@ -1,6 +1,8 @@
 import { asbLongReadingPages } from "@/data/asbLongReadingPages";
 import type { StoryIllustration } from "@/data/asbLongReadingImages";
 import { asbLongReadingImages } from "@/data/asbLongReadingImages";
+import type { TonightContext } from "@/features/reading/tonightStory";
+import { pickTonightStory } from "@/features/reading/tonightStory";
 import type { Story, StoryCredit, StorySource } from "@/types/story";
 
 const africanStorybookSource: StorySource = {
@@ -1453,10 +1455,6 @@ export function findStoryById(id: string) {
   return stories.find((story) => story.id === id);
 }
 
-export function getTonightStory() {
-  return (
-    stories.find((story) => story.bedtimeFit === "ideal") ??
-    stories.find((story) => story.bedtimeFit === "good") ??
-    stories[0]
-  );
+export function getTonightStory(context?: TonightContext) {
+  return pickTonightStory(stories, context) ?? stories[0];
 }
