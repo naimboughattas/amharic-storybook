@@ -11,8 +11,13 @@ npm run start
 npm run web
 npm run build
 npm run typecheck
+npm run lint
+npm test
 npm run content:check
 ```
+
+`typecheck`, `lint`, `test`, and `content:check` are the four gates run by CI on
+every push and pull request (`.github/workflows/ci.yml`).
 
 The project was generated with Expo SDK 57. React Native 0.86 emits a warning
 when Node is outside the supported ranges (`^20.19.4`, `^22.13.0`, `^24.3.0`,
@@ -39,6 +44,7 @@ app/
   index.tsx
   story/[id].tsx
 components/
+  reader/          # reader header, page, dock, details sheet
 data/
 features/progress/
 public/
@@ -62,6 +68,7 @@ docs/i18n-translation-plan.md
 - Bedtime reading guide: time left, narration tip, and pause ritual.
 - Local progress: completed stories, favorites, last page, theme, and language.
 - Persistent reader text-size controls for bedtime comfort.
+- Screen kept awake while a reading is open, so reading aloud is not interrupted.
 - Light / dark mode.
 - Secondary info sheet for sources, credits, license, and validation status.
 - Per-story quality checklist: license, native review, child test,
@@ -143,6 +150,17 @@ contains:
 - `public/register-sw.js` and `public/sw.js` for app-shell caching;
 - `public/offline.html` as a fallback when a fresh navigation is unavailable.
 
+The worker serves same-origin GETs cache-first, so `register-sw.js` skips
+registration on localhost (and unregisters any leftover worker): otherwise a dev
+server keeps replaying the previously cached Metro bundle instead of the code
+being edited.
+
+All non-Amharic strings live in `features/i18n/translations.ts`. `uiText` is
+typed against its French dictionary, so an untranslated key fails `npm run
+typecheck` rather than leaking French into the English interface. Sentences with
+values use `formatText()` templates instead of concatenated fragments, because
+French and English do not share word order.
+
 Global web metadata lives in `public/index.html`, the Expo SPA template used by
 `npm run build`.
 
@@ -160,5 +178,7 @@ Global web metadata lives in `public/index.html`, the Expo SPA template used by
 
 - Add a tested Amharic font for iOS and Android if the system font is not enough.
 - Add a controlled import workflow for CC BY content.
-- Add component tests for local storage.
+- Add illustrations from the credited CC BY albums.
+- Version `CACHE_NAME` in `public/sw.js` per deployment so old bundles are
+  evicted instead of accumulating.
 - Run visual QA on real small screens.
