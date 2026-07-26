@@ -103,6 +103,7 @@ export function StoryReader({
 }: Props) {
   const { height, width } = useWindowDimensions();
   const [isPaused, setIsPaused] = useState(false);
+  const [isFinished, setIsFinished] = useState(false);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const pageScrollRef = useRef<ScrollView>(null);
 
@@ -147,6 +148,23 @@ export function StoryReader({
     pageScrollRef.current?.scrollTo({ y: 0, animated: false });
   }, [currentPage]);
 
+  function goToPage(page: number) {
+    setIsFinished(false);
+    onPageChange(page);
+  }
+
+  function finishReading() {
+    onMarkRead();
+    setIsPaused(false);
+    setIsDetailsOpen(false);
+    setIsFinished(true);
+  }
+
+  function rereadFromStart() {
+    setIsFinished(false);
+    onPageChange(0);
+  }
+
   function changeReaderScale(direction: -1 | 1) {
     const nextIndex = Math.min(Math.max(scaleIndex + direction, 0), readerScales.length - 1);
     onReaderScaleChange(readerScales[nextIndex]);
@@ -165,6 +183,7 @@ export function StoryReader({
         currentPage={currentPage}
         isBedtimeMode={isBedtimeMode}
         isCompact={isCompact}
+        isFinished={isFinished}
         language={language}
         onBackPress={onBackPress}
         onLanguageChange={onLanguageChange}
@@ -260,6 +279,7 @@ export function StoryReader({
             illustrationHeight={illustrationHeight}
             isBedtimeMode={isBedtimeMode}
             isCompact={isCompact}
+            isFinished={isFinished}
             isPaused={isPaused}
             language={language}
             pageTranslation={pageTranslation}
@@ -291,13 +311,17 @@ export function StoryReader({
         canShrinkText={scaleIndex > 0}
         canToggleIllustrations={hasIllustrations}
         isDetailsOpen={isDetailsOpen}
+        isFinished={isFinished}
         isFirstPage={currentPage === 0}
         isLastPage={currentPage === totalPages - 1}
         isPaused={isPaused}
         language={language}
+        onBackPress={onBackPress}
+        onFinish={finishReading}
         onGrowText={() => changeReaderScale(1)}
-        onNextPage={() => onPageChange(Math.min(currentPage + 1, totalPages - 1))}
-        onPreviousPage={() => onPageChange(Math.max(currentPage - 1, 0))}
+        onNextPage={() => goToPage(Math.min(currentPage + 1, totalPages - 1))}
+        onPreviousPage={() => goToPage(Math.max(currentPage - 1, 0))}
+        onReread={rereadFromStart}
         onShrinkText={() => changeReaderScale(-1)}
         onToggleDetails={() => setIsDetailsOpen((open) => !open)}
         onToggleIllustrations={onToggleIllustrations}

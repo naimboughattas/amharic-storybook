@@ -10,6 +10,7 @@ import { typography } from "@/theme/typography";
 type Props = {
   isFirstPage: boolean;
   isLastPage: boolean;
+  isFinished: boolean;
   isPaused: boolean;
   isDetailsOpen: boolean;
   canShrinkText: boolean;
@@ -21,11 +22,14 @@ type Props = {
   theme: ThemeMode;
   onPreviousPage: () => void;
   onNextPage: () => void;
+  onFinish: () => void;
+  onReread: () => void;
   onTogglePause: () => void;
   onToggleDetails: () => void;
   onShrinkText: () => void;
   onGrowText: () => void;
   onToggleIllustrations: () => void;
+  onBackPress: () => void;
 };
 
 function ScaleButton({
@@ -73,6 +77,7 @@ function ScaleButton({
 export function ReaderDock({
   isFirstPage,
   isLastPage,
+  isFinished,
   isPaused,
   isDetailsOpen,
   canShrinkText,
@@ -84,11 +89,14 @@ export function ReaderDock({
   theme,
   onPreviousPage,
   onNextPage,
+  onFinish,
+  onReread,
   onTogglePause,
   onToggleDetails,
   onShrinkText,
   onGrowText,
   onToggleIllustrations,
+  onBackPress,
 }: Props) {
   return (
     <View
@@ -154,31 +162,47 @@ export function ReaderDock({
           />
         </View>
       </View>
-      <View style={{ flexDirection: "row", gap: spacing.sm }}>
-        <RitualButton
-          disabled={isFirstPage}
-          label={uiText[language].previous}
-          onPress={onPreviousPage}
-          palette={palette}
-        />
-        <RitualButton
-          label={isPaused ? uiText[language].resume : uiText[language].pause}
-          onPress={onTogglePause}
-          palette={palette}
-        />
-        <RitualButton
-          disabled={isLastPage}
-          label={uiText[language].next}
-          onPress={onNextPage}
-          palette={palette}
-          tone="primary"
-        />
-        <RitualButton
-          label={isDetailsOpen ? uiText[language].close : uiText[language].info}
-          onPress={onToggleDetails}
-          palette={palette}
-        />
-      </View>
+      {isFinished ? (
+        <View style={{ flexDirection: "row", gap: spacing.sm }}>
+          <RitualButton
+            label={uiText[language].reread}
+            onPress={onReread}
+            palette={palette}
+          />
+          <RitualButton
+            label={uiText[language].return}
+            onPress={onBackPress}
+            palette={palette}
+            tone="primary"
+          />
+        </View>
+      ) : (
+        <View style={{ flexDirection: "row", gap: spacing.sm }}>
+          <RitualButton
+            disabled={isFirstPage}
+            label={uiText[language].previous}
+            onPress={onPreviousPage}
+            palette={palette}
+          />
+          <RitualButton
+            label={isPaused ? uiText[language].resume : uiText[language].pause}
+            onPress={onTogglePause}
+            palette={palette}
+          />
+          {/* The last page ends the ritual instead of offering a dead button. */}
+          <RitualButton
+            label={isLastPage ? uiText[language].finishRitual : uiText[language].next}
+            onPress={isLastPage ? onFinish : onNextPage}
+            palette={palette}
+            tone="primary"
+          />
+          <RitualButton
+            label={isDetailsOpen ? uiText[language].close : uiText[language].info}
+            onPress={onToggleDetails}
+            palette={palette}
+          />
+        </View>
+      )}
     </View>
   );
 }

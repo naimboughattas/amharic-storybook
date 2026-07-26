@@ -13,6 +13,7 @@ type Props = {
   totalPages: number;
   remainingMinutes: number;
   isBedtimeMode: boolean;
+  isFinished: boolean;
   isCompact: boolean;
   language: InterfaceLanguage;
   palette: AppPalette;
@@ -28,6 +29,7 @@ export function ReaderHeader({
   totalPages,
   remainingMinutes,
   isBedtimeMode,
+  isFinished,
   isCompact,
   language,
   palette,
@@ -75,16 +77,19 @@ export function ReaderHeader({
         >
           {isBedtimeMode ? uiText[language].bedtimeMode : uiText[language].readingMode}
         </Text>
-        <Text
-          numberOfLines={isCompact ? 2 : 1}
-          style={[typography.small, { color: readerText, opacity: 0.78, textAlign: "center" }]}
-        >
-          {formatText(uiText[language].pageCounter, {
-            current: currentPage + 1,
-            total: totalPages,
-          })}{" "}
-          · {formatText(uiText[language].minutesLeft, { minutes: remainingMinutes })}
-        </Text>
+        {/* A countdown is meaningless once the reading is closed. */}
+        {isFinished ? null : (
+          <Text
+            numberOfLines={isCompact ? 2 : 1}
+            style={[typography.small, { color: readerText, opacity: 0.78, textAlign: "center" }]}
+          >
+            {formatText(uiText[language].pageCounter, {
+              current: currentPage + 1,
+              total: totalPages,
+            })}{" "}
+            · {formatText(uiText[language].minutesLeft, { minutes: remainingMinutes })}
+          </Text>
+        )}
       </View>
 
       <View style={{ alignItems: "flex-end", flexShrink: 0, gap: spacing.xs }}>
