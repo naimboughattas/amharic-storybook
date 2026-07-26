@@ -72,52 +72,31 @@ const qualitySteps: QualityStep[] = [
   },
 ];
 
+/** Most advanced milestone reached, checked from the strongest one down. */
 function getQualitySummary(story: Story, language: InterfaceLanguage) {
-  if (story.qualityChecks.publicationReady) {
-    if (language === "en") {
-      return "Ready for publication: license, native review, FR/EN proofreading and child test are validated.";
-    }
+  const text = uiText[language];
 
-    return "Lecture prête pour publication : licence, revue native, relecture FR/EN et test enfant sont validés.";
+  if (story.qualityChecks.publicationReady) {
+    return text.qualitySummaryPublicationReady;
   }
 
   if (story.qualityChecks.licenseVerified) {
-    if (language === "en") {
-      return "Candidate reading: rights checked; native review, FR/EN proofreading and child test still needed before publication.";
-    }
-
-    return "Lecture candidate : droits vérifiés ; revue native, relecture FR/EN et test enfant restent nécessaires avant publication.";
+    return text.qualitySummaryLicensed;
   }
 
   if (story.qualityChecks.childTested) {
-    if (language === "en") {
-      return "Reading tested with a child. Rights and final review still need confirmation.";
-    }
-
-    return "Lecture testée avec un enfant. Les droits et la revue finale restent à confirmer.";
+    return text.qualitySummaryChildTested;
   }
 
   if (story.qualityChecks.nativeReviewed) {
-    if (language === "en") {
-      return "Reading reviewed by a native speaker. Child test and rights still need confirmation.";
-    }
-
-    return "Lecture relue par une personne native. La relecture FR/EN, le test enfant et les droits restent à confirmer.";
+    return text.qualitySummaryNativeReviewed;
   }
 
   if (story.validationStatus === "translated") {
-    if (language === "en") {
-      return "Text translated or written, but not ready for the public ritual yet.";
-    }
-
-    return "Texte traduit ou rédigé, mais pas encore prêt pour le rituel public.";
+    return text.qualitySummaryTranslated;
   }
 
-  if (language === "en") {
-    return "Editorial draft: keep out of publication.";
-  }
-
-  return "Brouillon éditorial : garder hors publication.";
+  return text.qualitySummaryDraft;
 }
 
 export function QualityChecklist({ story, palette, language }: Props) {
@@ -173,7 +152,7 @@ export function QualityChecklist({ story, palette, language }: Props) {
                   },
                 ]}
               >
-                {isDone ? "OK" : language === "en" ? "To do" : "À faire"}
+                {isDone ? "OK" : uiText[language].todo}
               </Text>
               <View style={{ flex: 1, gap: spacing.xs }}>
                 <Text selectable style={[typography.small, { color: palette.text }]}>
@@ -190,20 +169,18 @@ export function QualityChecklist({ story, palette, language }: Props) {
 
       <View style={{ gap: spacing.xs }}>
         <Text selectable style={[typography.small, { color: palette.text }]}>
-          {language === "en" ? "Editorial note" : "Note éditoriale"}
+          {uiText[language].editorialNote}
         </Text>
         <Text selectable style={[typography.small, { color: palette.mutedText }]}>
           {getQualityEditorialNote(story, language)}
         </Text>
         <Text selectable style={[typography.small, { color: palette.mutedText }]}>
-          {language === "en" ? "Modifications" : "Modifications"} :{" "}
+          {uiText[language].modifications} :{" "}
           {getQualitySourceModifications(story, language)}
         </Text>
         {isPublishedStatusIncomplete ? (
           <Text selectable style={[typography.small, { color: palette.danger }]}>
-            {language === "en"
-              ? "Warning: published status requires every quality step to be validated."
-              : "Attention : le statut publié demande toutes les étapes qualité validées."}
+            {uiText[language].publishedStatusWarning}
           </Text>
         ) : null}
       </View>

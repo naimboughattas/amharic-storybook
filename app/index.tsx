@@ -15,7 +15,7 @@ import { StoryCard } from "@/components/StoryCard";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { TonightStoryCard } from "@/components/TonightStoryCard";
 import { getTonightStory, stories } from "@/data/stories";
-import { uiText } from "@/features/i18n/translations";
+import { formatText, uiText } from "@/features/i18n/translations";
 import { useReadingProgress } from "@/features/progress/useReadingProgress";
 import { colors } from "@/theme/colors";
 import { spacing } from "@/theme/spacing";
@@ -36,10 +36,12 @@ export default function HomeScreen() {
     () => stories.filter((story) => story.bedtimeFit !== "not_bedtime").length,
     [],
   );
-  const bedtimeCountLabel =
+  const catalogSubtitle = formatText(
     bedtimeCount > 1
-      ? `${bedtimeCount} ${uiText[language].bedtimeAvailablePlural}`
-      : `1 ${uiText[language].bedtimeAvailable}`;
+      ? uiText[language].catalogSubtitleOther
+      : uiText[language].catalogSubtitleOne,
+    { count: bedtimeCount, total: stories.length },
+  );
 
   const filteredStories = useMemo(
     () =>
@@ -66,13 +68,8 @@ export default function HomeScreen() {
 
   return (
     <>
-      <Stack.Screen
-        options={{
-          headerStyle: { backgroundColor: palette.background },
-          headerTintColor: palette.text,
-          title: language === "en" ? "Bedtime story" : "Histoire du soir",
-        }}
-      />
+      {/* Header colors come from the root layout; only the title is per-screen. */}
+      <Stack.Screen options={{ title: uiText[language].homeHeaderTitle }} />
       <StatusBar style={progress.theme === "dark" ? "light" : "dark"} />
       <ScrollView
         contentContainerStyle={{
@@ -151,10 +148,7 @@ export default function HomeScreen() {
                 {uiText[language].catalogTitle}
               </Text>
               <Text selectable style={[typography.body, { color: palette.mutedText }]}>
-                {bedtimeCountLabel} {language === "en" ? "out of" : "sur"} {stories.length}.{" "}
-                {language === "en"
-                  ? "The others remain useful outside the ritual."
-                  : "Les autres restent utiles hors rituel."}
+                {catalogSubtitle}
               </Text>
             </View>
             <CatalogFilters
@@ -198,9 +192,7 @@ export default function HomeScreen() {
                 {uiText[language].progressTitle}
               </Text>
               <Text selectable style={[typography.body, { color: palette.mutedText }]}>
-                {language === "en"
-                  ? "Find favorites, completed readings, and stories already started."
-                  : "Retrouve les favoris, les lectures terminées et les histoires déjà commencées."}
+                {uiText[language].progressIntro}
               </Text>
             </View>
             {progressStories.length > 0 ? (

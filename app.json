@@ -12,7 +12,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#EAF5EF",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -24,8 +24,8 @@
       "bundler": "metro",
       "name": "Histoires amhariques",
       "shortName": "Amharic Stories",
-      "themeColor": "#f8efe3",
-      "backgroundColor": "#fff8ef"
+      "themeColor": "#F7FBF7",
+      "backgroundColor": "#F7FBF7"
     }
   }
 }

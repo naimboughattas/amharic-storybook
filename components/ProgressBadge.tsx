@@ -1,6 +1,7 @@
 import { Text, View } from "react-native";
 
 import type { InterfaceLanguage } from "@/features/i18n/translations";
+import { formatText, uiText } from "@/features/i18n/translations";
 import type { AppPalette } from "@/theme/colors";
 import { radius, spacing } from "@/theme/spacing";
 import { typography } from "@/theme/typography";
@@ -14,15 +15,17 @@ type Props = {
 };
 
 export function ProgressBadge({ isRead, lastPage, totalPages, palette, language }: Props) {
+  // A page saved against an older edition of the reading can sit past the end of
+  // the current one; the badge must not announce "Page 60/49".
+  const resumePage = lastPage === undefined ? undefined : Math.min(lastPage, totalPages - 1);
   const label = isRead
-    ? language === "en"
-      ? "Read"
-      : "Lu"
-    : lastPage !== undefined
-      ? `Page ${lastPage + 1}/${totalPages}`
-      : language === "en"
-        ? "New"
-        : "Nouveau";
+    ? uiText[language].badgeRead
+    : resumePage !== undefined
+      ? formatText(uiText[language].pageCounter, {
+          current: resumePage + 1,
+          total: totalPages,
+        })
+      : uiText[language].badgeNew;
 
   return (
     <View

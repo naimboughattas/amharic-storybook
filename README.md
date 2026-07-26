@@ -11,8 +11,14 @@ npm run start
 npm run web
 npm run build
 npm run typecheck
+npm run lint
+npm test
 npm run content:check
+npm run illustrations:check
 ```
+
+`typecheck`, `lint`, `test`, and `content:check` are the four gates run by CI on
+every push and pull request (`.github/workflows/ci.yml`).
 
 The project was generated with Expo SDK 57. React Native 0.86 emits a warning
 when Node is outside the supported ranges (`^20.19.4`, `^22.13.0`, `^24.3.0`,
@@ -39,6 +45,7 @@ app/
   index.tsx
   story/[id].tsx
 components/
+  reader/          # reader header, page, dock, details sheet
 data/
 features/progress/
 public/
@@ -61,7 +68,10 @@ docs/i18n-translation-plan.md
 - Thumb-friendly floating dock: previous, pause/resume, next, and info.
 - Bedtime reading guide: time left, narration tip, and pause ritual.
 - Local progress: completed stories, favorites, last page, theme, and language.
+- Per-page illustrations from the credited CC BY albums, with a persistent
+  toggle for parents who prefer the child to picture the scenes themselves.
 - Persistent reader text-size controls for bedtime comfort.
+- Screen kept awake while a reading is open, so reading aloud is not interrupted.
 - Light / dark mode.
 - Secondary info sheet for sources, credits, license, and validation status.
 - Per-story quality checklist: license, native review, child test,
@@ -112,6 +122,34 @@ Important fields:
 - `validationStatus` tracks the editorial workflow.
 - `tags` support future filters.
 
+## Illustrations
+
+`npm run illustrations:import` downloads the African Storybook page artwork for
+every album in `data/asbLongReadingPages.ts`, re-encodes it to WebP, and
+regenerates `data/asbLongReadingImages.ts`. It is idempotent: images already on
+disk are never re-fetched, and a second run produces an identical module.
+
+The script refuses to write anything unless the Amharic text on each album page
+still matches the text stored here, page for page. That check is the only thing
+guaranteeing an illustration belongs to the page it is shown on: a silently
+re-paginated album would otherwise shift every picture in the reading. Run
+`npm run illustrations:check` to verify alignment without downloading.
+
+Notes on the source material:
+
+- ASB serves every illustration as `Content-Type: image/png`, but many are JPEG
+  and they are not all square, so format and dimensions are read from the bytes.
+- Albums do not illustrate every page. `melokuhleDay` illustrates every second
+  page and `pickItUp` leaves its last page bare; `undefined` marks those.
+- Section headings inserted by `compose()` never carry an illustration.
+
+`compose()` in `data/stories.ts` builds `pages` and `pageIllustrations` in one
+pass so the two cannot drift apart, and `data/stories.test.ts` asserts it.
+
+Re-encoding needs `cwebp` (`brew install webp`). The originals total about
+20 MB; WebP brings that to roughly 5 MB, which matters because the images ship
+in the app bundle and the offline cache, not just the repository.
+
 ## License and Content Rules
 
 Current readings come from African Storybook and are marked `licensed`. They
@@ -143,6 +181,17 @@ contains:
 - `public/register-sw.js` and `public/sw.js` for app-shell caching;
 - `public/offline.html` as a fallback when a fresh navigation is unavailable.
 
+The worker serves same-origin GETs cache-first, so `register-sw.js` skips
+registration on localhost (and unregisters any leftover worker): otherwise a dev
+server keeps replaying the previously cached Metro bundle instead of the code
+being edited.
+
+All non-Amharic strings live in `features/i18n/translations.ts`. `uiText` is
+typed against its French dictionary, so an untranslated key fails `npm run
+typecheck` rather than leaking French into the English interface. Sentences with
+values use `formatText()` templates instead of concatenated fragments, because
+French and English do not share word order.
+
 Global web metadata lives in `public/index.html`, the Expo SPA template used by
 `npm run build`.
 
@@ -159,6 +208,8 @@ Global web metadata lives in `public/index.html`, the Expo SPA template used by
 ## Recommended Next Steps
 
 - Add a tested Amharic font for iOS and Android if the system font is not enough.
-- Add a controlled import workflow for CC BY content.
-- Add component tests for local storage.
+- Precache illustrations in the service worker; they are currently cached only
+  after a page has been viewed once, so a first offline reading shows no art.
+- Version `CACHE_NAME` in `public/sw.js` per deployment so old bundles are
+  evicted instead of accumulating.
 - Run visual QA on real small screens.

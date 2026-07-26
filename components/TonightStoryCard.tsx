@@ -25,6 +25,7 @@ export function TonightStoryCard({ story, palette, language, compact }: Props) {
   const router = useRouter();
   const readingTips = getStoryReadingTips(story, language);
   const visibleTips = compact ? readingTips.slice(0, 1) : readingTips.slice(0, 2);
+  const localizedTitle = getStoryTitle(story, language);
 
   return (
     <View
@@ -44,11 +45,14 @@ export function TonightStoryCard({ story, palette, language, compact }: Props) {
         <Text selectable style={[typography.title, { color: palette.text, flexShrink: 1, width: "100%" }]}>
           {story.titleAm}
         </Text>
-        {story.titleFr ? (
-          <Text selectable style={[typography.body, { color: palette.mutedText, flexShrink: 1, width: "100%" }]}>
-            {getStoryTitle(story, language)}
+        {localizedTitle === story.titleAm ? null : (
+          <Text
+            selectable
+            style={[typography.body, { color: palette.mutedText, flexShrink: 1, width: "100%" }]}
+          >
+            {localizedTitle}
           </Text>
-        ) : null}
+        )}
       </View>
 
       <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
@@ -59,7 +63,7 @@ export function TonightStoryCard({ story, palette, language, compact }: Props) {
           {story.estimatedMinutes} min
         </Text>
         <Text selectable style={[typography.small, { color: palette.mutedText }]}>
-          {story.ageRange} {language === "en" ? "years" : "ans"}
+          {story.ageRange} {uiText[language].years}
         </Text>
         <Text selectable style={[typography.small, { color: palette.mutedText }]}>
           {bedtimeFitLabels[language][story.bedtimeFit]}
@@ -72,7 +76,7 @@ export function TonightStoryCard({ story, palette, language, compact }: Props) {
 
       <View style={{ gap: spacing.xs }}>
         <Text selectable style={[typography.subtitle, { color: palette.text }]}>
-          {language === "en" ? "Small reading guide" : "Petit guide de lecture"}
+          {uiText[language].readingGuideTitle}
         </Text>
         {visibleTips.map((tip) => (
           <Text key={tip} selectable style={[typography.small, { color: palette.mutedText }]}>

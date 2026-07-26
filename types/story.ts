@@ -1,3 +1,5 @@
+import type { StoryIllustration } from "@/data/asbLongReadingImages";
+
 export type StoryLevel = "beginner" | "intermediate" | "advanced";
 
 export type DurationBucket = "10_min" | "15_min" | "20_min";
@@ -68,6 +70,12 @@ export type Story = {
   readingTips: string[];
   readingTipsEn?: string[];
   pages: string[];
+  /**
+   * Aligned with `pages`: index N illustrates page N, `undefined` where the
+   * source album leaves a page unillustrated. Built by `compose()` in
+   * data/stories.ts so it cannot fall out of step with `pages`.
+   */
+  pageIllustrations?: (StoryIllustration | undefined)[];
   pageTranslations?: StoryPageTranslations;
   source: StorySource;
   sourceCredits?: StoryCredit[];
@@ -78,31 +86,4 @@ export type Story = {
   validationStatus: ValidationStatus;
   culturalOrigin?: string;
   tags: string[];
-};
-
-export const storyLevelLabels: Record<StoryLevel, string> = {
-  beginner: "Débutant",
-  intermediate: "Intermédiaire",
-  advanced: "Avancé",
-};
-
-export const durationBucketLabels: Record<DurationBucket, string> = {
-  "10_min": "10 min",
-  "15_min": "15 min+",
-  "20_min": "20 min+",
-};
-
-export const bedtimeFitLabels: Record<BedtimeFit, string> = {
-  ideal: "Idéal coucher",
-  good: "Doux",
-  not_bedtime: "Bibliothèque",
-};
-
-export const validationStatusLabels: Record<ValidationStatus, string> = {
-  draft: "Brouillon",
-  translated: "Traduit",
-  native_reviewed: "Revu natif",
-  child_tested: "Testé enfant",
-  licensed: "Licence OK",
-  published: "Publié",
 };

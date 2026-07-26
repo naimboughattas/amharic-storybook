@@ -1,4 +1,6 @@
 import { asbLongReadingPages } from "@/data/asbLongReadingPages";
+import type { StoryIllustration } from "@/data/asbLongReadingImages";
+import { asbLongReadingImages } from "@/data/asbLongReadingImages";
 import type { Story, StoryCredit, StorySource } from "@/types/story";
 
 const africanStorybookSource: StorySource = {
@@ -31,8 +33,31 @@ function asbCredit(
   };
 }
 
-function section(title: string, pages: readonly string[]) {
-  return [`ክፍል፦ ${title}`, ...pages];
+type AlbumKey = keyof typeof asbLongReadingPages;
+
+/**
+ * Builds the pages and the illustrations of a compilation in one pass.
+ *
+ * Keeping them in two hand-written lists would let them drift, and a drifted
+ * list is worse than no illustration at all: every picture after the gap would
+ * belong to a different page of the story.
+ */
+function compose(sections: readonly { title: string; album: AlbumKey }[]) {
+  const pages: string[] = [];
+  const pageIllustrations: (StoryIllustration | undefined)[] = [];
+
+  for (const { title, album } of sections) {
+    // The section divider is a heading, not a page of the album.
+    pages.push(`ክፍል፦ ${title}`);
+    pageIllustrations.push(undefined);
+
+    asbLongReadingPages[album].forEach((text, index) => {
+      pages.push(text);
+      pageIllustrations.push(asbLongReadingImages[album]?.[index]);
+    });
+  }
+
+  return { pages, pageIllustrations };
 }
 
 function licensedCompilationQuality(albumCount: number) {
@@ -148,11 +173,11 @@ export const stories: Story[] = [
       "Keep this for an afternoon or a learning moment.",
       "Pause on the counting questions.",
     ],
-    pages: [
-      ...section(melokuhleDay.title, asbLongReadingPages.melokuhleDay),
-      ...section(blueBus.title, asbLongReadingPages.blueBus),
-      ...section(pickItUp.title, asbLongReadingPages.pickItUp),
-    ],
+    ...compose([
+      { title: melokuhleDay.title, album: "melokuhleDay" },
+      { title: blueBus.title, album: "blueBus" },
+      { title: pickItUp.title, album: "pickItUp" },
+    ]),
     source: africanStorybookSource,
     sourceCredits: [melokuhleDay, blueBus, pickItUp],
     qualityChecks: licensedCompilationQuality(3),
@@ -188,11 +213,11 @@ export const stories: Story[] = [
       "Pause after each section to breathe.",
       "Whisper the final page to close the ritual.",
     ],
-    pages: [
-      ...section(shareFairly.title, asbLongReadingPages.shareFairly),
-      ...section(simbegwire.title, asbLongReadingPages.simbegwire),
-      ...section(rainbowTale.title, asbLongReadingPages.rainbowTale),
-    ],
+    ...compose([
+      { title: shareFairly.title, album: "shareFairly" },
+      { title: simbegwire.title, album: "simbegwire" },
+      { title: rainbowTale.title, album: "rainbowTale" },
+    ]),
     pageTranslations: {
       aligned: [
         [
@@ -1408,11 +1433,11 @@ export const stories: Story[] = [
       "Slow down before the end of each story.",
       "Let the child choose their favorite animal before sleep.",
     ],
-    pages: [
-      ...section(crowdedHouse.title, asbLongReadingPages.crowdedHouse),
-      ...section(birdKing.title, asbLongReadingPages.birdKing),
-      ...section(mousePrince.title, asbLongReadingPages.mousePrince),
-    ],
+    ...compose([
+      { title: crowdedHouse.title, album: "crowdedHouse" },
+      { title: birdKing.title, album: "birdKing" },
+      { title: mousePrince.title, album: "mousePrince" },
+    ]),
     source: africanStorybookSource,
     sourceCredits: [crowdedHouse, birdKing, mousePrince],
     qualityChecks: licensedCompilationQuality(3),

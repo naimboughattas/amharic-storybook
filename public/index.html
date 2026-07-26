@@ -8,6 +8,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="Histoires amhariques" />
+    <!-- Values mirror theme/colors.ts (light/dark `background`). -->
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7FBF7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111714" />
     <meta
       name="description"
       content="Histoires du soir en amharique avec traductions FR/EN discrètes pour le rituel parent-enfant."
@@ -27,6 +30,19 @@
       /* These styles disable body scrolling if you are using <ScrollView> */
       body {
         overflow: hidden;
+      }
+      /*
+       * Painted before the bundle boots and visible behind overscroll. Without
+       * it a bedtime reader in dark mode gets a white flash on launch and a
+       * white band at the edges of every scroll.
+       */
+      html {
+        background-color: #f7fbf7;
+      }
+      @media (prefers-color-scheme: dark) {
+        html {
+          background-color: #111714;
+        }
       }
       /* These styles make the root element full-height */
       #root {

@@ -33,6 +33,9 @@ yarn-error.*
 # local env files
 .env*.local
 
+# local dev server config, not shared tooling
+.claude/launch.json
+
 # typescript
 *.tsbuildinfo
 
