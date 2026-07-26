@@ -102,6 +102,10 @@ export function ReaderPage({
                 borderRadius: radius.sm,
                 height: illustrationHeight,
                 marginBottom: spacing.lg,
+                // The album artwork is bright and saturated, which fights the
+                // dark bedtime scene. Softening it keeps the page calm without
+                // making the picture hard to read for the child.
+                opacity: theme === "dark" ? 0.82 : 1,
                 width: "100%",
               }}
             />
