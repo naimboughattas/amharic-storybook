@@ -79,30 +79,3 @@ export type Story = {
   culturalOrigin?: string;
   tags: string[];
 };
-
-export const storyLevelLabels: Record<StoryLevel, string> = {
-  beginner: "Débutant",
-  intermediate: "Intermédiaire",
-  advanced: "Avancé",
-};
-
-export const durationBucketLabels: Record<DurationBucket, string> = {
-  "10_min": "10 min",
-  "15_min": "15 min+",
-  "20_min": "20 min+",
-};
-
-export const bedtimeFitLabels: Record<BedtimeFit, string> = {
-  ideal: "Idéal coucher",
-  good: "Doux",
-  not_bedtime: "Bibliothèque",
-};
-
-export const validationStatusLabels: Record<ValidationStatus, string> = {
-  draft: "Brouillon",
-  translated: "Traduit",
-  native_reviewed: "Revu natif",
-  child_tested: "Testé enfant",
-  licensed: "Licence OK",
-  published: "Publié",
-};
