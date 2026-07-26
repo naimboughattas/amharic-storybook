@@ -31,7 +31,12 @@ export default function HomeScreen() {
   const palette = colors[progress.theme];
   const language = progress.language;
   const isCompact = width < 430;
-  const tonightStory = useMemo(() => getTonightStory(), []);
+  // Recomputed when progress changes so a reading finished tonight stops being
+  // the one suggested; the date is read once per mount, not per render.
+  const tonightStory = useMemo(
+    () => getTonightStory({ readIds: progress.readIds, favoriteIds: progress.favoriteIds }),
+    [progress.favoriteIds, progress.readIds],
+  );
   const bedtimeCount = useMemo(
     () => stories.filter((story) => story.bedtimeFit !== "not_bedtime").length,
     [],

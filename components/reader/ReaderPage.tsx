@@ -26,6 +26,7 @@ type Props = {
   segments?: ReaderPageSegment[];
   pageTranslation?: string;
   currentPage: number;
+  isFinished: boolean;
   isPaused: boolean;
   isBedtimeMode: boolean;
   isCompact: boolean;
@@ -43,6 +44,7 @@ export function ReaderPage({
   segments,
   pageTranslation,
   currentPage,
+  isFinished,
   isPaused,
   isBedtimeMode,
   isCompact,
@@ -76,7 +78,16 @@ export function ReaderPage({
         shadowRadius: 24,
       }}
     >
-      {isPaused ? (
+      {isFinished ? (
+        <View style={{ gap: spacing.md, justifyContent: "center", minHeight: 220 }}>
+          <Text selectable style={[typography.title, { color: readerText, textAlign: "center" }]}>
+            {uiText[language].endTitle}
+          </Text>
+          <Text selectable style={[typography.body, { color: readerText, textAlign: "center" }]}>
+            {uiText[language].endBody}
+          </Text>
+        </View>
+      ) : isPaused ? (
         <View style={{ gap: spacing.md, justifyContent: "center", minHeight: 220 }}>
           <Text selectable style={[typography.title, { color: readerText, textAlign: "center" }]}>
             {uiText[language].pauseTitle}
@@ -151,7 +162,7 @@ export function ReaderPage({
         </View>
       )}
 
-      {!isPaused && !segments ? (
+      {!isFinished && !isPaused && !segments ? (
         <View
           style={{
             borderColor: palette.border,
