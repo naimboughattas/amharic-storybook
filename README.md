@@ -15,6 +15,7 @@ npm run lint
 npm test
 npm run content:check
 npm run illustrations:check
+npm run translations:check
 ```
 
 `typecheck`, `lint`, `test`, and `content:check` are the four gates run by CI on
@@ -149,6 +150,32 @@ pass so the two cannot drift apart, and `data/stories.test.ts` asserts it.
 Re-encoding needs `cwebp` (`brew install webp`). The originals total about
 20 MB; WebP brings that to roughly 5 MB, which matters because the images ship
 in the app bundle and the offline cache, not just the repository.
+
+## Translations
+
+The Amharic readings are translations of English ASB albums, published
+separately. `npm run illustrations:check` has a sibling,
+`npm run translations:import`, which pulls that original English rather than
+translating the Amharic back, so the reader shows text an author actually
+wrote. Like the illustration import, it refuses to write unless the Amharic
+album still matches this repository page for page, and unless the English
+edition has at least as many pages.
+
+French is different: ASB publishes only a few hundred French titles and covers
+almost none of these albums. `data/asbLongReadingFrench.ts` is therefore
+hand-written from the English, kept out of the generated file so a re-import
+cannot erase it. It is candidate work: every story using it keeps
+`translationProofread: false` and the reader labels it "Traduction candidate".
+
+Two divergences to settle during that proofread: the Amharic converts rand to
+birr (the French follows the Amharic, the imported English still says rand),
+and `blueBus` uses the Ethiopian clock in Amharic while the English and French
+use the Western one.
+
+Sentence-level translations (`pageTranslations.aligned`) remain the richer
+format and stay in use for `long-sharing-family-rainbow`. Page-level arrays are
+the fallback for the rest, since Amharic and English sentence counts rarely
+match: on these albums they agreed on 0 to 8 pages out of 16.
 
 ## License and Content Rules
 

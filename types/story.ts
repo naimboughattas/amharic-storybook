@@ -49,8 +49,12 @@ export type StoryPageTranslationSegment = {
 
 export type StoryPageTranslations = {
   aligned?: Array<StoryPageTranslationSegment[] | undefined>;
-  fr?: string[];
-  en?: string[];
+  /**
+   * Page-level translations, aligned with `pages`. Entries are optional because
+   * a reading can mix translated albums with untranslated ones.
+   */
+  fr?: (string | undefined)[];
+  en?: (string | undefined)[];
 };
 
 export type Story = {

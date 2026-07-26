@@ -55,3 +55,42 @@ describe("imported album illustrations", () => {
     }
   });
 });
+
+describe("page-level translations", () => {
+  // The third reading carries sentence-level translations instead; it is
+  // covered separately below.
+  const pageTranslated = ["long-family-journey-choice", "bedtime-home-birds-mouse"];
+  const translated = stories.filter((story) => pageTranslated.includes(story.id));
+
+  it("covers both readings that had no translations", () => {
+    expect(translated).toHaveLength(pageTranslated.length);
+  });
+
+  it.each(translated.map((story) => [story.id, story] as const))(
+    "%s keeps both languages aligned with its pages",
+    (_id, story) => {
+      // A short array would shift every later translation onto the wrong page.
+      expect(story.pageTranslations?.fr).toHaveLength(story.pages.length);
+      expect(story.pageTranslations?.en).toHaveLength(story.pages.length);
+    },
+  );
+
+  it.each(translated.map((story) => [story.id, story] as const))(
+    "%s translates every page it shows, headings included",
+    (_id, story) => {
+      story.pages.forEach((_text, index) => {
+        expect(story.pageTranslations?.fr?.[index]?.trim()).toBeTruthy();
+        expect(story.pageTranslations?.en?.[index]?.trim()).toBeTruthy();
+      });
+    },
+  );
+
+  it("gives the sentence-level reading a segment for every page", () => {
+    const story = stories.find((s) => s.id === "long-sharing-family-rainbow")!;
+
+    expect(story.pageTranslations?.aligned).toHaveLength(story.pages.length);
+    story.pages.forEach((_text, index) => {
+      expect(story.pageTranslations?.aligned?.[index]?.length).toBeGreaterThan(0);
+    });
+  });
+});

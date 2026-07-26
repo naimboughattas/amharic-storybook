@@ -36,6 +36,8 @@
     "content:check": "node scripts/check-content.mjs",
     "illustrations:import": "node scripts/import-illustrations.mjs",
     "illustrations:check": "node scripts/import-illustrations.mjs --check",
+    "translations:import": "node scripts/import-translations.mjs",
+    "translations:check": "node scripts/import-translations.mjs --check",
     "lint": "expo lint",
     "test": "jest"
   },
