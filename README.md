@@ -181,6 +181,18 @@ contains:
 - `public/register-sw.js` and `public/sw.js` for app-shell caching;
 - `public/offline.html` as a fallback when a fresh navigation is unavailable.
 
+`public/sw.js` is a template, not the worker that ships. `npm run build` runs
+`scripts/build-web.mjs`, which exports the site and then fills in two things
+that only exist once the build does: the precache list, and a cache name
+derived from it. That name changes whenever the precached files or the worker's
+own rules change, so `activate` drops the previous deployment's entries instead
+of letting them accumulate.
+
+The precache covers the 1.6 MB needed to boot the reader offline. The 4.9 MB of
+illustrations is left out on purpose: the worker installs on a first visit, not
+when someone chooses to install the app, so precaching them would push a 7 MB
+download onto every visitor. They are cached as they are read.
+
 The worker serves same-origin GETs cache-first, so `register-sw.js` skips
 registration on localhost (and unregisters any leftover worker): otherwise a dev
 server keeps replaying the previously cached Metro bundle instead of the code
@@ -208,8 +220,8 @@ Global web metadata lives in `public/index.html`, the Expo SPA template used by
 ## Recommended Next Steps
 
 - Add a tested Amharic font for iOS and Android if the system font is not enough.
-- Precache illustrations in the service worker; they are currently cached only
-  after a page has been viewed once, so a first offline reading shows no art.
+- Let a parent mark a reading for offline use, so its illustrations are cached
+  before bedtime rather than as the pages are turned.
 - Version `CACHE_NAME` in `public/sw.js` per deployment so old bundles are
   evicted instead of accumulating.
 - Run visual QA on real small screens.
