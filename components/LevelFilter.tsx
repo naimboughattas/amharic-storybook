@@ -21,7 +21,7 @@ const options: LevelFilterValue[] = ["all", "beginner", "intermediate", "advance
 export function LevelFilter({ value, onChange, palette, language }: Props) {
   return (
     <View
-      accessibilityLabel={language === "en" ? "Filter stories by level" : "Filtrer les histoires par niveau"}
+      accessibilityLabel={uiText[language].levelFilterLabel}
       style={{
         flexDirection: "row",
         flexWrap: "wrap",

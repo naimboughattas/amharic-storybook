@@ -32,7 +32,7 @@ type Props = {
 export function HomeMenu({ activeSection, language, onChange, palette }: Props) {
   return (
     <View
-      accessibilityLabel={language === "en" ? "Home menu" : "Menu d'accueil"}
+      accessibilityLabel={uiText[language].homeMenuLabel}
       style={{
         backgroundColor: palette.surface,
         borderColor: palette.border,

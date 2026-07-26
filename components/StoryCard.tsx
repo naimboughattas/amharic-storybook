@@ -8,6 +8,7 @@ import {
   bedtimeFitLabels,
   durationBucketLabels,
   storyLevelLabels,
+  uiText,
 } from "@/features/i18n/translations";
 import { getStoryMood, getStoryTitle } from "@/features/i18n/storyText";
 import type { AppPalette } from "@/theme/colors";
@@ -47,27 +48,22 @@ export function StoryCard({ story, isRead, isFavorite, lastPage, palette, langua
             <Text selectable style={[typography.title, { color: palette.text }]}>
               {story.titleAm}
             </Text>
-            {story.titleFr ? (
+            {localizedTitle === story.titleAm ? null : (
               <Text selectable style={[typography.body, { color: palette.mutedText }]}>
                 {localizedTitle}
               </Text>
-            ) : null}
+            )}
           </View>
-          <Text
-            accessibilityLabel={
-              isFavorite
-                ? language === "en"
-                  ? "Favorite story"
-                  : "Histoire favorite"
-                : language === "en"
-                  ? "Not favorite story"
-                  : "Histoire non favorite"
-            }
-            selectable
-            style={[typography.title, { color: isFavorite ? palette.accent : palette.border }]}
-          >
-            {isFavorite ? (language === "en" ? "Favorite" : "Favori") : ""}
-          </Text>
+          {/* Rendered only when set: an empty labelled node was announced by
+              screen readers as "not a favorite" on every single card. */}
+          {isFavorite ? (
+            <Text
+              accessibilityLabel={uiText[language].favoriteStory}
+              style={[typography.title, { color: palette.accent }]}
+            >
+              {uiText[language].favorite}
+            </Text>
+          ) : null}
         </View>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
           <ProgressBadge
@@ -85,7 +81,7 @@ export function StoryCard({ story, isRead, isFavorite, lastPage, palette, langua
         </View>
         <Text selectable style={[typography.small, { color: palette.mutedText }]}>
           {storyLevelLabels[language][story.level]} · {story.ageRange}{" "}
-          {language === "en" ? "years" : "ans"} · {story.estimatedMinutes} min
+          {uiText[language].years} · {story.estimatedMinutes} min
         </Text>
         <Text selectable style={[typography.small, { color: palette.mutedText }]}>
           {durationBucketLabels[language][story.durationBucket]} ·{" "}
